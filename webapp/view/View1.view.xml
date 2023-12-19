@@ -1,0 +1,80 @@
+<mvc:View
+    controllerName="gatepassapp.controller.View1"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    
+    xmlns:tnt="sap.tnt"
+    height="100%" >
+
+   <Page showHeader="true">
+   <customHeader>
+		<Bar>
+		<contentLeft>
+		<Image width="50px" src="https://www.castaliaz.co.in/wp-content/uploads/2021/02/castaliaz-transparent-2.png"></Image>
+		</contentLeft>
+		
+		<contentMiddle>
+		<Text class="ClassTextBolder" text="Kiruba Technologies"></Text>
+		</contentMiddle>
+		
+		<contentRight>
+		<Button icon="sap-icon://menu2" ></Button>
+		</contentRight>		
+		</Bar>
+		</customHeader>
+   <!-- <headerContent> -->
+   
+   <!-- <Button icon="sap-icon://menu2"></Button> -->
+   <!-- <Image width="40px" src="https://www.castaliaz.co.in/wp-content/uploads/2021/02/castaliaz-transparent-2.png"></Image>
+   <Text text="Castaliaz"></Text>
+   </headerContent> -->
+   <SplitApp id="splitApp">
+   <masterPages>
+   <tnt:SideNavigation width="320px" id="sideNavigation" >
+        <tnt:NavigationList  width="320px" id="navigationList" >
+                 <tnt:NavigationListItem text="Home" icon="sap-icon://employee" ></tnt:NavigationListItem>
+                    <tnt:NavigationListItem text="Inward" expanded="false" icon="sap-icon://employee">
+                        <tnt:NavigationListItem icon="sap-icon://BusinessSuiteInAppSymbols/icon-early-widthdrawal-for-time-deposits" text="General Purchase" />
+                        <tnt:NavigationListItem text="Cash Purchase" />
+                        <tnt:NavigationListItem text="Sales STO" />
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem text="Outward" expanded="false" icon="sap-icon://building">
+                        <tnt:NavigationListItem text="Vendor Return" />
+                        <tnt:NavigationListItem text="Sales STO" />
+                        <tnt:NavigationListItem text="Subcontracting Challan" />
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem text="Gate Entry Close" expanded="false" icon="sap-icon://building">
+                        <tnt:NavigationListItem text="Close Gate Pass" />
+                        <tnt:NavigationListItem text="Display" />
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem text="Gate Entry Cancel" expanded="false" icon="sap-icon://building">
+                        <tnt:NavigationListItem text="Cancel Gate Pass" />
+                        <tnt:NavigationListItem text="Display" />
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem text="Gate Entry Report" expanded="false" icon="sap-icon://building">
+                        <tnt:NavigationListItem text="Inward Report" />
+                        <tnt:NavigationListItem text="Outward Report" />
+                        <tnt:NavigationListItem text="Overall" />
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem text="RGP &amp; NRGP Gate Pass" expanded="false" icon="sap-icon://building">
+                        <tnt:NavigationListItem text="Create" />
+                        <tnt:NavigationListItem text="Display" />
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem text="Admin Panel" expanded="false" icon="sap-icon://building">
+                        <tnt:NavigationListItem text="Create User" />
+                        <tnt:NavigationListItem text="Authorization" />
+                    </tnt:NavigationListItem>
+                    
+        </tnt:NavigationList>
+        <tnt:fixedItem >
+			<tnt:NavigationList width="320px">
+				<tnt:NavigationListItem text="Help &amp; Support" tooltip="Help &amp; Support" icon="sap-icon://sys-help" />
+				<tnt:NavigationListItem text="Useful Links" tooltip="Useful Links" icon="sap-icon://chain-link" />
+			</tnt:NavigationList>
+		</tnt:fixedItem>
+    </tnt:SideNavigation>
+    </masterPages>
+    </SplitApp>
+   </Page>
+
+</mvc:View>

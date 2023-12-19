@@ -1,0 +1,32 @@
+
+
+
+.sapTntSideNavigation {
+    height: 100%;
+}
+
+.sapMSplitContainerMaster {
+    margin-top: 0.5rem;
+}
+
+.IdGateEntryTotalText{
+    font-size: 1rem;
+}
+
+.IdGateEntryTotalNo{
+    font-size: 1.5rem;
+}
+
+
+
+.ClassTextBolder{
+    font-weight: bolder;
+}
+
+.masterStyle{
+    width:3.5rem;
+}
+
+.masterStyleAfter{
+    width: 20.8rem;
+}
