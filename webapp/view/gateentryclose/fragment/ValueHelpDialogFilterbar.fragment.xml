@@ -1,0 +1,25 @@
+
+<core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog" xmlns:m="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+	<ValueHelpDialog title="Select Gate Pass No" supportMultiselect="false" enabledMultiSelectionPlugin="true" ok=".onValueHelpOkPress" cancel=".onValueHelpCancelPress" afterClose=".onValueHelpAfterClose" supportRanges="true" key="Id" descriptionKey="SAP_UUID">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="Id" label="Gate Pass No" visibleInFilterBar="true">
+						<fb:control>
+								<m:Input name="Id" showSuggestion="true" showValueHelp="false" suggestionItems="{ path: 'oJSONModel>/Datas', sorter: { path: 'Id' }}">
+								<core:Item key="{oJSONModel>Id}" text="{oJSONModel>Id}" />
+							</m:Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem visible="false" groupName="__$INTERNAL$" name="SAP_UUID" label="SAP_UUID" visibleInFilterBar="false">
+						<fb:control>
+							<m:Input visible="false" name="SAP_UUID" showSuggestion="true" showValueHelp="false" suggestionItems="{ path: 'oJSONModel>/Datas',sorter: { path: 'SAP_UUID' }}">
+								<core:Item key="{oJSONModel>SAP_UUID}" text="{oJSONModel>SAP_UUID}" />
+							</m:Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition> 

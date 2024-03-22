@@ -1,0 +1,121 @@
+<!-- <core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="valueHelpDialog"
+		title="Products"
+		items="{YY1_ZRGP_NRGP_HEAD_CDS>/YY1_ZRGP_NRGP_HEAD}"
+		search="_handleValueHelpSearch"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose"
+		multiSelect="true">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{YY1_ZRGP_NRGP_HEAD_CDS>Id}"
+			description="{YY1_ZRGP_NRGP_HEAD_CDS>GatePassType}" />
+	</SelectDialog>
+</core:FragmentDefinition> -->
+
+
+
+
+<!-- <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="RGPNRGP_dialog" noDataText="No Data Found" title="Select Data" search="._handleValueHelpSearch" confirm="._handleValueHelpClose"
+		contentWidth="50%" multiSelect="true" cancel="._handleValueHelpClose" items="{path:'YY1_ZRGP_NRGP_HEAD_CDS>/YY1_ZRGP_NRGP_HEAD',sorter:[{path:'Id',descending:false}]}">
+		<ColumnListItem id="Plant_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text text="{YY1_ZRGP_NRGP_HEAD_CDS>Id}"/>
+				<Text text="{YY1_ZRGP_NRGP_HEAD_CDS>GatePassType}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column  >
+				<header>
+					<Text text="Gate Pass No"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Gate Pass Type"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition> -->
+
+
+<!-- <core:FragmentDefinition
+  xmlns="sap.ui.comp.valuehelpdialog"
+  xmlns:m="sap.m"
+  xmlns:fb="sap.ui.comp.filterbar"
+  xmlns:core="sap.ui.core"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:mvc="sap.ui.core.mvc">
+  
+  <ValueHelpDialog
+    title="Product"
+    ok=".onValueHelpOkPress"
+	cancel=".onValueHelpCancelPress"
+	afterClose=".onValueHelpAfterClose"
+    supportRanges="true"
+    key="Id">
+    
+   	<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="Id"
+						label="Id"
+						visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Id" />
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+  </ValueHelpDialog>
+
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition
+	xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:m="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:core="sap.ui.core">
+	<ValueHelpDialog
+		title="Gate Pass No"
+		ok=".onValueHelpOkPress"
+		cancel=".onValueHelpCancelPress"
+		afterClose=".onValueHelpAfterClose"
+		supportRanges="true"
+		key="Id"
+		descriptionKey="GatePassType">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="Id"
+						label="Gate Pass No"
+						visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="Id" />
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="GatePassType"
+						label="Gate Pass Type"
+						visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="GatePassType" />
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

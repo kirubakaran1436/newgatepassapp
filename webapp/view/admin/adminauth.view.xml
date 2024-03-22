@@ -1,0 +1,1388 @@
+<mvc:View
+		controllerName="gatepassapp.controller.admin.adminauth"
+		 xmlns:html="http://www.w3.org/1999/xhtml"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:u="sap.ui.unified"
+		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+		xmlns:t="sap.ui.table"
+		xmlns:f="sap.f"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:layout="sap.ui.layout"
+		height="100%">
+		<f:DynamicPage id="dynamicPageId" stickySubheaderProvider="iconTabBar" class="sapUiTinyMarginTop sapUiTinyMarginBegin " preserveHeaderStateOnScroll="true" showFooter="true" fitContent="true">
+
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="User Assign / Authorization"/>
+					</f:heading>
+					
+					<f:expandedContent>
+						<Label id="id_sub_con1_label_h" text="Assign User"/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label id="id_sub_con2_label_h" text="Assign User"/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="User Assign / Authorization"/>
+					</f:snappedTitleOnMobile>
+					<f:content>
+						<OverflowToolbar>
+							<GenericTag visible="false" id="id_heder_select_name" text=""
+								status="Information"
+								press="onGenericTagPress"
+								design="StatusIconHidden">
+								<!-- <ObjectNumber number="2"
+									unit="M"
+									emphasized="false"
+									state="Error"/> -->
+							</GenericTag>
+
+							<GenericTag visible="false" id="id_deactivate_user" text="Activated"
+								status="Success"
+								press="onGenericTagPress"
+								design="StatusIconHidden">
+								<!-- <ObjectNumber number="2"
+									unit="M"
+									emphasized="false"
+									state="Error"/> -->
+							</GenericTag>
+						</OverflowToolbar>
+					</f:content>
+					<!-- <f:actions>
+						<Button text="Edit" type="Emphasized"/>
+						<Button text="Delete" type="Transparent"/>
+						<Button text="Copy" type="Transparent"/>
+						<Button text="Toggle Footer" type="Transparent" press="onToggleFooter"/>
+						<Button icon="sap-icon://action" type="Transparent"/>
+					</f:actions>
+					<f:navigationActions>
+						<Button icon="sap-icon://full-screen" type="Transparent" />
+						<Button icon="sap-icon://decline" type="Transparent" />
+					</f:navigationActions> -->
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+						<FlexBox
+								alignItems="Start"
+								>
+							<items>
+								<Panel width="50rem"
+										backgroundDesign="Transparent"
+										class="sapUiNoContentPadding">
+									<content>
+										<layout:HorizontalLayout
+												allowWrapping="true">
+											<layout:VerticalLayout
+													class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label class="" text="User :" ></Label>
+												<Input value="" suggestionItemSelected="OnBusinessUerSuggest" showSuggestion="true" suggestionItems="{path:'/YY1_CTPL_Business_User'}" id="id_select_user_name_h" valueHelpRequest="OnBusinessUserFragOpen" showValueHelp="true" >
+													<suggestionItems>
+														<core:ListItem key="{UserID}" text="{PersonFullName}" />
+													</suggestionItems>											
+												</Input>
+											</layout:VerticalLayout>
+											<layout:VerticalLayout visible="false"
+													class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Input value="" id="id_business_user_name_h" />
+												<Input value="" id="id_business_user_id_h" />
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout visible="true"
+													class="sapUiSmallMarginBegin sapUiTinyMarginEnd sapUiTinyMarginBottom">
+												<Label text="" />
+												<Button press="OnActivateUser" id="id_activate_user" icon="sap-icon://activate" visible="false" type="Default" />
+												<!-- <Button id="id_deactivate_user" enabled="false" icon="sap-icon://BusinessSuiteInAppSymbols/icon-business-partner-verified" visible="false" type="Accept" /> -->
+												<!-- <core:Icon id="id_deactivate_user" visible="false" src="sap-icon://BusinessSuiteInAppSymbols/icon-business-partner-verified" color="#64E4CE" ></core:Icon> -->
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout visible="true"
+													class="sapUiTinyMarginTop sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label text="" />
+												<Text id="id_activate_user_text" visible="false" text="Activate User "/>
+												<Text id="id_deactivate_user_text" visible="false" text=""/>
+											</layout:VerticalLayout>
+
+											<!-- <layout:VerticalLayout
+													class="sapUiTinyMarginEnd">
+											</layout:VerticalLayout> -->
+										</layout:HorizontalLayout>
+									</content>
+								</Panel>
+							</items>
+						</FlexBox>	
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+
+				<IconTabBar visible="false" id="iconTabBar" class="sapUiResponsiveContentPadding">
+					<items >
+						<IconTabFilter id="GE2_INWARD" visible="false" text="Inward">
+
+							<!-- // IN below General Purchase -->
+							<Panel id="GE2_INWARD_PANEL01" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">  
+								<headerToolbar>
+									<OverflowToolbar active="true" >
+										<Title text="General Purchase" />
+										<ToolbarSpacer />
+										<Switch type="AcceptReject" state="{= ${JSonModelINWARD>/Datas/0/GE3} === 'true' }" id="idswitchGE3" change="OnTRansAppSwitch">
+											<customData>
+												<core:CustomData key="GE3" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+											</customData>
+										</Switch>
+									</OverflowToolbar>
+								</headerToolbar>
+								<content>
+									<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox text="Purchase Document" editable="false" id="idcheckbox001" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Purchase Document" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox text="Supplier" editable="false" id="idcheckbox002" selected="true"> 
+												<customData>
+													<core:CustomData key="SupplierCode" value="Supplier" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox text="Plant" editable="false" id="idcheckbox003" selected="true"> 
+												<customData>
+													<core:CustomData key="PlantCode" value="Plant" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  text="E Way Bill No"  id="idcheckbox004">
+												<customData>
+													<core:CustomData key="EWayBill" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/GateEntryDate} === 'true' }" text="Gate Entry Date"  id="idcheckbox005">
+												<customData>
+													<core:CustomData key="GateEntryDate" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/VehicleNo} === 'true' }" text="Vehicle No" id="idcheckbox006">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/VehicleType} === 'true' }" text="Vehicle Type"  id="idcheckbox007">
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/InvoiceNo} === 'true' }" text="Invoice No"  id="idcheckbox008"> 
+												<customData>
+													<core:CustomData key="InvoiceNo" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/InvoiceDate} === 'true' }" text="Invoice Date"  id="idcheckbox009">
+												<customData>
+													<core:CustomData key="InvoiceDate" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/Transporter} === 'true' }" text="Transporter"  id="idcheckbox010">
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/TransporterMode} === 'true' }" text="Transporter Mode" id="idcheckbox011">
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/LRNo} === 'true' }" text="LR No"  id="idcheckbox012">
+												<customData>
+													<core:CustomData key="LRNo" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/LRDate} === 'true' }" text="LR Date"  id="idcheckbox013">
+												<customData>
+													<core:CustomData key="LRDate" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/GrossWeight} === 'true' }" text="Gross Weight" id="idcheckbox014">
+												<customData>
+													<core:CustomData key="GrossWeight" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/NoOfPackages} === 'true' }" text="No Of Packages" id="idcheckbox015">
+												<customData>
+													<core:CustomData key="NoOfPackages" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE3>/Datas/Remarks} === 'true' }" text="Remarks" id="idcheckbox016">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE3>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Text text=""></Text>
+											<Text text=""></Text>
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>
+
+							<!-- // IN below Sales Return -->
+							<Panel  id="GE2_INWARD_PANEL02" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+									<headerToolbar>
+										<OverflowToolbar active="true" >
+											<Title text="Sales Return" />
+											<ToolbarSpacer />
+											<!-- <Button icon="sap-icon://settings" /> -->
+											<Switch type="AcceptReject" state="{= ${JSonModelINWARD>/Datas/0/GE4} === 'true' }" id="idswitchGE4" change="OnTRansAppSwitch">
+												<customData>
+												<core:CustomData key="GE4" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+											</customData>
+											</Switch>
+										</OverflowToolbar>
+									</headerToolbar>
+									<content>
+									<form:SimpleForm
+										editable="true"
+										layout="ResponsiveGridLayout"
+										labelSpanL="3"
+										labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox text="Customer Return No" editable="false" id="idcheckbox017" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Customer Document" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox text="Customer" editable="false" id="idcheckbox018" selected="true"> 
+												<customData>
+													<core:CustomData key="SupplierCode" value="Supplier" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox text="Plant" editable="false" id="idcheckbox019" selected="true"> 
+												<customData>
+													<core:CustomData key="PlantCode" value="Plant" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/EWayBill} === 'true' }" text="E Way Bill No"  id="idcheckbox020">
+												<customData>
+													<core:CustomData key="EWayBill" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/GateEntryDate} === 'true' }" text="Gate Entry Date"  id="idcheckbox021">
+												<customData>
+													<core:CustomData key="GateEntryDate" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/VehicleNo} === 'true' }" text="Vehicle No" id="idcheckbox022">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/VehicleType} === 'true' }" text="Vehicle Type"  id="idcheckbox023">
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/InvoiceNo} === 'true' }" text="Invoice No"  id="idcheckbox024"> 
+												<customData>
+													<core:CustomData key="InvoiceNo" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/InvoiceDate} === 'true' }" text="Invoice Date"  id="idcheckbox025">
+												<customData>
+													<core:CustomData key="InvoiceDate" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/Transporter} === 'true' }" text="Transporter"  id="idcheckbox026">
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/TransporterMode} === 'true' }" text="Transporter Mode" id="idcheckbox027">
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/LRNo} === 'true' }" text="LR No"  id="idcheckbox028">
+												<customData>
+													<core:CustomData key="LRNo" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/LRDate} === 'true' }" text="LR Date"  id="idcheckbox029">
+												<customData>
+													<core:CustomData key="LRDate" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/GrossWeight} === 'true' }" text="Gross Weight" id="idcheckbox030">
+												<customData>
+													<core:CustomData key="GrossWeight" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/NoOfPackages} === 'true' }" text="No Of Packages" id="idcheckbox031">
+												<customData>
+													<core:CustomData key="NoOfPackages" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE4>/Datas/Remarks} === 'true' }" text="Remarks" id="idcheckbox032">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE4>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Text text=""></Text>
+											<Text text=""></Text>
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>
+
+							<!-- // IN below STO Goods Receipt -->
+							<Panel  id="GE2_INWARD_PANEL03" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+									<headerToolbar>
+										<OverflowToolbar active="true" >
+											<Title text="STO Goods Receipt" />
+											<ToolbarSpacer />
+											<!-- <Button icon="sap-icon://settings" /> -->
+											<Switch type="AcceptReject" state="{= ${JSonModelINWARD>/Datas/0/GE5} === 'true' }" id="idswitchGE5" change="OnTRansAppSwitch">
+												<customData>
+													<core:CustomData key="GE5" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</Switch>
+										</OverflowToolbar>
+									</headerToolbar>
+									<content>
+									<form:SimpleForm
+										editable="true"
+										layout="ResponsiveGridLayout"
+										labelSpanL="3"
+										labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox text="Delivery Document No" editable="false" id="idcheckbox033" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Delivery Document" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox text="Customer" editable="false" id="idcheckbox034" selected="true"> 
+												<customData>
+													<core:CustomData key="SupplierCode" value="Supplier" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox text="Plant" editable="false" id="idcheckbox035" selected="true"> 
+												<customData>
+													<core:CustomData key="PlantCode" value="Plant" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/EWayBill} === 'true' }" text="E Way Bill No">
+												<customData>
+													<core:CustomData key="EWayBill" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/GateEntryDate} === 'true' }" text="Gate Entry Date">
+												<customData>
+													<core:CustomData key="GateEntryDate" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/VehicleNo} === 'true' }" text="Vehicle No">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/VehicleType} === 'true' }" text="Vehicle Type" >
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/InvoiceNo} === 'true' }" text="Invoice No" > 
+												<customData>
+													<core:CustomData key="InvoiceNo" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/InvoiceDate} === 'true' }" text="Invoice Date">
+												<customData>
+													<core:CustomData key="InvoiceDate" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/Transporter} === 'true' }" text="Transporter" >
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/TransporterMode} === 'true' }" text="Transporter Mode" >
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/LRNo} === 'true' }" text="LR No">
+												<customData>
+													<core:CustomData key="LRNo" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/LRDate} === 'true' }" text="LR Date">
+												<customData>
+													<core:CustomData key="LRDate" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/GrossWeight} === 'true' }" text="Gross Weight">
+												<customData>
+													<core:CustomData key="GrossWeight" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/NoOfPackages} === 'true' }" text="No Of Packages">
+												<customData>
+													<core:CustomData key="NoOfPackages" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE5>/Datas/Remarks} === 'true' }" text="Remarks">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE5>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Text text=""></Text>
+											<Text text=""></Text>
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>
+
+							<!-- // IN below Subcontracting Goods Receipt -->
+							<Panel id="GE2_INWARD_PANEL04" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+									<headerToolbar>
+										<OverflowToolbar active="true" >
+											<Title text="Subcontracting Goods Receipt" />
+											<ToolbarSpacer />
+											<!-- <Button icon="sap-icon://settings" /> -->
+											<Switch type="AcceptReject" state="{= ${JSonModelINWARD>/Datas/0/GE21} === 'true' }" id="idswitchGE21" change="OnTRansAppSwitch">
+												<customData>
+													<core:CustomData key="GE21" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</Switch>
+										</OverflowToolbar>
+									</headerToolbar>
+									<content>
+									<form:SimpleForm
+										editable="true"
+										layout="ResponsiveGridLayout"
+										labelSpanL="3"
+										labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox text="Purchase Document" editable="false" id="idcheckbox049" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Purchase Document" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox text="Supplier" editable="false" id="idcheckbox050" selected="true"> 
+												<customData>
+													<core:CustomData key="SupplierCode" value="Supplier" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox text="Plant" editable="false" id="idcheckbox051" selected="true"> 
+												<customData>
+													<core:CustomData key="PlantCode" value="Plant" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/EWayBill} === 'true' }" text="E Way Bill No">
+												<customData>
+													<core:CustomData key="EWayBill" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/GateEntryDate} === 'true' }" text="Gate Entry Date">
+												<customData>
+													<core:CustomData key="GateEntryDate" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/VehicleNo} === 'true' }" text="Vehicle No">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/VehicleType} === 'true' }" text="Vehicle Type" >
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/InvoiceNo} === 'true' }" text="Invoice No" > 
+												<customData>
+													<core:CustomData key="InvoiceNo" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/InvoiceDate} === 'true' }" text="Invoice Date">
+												<customData>
+													<core:CustomData key="InvoiceDate" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/Transporter} === 'true' }" text="Transporter" >
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/TransporterMode} === 'true' }" text="Transporter Mode" >
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/LRNo} === 'true' }" text="LR No">
+												<customData>
+													<core:CustomData key="LRNo" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/LRDate} === 'true' }" text="LR Date">
+												<customData>
+													<core:CustomData key="LRDate" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/GrossWeight} === 'true' }" text="Gross Weight">
+												<customData>
+													<core:CustomData key="GrossWeight" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/NoOfPackages} === 'true' }" text="No Of Packages">
+												<customData>
+													<core:CustomData key="NoOfPackages" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE21>/Datas/Remarks} === 'true' }" text="Remarks">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE21>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Text text=""></Text>
+											<Text text=""></Text>
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>
+
+							<!-- // IN below Report -->
+							<Panel id="GE2_INWARD_PANEL05" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+									<headerToolbar>
+										<OverflowToolbar active="true" >
+											<Title text="Report" />
+											<ToolbarSpacer />
+											<!-- <Button icon="sap-icon://settings" /> -->
+											<Switch type="AcceptReject" id="idswitchGE6" state="{= ${JSonModelINWARD>/Datas/0/GE6} === 'true' }" change="OnTRansAppSwitch">
+												<customData>
+													<core:CustomData key="GE6" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</Switch>
+										</OverflowToolbar>
+									</headerToolbar>
+							</Panel>
+
+						</IconTabFilter>
+
+						<IconTabFilter visible="false" id="GE7_OUTWARD" text="Ourward">
+
+							<!-- // IN below Sales (Outbound) -->
+							<Panel id="GE7_OUTWARD_PANEL01" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+								<headerToolbar>
+									<OverflowToolbar active="true" >
+										<Title text="Sales (OutBound) " />
+										<ToolbarSpacer />
+										<Switch type="AcceptReject" state="{= ${JSonModelINWARD>/Datas/0/GE8} === 'true' }" id="idswitchGE8" change="OnTRansAppSwitch">
+											<customData>
+												<core:CustomData key="GE8" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+											</customData>
+										</Switch>
+									</OverflowToolbar>
+								</headerToolbar>
+								<content>
+									<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox  text="Delivery Document" editable="false" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Delivery Document" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  text="Customer" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Customer" value="Customer" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  text="Plant" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Plant" value="Plant" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE8>/Datas/GateEntryDate} === 'true' }" text="Gate Entry Date" >
+												<customData>
+													<core:CustomData key="GateEntryDate" value="{JSonModelGE8>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE8>/Datas/VehicleNo} === 'true' }" text="Vehicle No">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE8>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE8>/Datas/VehicleType} === 'true' }" text="Vehicle Type" >
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE8>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE8>/Datas/Transporter} === 'true' }" text="Transporter" >
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE8>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE8>/Datas/TransporterMode} === 'true' }" text="Transporter Mode" >
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE8>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE8>/Datas/LRNo} === 'true' }" text="LR No" >
+												<customData>
+													<core:CustomData key="LRNo" value="{JSonModelGE8>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE8>/Datas/LRDate} === 'true' }" text="LR Date">
+												<customData>
+													<core:CustomData key="LRDate" value="{JSonModelGE8>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE8>/Datas/GrossWeight} === 'true' }" text="Gross Weight">
+												<customData>
+													<core:CustomData key="GrossWeight" value="{JSonModelGE8>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE8>/Datas/Remarks} === 'true' }" text="Remarks">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE8>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>	
+
+							<!-- // IN below STO (Outbound) -->
+							<Panel id="GE7_OUTWARD_PANEL02" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+								<headerToolbar>
+									<OverflowToolbar active="true" >
+										<Title text="STO Goods Issue (OutBound) " />
+										<ToolbarSpacer />
+										<Switch type="AcceptReject" state="{= ${JSonModelINWARD>/Datas/0/GE9} === 'true' }" id="idswitchGE9" change="OnTRansAppSwitch">
+											<customData>
+												<core:CustomData key="GE9" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+											</customData>
+										</Switch>
+									</OverflowToolbar>
+								</headerToolbar>
+								<content>
+									<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox  text="Delivery Document" editable="false" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Delivery Document" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  text="Customer" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Customer" value="Customer" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  text="Plant" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Plant" value="Plant" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE9>/Datas/GateEntryDate} === 'true' }" text="Gate Entry Date" >
+												<customData>
+													<core:CustomData key="GateEntryDate" value="{JSonModelGE9>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE9>/Datas/VehicleNo} === 'true' }" text="Vehicle No">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE9>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE9>/Datas/VehicleType} === 'true' }"  text="Vehicle Type" >
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE9>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE9>/Datas/Transporter} === 'true' }"  text="Transporter" >
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE9>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE9>/Datas/TransporterMode} === 'true' }" text="Transporter Mode" >
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE9>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE9>/Datas/LRNo} === 'true' }"  text="LR No" >
+												<customData>
+													<core:CustomData key="LRNo" value="{JSonModelGE9>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<Label text="" />
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE9>/Datas/LRDate} === 'true' }"  text="LR Date">
+												<customData>
+													<core:CustomData key="LRDate" value="{JSonModelGE9>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE9>/Datas/GrossWeight} === 'true' }" text="Gross Weight">
+												<customData>
+													<core:CustomData key="GrossWeight" value="{JSonModelGE9>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE9>/Datas/Remarks} === 'true' }" text="Remarks">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE9>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>						
+
+							<!-- // IN below VENDOR RETURN (Outbound) -->
+							<Panel id="GE7_OUTWARD_PANEL03" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+								<headerToolbar>
+									<OverflowToolbar active="true" >
+										<Title text="Vendor Return (OutBound) " />
+										<ToolbarSpacer />
+										<Switch type="AcceptReject" state="{= ${JSonModelINWARD>/Datas/0/GE10} === 'true' }" id="idswitchGE10" change="OnTRansAppSwitch">
+											<customData>
+												<core:CustomData key="GE10" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+											</customData>
+										</Switch>
+									</OverflowToolbar>
+								</headerToolbar>
+								<content>
+									<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox  text="Material Document Year" editable="false" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Material Document Year" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  text="Material Document No" editable="false" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Material Document No" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  text="Supplier" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Supplier" value="Supplier" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											
+											<CheckBox  text="Plant" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Plant" value="Plant" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE10>/Datas/GateEntryDate} === 'true' }"  text="Gate Entry Date" >
+												<customData>
+													<core:CustomData key="GateEntryDate" value="{JSonModelGE10>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE10>/Datas/VehicleNo} === 'true' }"  text="Vehicle No">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE10>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE10>/Datas/VehicleType} === 'true' }" text="Vehicle Type" >
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE10>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE10>/Datas/Transporter} === 'true' }" text="Transporter" >
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE10>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE10>/Datas/TransporterMode} === 'true' }"  text="Transporter Mode" >
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE10>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE10>/Datas/LRNo} === 'true' }" text="LR No" >
+											<customData>
+													<core:CustomData key="LRNo" value="{JSonModelGE10>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE10>/Datas/LRDate} === 'true' }" text="LR Date">
+												<customData>
+													<core:CustomData key="LRDate" value="{JSonModelGE10>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE10>/Datas/GrossWeight} === 'true' }" text="Gross Weight">
+												<customData>
+													<core:CustomData key="GrossWeight" value="{JSonModelGE10>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE10>/Datas/Remarks} === 'true' }"  text="Remarks">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE10>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Text text=""/>
+											<Text text=""/>
+
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>						
+
+							<!-- // IN below SUBCONTRACTING GOODS ISSUE (Outbound) -->
+							<Panel id="GE7_OUTWARD_PANEL04" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+								<headerToolbar>
+									<OverflowToolbar active="true" >
+										<Title text="Subcontracting Goods Issue (OutBound) " />
+										<ToolbarSpacer />
+										<Switch type="AcceptReject" state="{= ${JSonModelINWARD>/Datas/0/GE11} === 'true' }" id="idswitchGE11" change="OnTRansAppSwitch">
+											<customData>
+												<core:CustomData key="GE11" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+											</customData>
+										</Switch>
+									</OverflowToolbar>
+								</headerToolbar>
+								<content>
+									<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox  text="Material Document Year" editable="false" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Material Document Year" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  text="Material Document No" editable="false" selected="true">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="Material Document No" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  text="Supplier" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Supplier" value="Supplier" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											
+											<CheckBox  text="Plant" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Plant" value="Plant" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/GateEntryDate} === 'true' }" text="Gate Entry Date" >
+												<customData>
+													<core:CustomData key="GateEntryDate" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/VehicleNo} === 'true' }" text="Vehicle No">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/VehicleType} === 'true' }" text="Vehicle Type" >
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/Transporter} === 'true' }" text="Transporter" >
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/TransporterMode} === 'true' }" text="Transporter Mode" >
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/GatLRNoeEntryDate} === 'true' }" text="LR No" >
+											<customData>
+													<core:CustomData key="LRNo" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/LRDate} === 'true' }" text="LR Date">
+												<customData>
+													<core:CustomData key="LRDate" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/GrossWeight} === 'true' }" text="Gross Weight">
+												<customData>
+													<core:CustomData key="GrossWeight" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/Remarks} === 'true' }" text="Remarks">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE11>/Datas/ChallanNo} === 'true' }" text="Challan No">
+												<customData>
+													<core:CustomData key="ChallanNo" value="{JSonModelGE11>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Text text=""/>
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>	
+
+						<!-- // IN below Report -->
+							<Panel id="GE7_OUTWARD_PANEL05" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+									<headerToolbar>
+										<OverflowToolbar active="true" >
+											<Title text="Report" />
+											<ToolbarSpacer />
+											<!-- <Button icon="sap-icon://settings" /> -->
+											<Switch type="AcceptReject" id="idswitchGE13" state="{= ${JSonModelINWARD>/Datas/0/GE13} === 'true' }" change="OnTRansAppSwitch">
+												<customData>
+													<core:CustomData key="GE13" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</Switch>
+										</OverflowToolbar>
+									</headerToolbar>
+							</Panel>
+					
+						</IconTabFilter>
+
+						<IconTabFilter visible="false" id="GE14_RGP_NRGP" text="RGP &amp; NRGP">
+							
+						<!-- // IN below CREATE -->
+							<Panel id="GE14_RGP_NRGP_PANEL01" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+								<headerToolbar>
+									<OverflowToolbar active="true" >
+										<Title text="Create (RGP / NRGP)" />
+										<ToolbarSpacer />
+										<Switch type="AcceptReject" state="{= ${JSonModelINWARD>/Datas/0/GE15} === 'true' }" id="idswitchGE15" change="OnTRansAppSwitch">
+											<customData>
+												<core:CustomData key="GE15" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+											</customData>
+										</Switch>
+									</OverflowToolbar>
+								</headerToolbar>
+								<content>
+									<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox text="Gate Pass Type" editable="false" selected="true">
+												<customData>
+													<core:CustomData key="GatePassType" value="Gate Pass Type" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox text="Plant" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Plant" value="Plant" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/Supplier} === 'true' }" text="Supplier"> 
+												<customData>
+													<core:CustomData key="Supplier" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/Customer} === 'true' }" text="Customer" > 
+												<customData>
+													<core:CustomData key="Customer" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/VehicleNo} === 'true' }" text="Vehicle No">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/VehicleType} === 'true' }" text="Vehicle Type" >
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/Transporter} === 'true' }" text="Transporter" >
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/TransporterMode} === 'true' }" text="Transporter Mode" >
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/Remarks} === 'true' }" text="Remarks">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/ReferenceDocument} === 'true' }" text="Purchase Material/Document">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/Requestor} === 'true' }" text="Requestor">
+												<customData>
+													<core:CustomData key="Requestor" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE15>/Datas/defaultapprove} === 'true' }" text="Default Approve">
+												<customData>
+													<core:CustomData key="defaultapprove" value="{JSonModelGE15>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>
+
+						<!-- // IN below CHANGE/ DELETE -->
+							<Panel id="GE14_RGP_NRGP_PANEL02" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+								<headerToolbar>
+									<OverflowToolbar active="true" >
+										<Title text="Change / Delete (RGP / NRGP)" />
+										<ToolbarSpacer />
+										<Switch type="AcceptReject" id="idswitchGE16" state="{= ${JSonModelINWARD>/Datas/0/GE16} === 'true' }" change="OnTRansAppSwitch">
+											<customData>
+												<core:CustomData key="GE16" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+											</customData>
+										</Switch>
+									</OverflowToolbar>
+								</headerToolbar>
+								<content>
+									<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3">
+										<form:content>
+											<Label text="Select Mandatory Field's" />
+
+											<CheckBox  text="Gate Pass Type" editable="false" selected="true">
+												<customData>
+													<core:CustomData key="GatePassType" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  text="Plant" editable="false" selected="true"> 
+												<customData>
+													<core:CustomData key="Plant" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE16>/Datas/Supplier} === 'true' }" text="Supplier"> 
+												<customData>
+													<core:CustomData key="Supplier" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE16>/Datas/Customer} === 'true' }" text="Customer" > 
+												<customData>
+													<core:CustomData key="Customer" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE16>/Datas/VehicleNo} === 'true' }" text="Vehicle No">
+												<customData>
+													<core:CustomData key="VehicleNo" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE16>/Datas/VehicleType} === 'true' }" text="Vehicle Type" >
+												<customData>
+													<core:CustomData key="VehicleType" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE16>/Datas/Transporter} === 'true' }" text="Transporter" >
+												<customData>
+													<core:CustomData key="Transporter" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE16>/Datas/TransporterMode} === 'true' }" text="Transporter Mode" >
+												<customData>
+													<core:CustomData key="TransporterMode" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE16>/Datas/Remarks} === 'true' }" text="Remarks">
+												<customData>
+													<core:CustomData key="Remarks" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Label text="" />
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE16>/Datas/ReferenceDocument} === 'true' }" text="Purchase Material/Document">
+												<customData>
+													<core:CustomData key="ReferenceDocument" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+											
+											<CheckBox  select="OnCheckBoxSelect" selected="{= ${JSonModelGE16>/Datas/Requestor} === 'true' }" text="Requestor">
+												<customData>
+													<core:CustomData key="Requestor" value="{JSonModelGE16>/Datas/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</CheckBox>
+
+											<Text text=""/>
+
+										</form:content>
+									</form:SimpleForm>
+								</content>
+							</Panel>	
+
+							<!-- // IN below Approve -->
+							<Panel id="GE14_RGP_NRGP_PANEL03" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+									<headerToolbar>
+										<OverflowToolbar active="true" >
+											<Title text="Approve" />
+											<ToolbarSpacer />
+											<!-- <Button icon="sap-icon://settings" /> -->
+											<Switch type="AcceptReject" id="idswitchGE17" state="{= ${JSonModelINWARD>/Datas/0/GE17} === 'true' }" change="OnTRansAppSwitch">
+												<customData>
+													<core:CustomData key="GE17" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</Switch>
+										</OverflowToolbar>
+									</headerToolbar>
+							</Panel>
+
+							<!-- // IN below Gate Entry Close/Cancel -->
+							<Panel id="GE14_RGP_NRGP_PANEL04" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+									<headerToolbar>
+										<OverflowToolbar active="true" >
+											<Title text="Gate Entry Close/Cancel" />
+											<ToolbarSpacer />
+											<!-- <Button icon="sap-icon://settings" /> -->
+											<Switch type="AcceptReject" id="idswitchGE19" state="{= ${JSonModelINWARD>/Datas/0/GE19} === 'true' }" change="OnTRansAppSwitch">
+												<customData>
+													<core:CustomData key="GE19" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</Switch>
+										</OverflowToolbar>
+									</headerToolbar>
+							</Panel>
+
+							<!-- // IN below Report -->
+							<Panel id="GE14_RGP_NRGP_PANEL05" visible="false" expandable="true" width="auto" class="sapUiResponsiveMargin">
+									<headerToolbar>
+										<OverflowToolbar active="true" >
+											<Title text="Report" />
+											<ToolbarSpacer />
+											<!-- <Button icon="sap-icon://settings" /> -->
+											<Switch type="AcceptReject" id="idswitchGE18" state="{= ${JSonModelINWARD>/Datas/0/GE18} === 'true' }" change="OnTRansAppSwitch">
+												<customData>
+													<core:CustomData key="GE18" value="{JSonModelINWARD>/Datas/0/SAP_UUID}" xmlns:core="sap.ui.core" />
+												</customData>
+											</Switch>
+										</OverflowToolbar>
+									</headerToolbar>
+							</Panel>
+							
+						</IconTabFilter>
+					</items>
+				</IconTabBar>
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+				<OverflowToolbar>
+					<Button icon="sap-icon://message-popup"
+						text="{/messagesLength}"
+						type="Emphasized"
+						press="onMessageButtonPress"
+						visible="{= !!${/messagesLength}}"/>
+					<ToolbarSpacer/>
+					
+					
+					<Button id="id_add_assign_screen" icon="sap-icon://activity-assigned-to-goal" visible="false" press="OnAddScreen" type="Default" text="Add / Assign Main Screen "/>
+					<Button id="id_save" visible="false" press="OnSubmit" type="Accept" text="Submit"/>
+					<Button id="id_cancel" visible="false" press="OnCancel" type="Reject" text="Cancel"/>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+</mvc:View>

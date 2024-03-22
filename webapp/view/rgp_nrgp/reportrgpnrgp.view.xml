@@ -1,0 +1,439 @@
+<mvc:View xmlns:smartmultiinput="sap.ui.comp.smartmultiinput" xmlns:c="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" 
+xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:core="sap.ui.core"
+ xmlns:k="sap.ui.table" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:sfb="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:sv="sap.ui.comp.smartvariants"
+ controllerName="gatepassapp.controller.rgp_nrgp.reportrgpnrgp" height="100%">
+	
+		<f:DynamicPage id="dynamicPageId" stickySubheaderProvider="iconTabBar" class="sapUiTinyMarginTop sapUiTinyMarginBegin " preserveHeaderStateOnScroll="true" showFooter="true" fitContent="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Report - RGP/NRGP"/>
+					</f:heading>
+					<f:expandedContent>
+						<Label text=""/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label text=""/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="Report - RGP/NRGP"/>
+					</f:snappedTitleOnMobile>
+
+                    <f:content>
+						<OverflowToolbar>
+							<GenericTag visible="false" id="id_gateentrystatus" text="Pending" status="Information" press="onGenericTagPress" design="StatusIconHidden">
+							</GenericTag>
+						</OverflowToolbar>
+					</f:content>
+					<f:actions>
+						<ToolbarSpacer/>
+						<!-- <Button
+								text="Delete"
+								type="Transparent"/>
+						<Button
+								text="Copy"
+								type="Transparent"/>
+						<Button
+								icon="sap-icon://action"
+								type="Transparent"/> -->
+					</f:actions>
+
+				</f:DynamicPageTitle>
+			</f:title>
+
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+						<FlexBox alignItems="Start">
+							<items>
+								<Panel backgroundDesign="Transparent" class="sapUiNoContentPadding">
+									<content>
+
+											<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												    <Label class="" text="Gate Pass No"/>
+                                                    <Select width="10rem" id="idgatepasstype" selectedKey="all" selectedItemId="idallRN01" selectedItem="All" forceSelection="true">
+														<core:ListItem id="idallRN01" key="all" text="All" />
+														<core:ListItem key="RGP" text="RGP" />
+														<core:ListItem key="NRGP" text="NRGP" />
+													</Select>
+											</layout:VerticalLayout>
+											
+											<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												    <Label class="" text="Gate Pass No"/>
+                                                    <MultiInput id="multiInput" width="15rem" valueHelpRequest=".onValueHelpRequested" suggestionRows="{
+                                                            path: 'YY1_ZRGP_NRGP_HEAD_CDS>/YY1_ZRGP_NRGP_HEAD',
+                                                            length: 10
+                                                        }">
+                                                        <suggestionColumns>
+                                                            <Column>
+                                                                <Label text="Id"/>
+                                                            </Column>
+                                                            <Column>
+                                                                <Label text="Gate Pass Type"/>
+                                                            </Column>
+                                                        </suggestionColumns>
+                                                        <suggestionRows>
+                                                            <ColumnListItem>
+                                                                <Label text="{YY1_ZRGP_NRGP_HEAD_CDS>Id}" />
+                                                                <Label text="{YY1_ZRGP_NRGP_HEAD_CDS>GatePassType}" />
+                                                            </ColumnListItem>
+                                                        </suggestionRows>
+                                                    </MultiInput>
+                                                     <!-- <MultiInput id="multiInput"
+                                                        valueHelpRequest=".onValueHelpRequested"
+                                                        showSuggestion="true"
+                                                        width="60%"
+                                                        suggestionItems="{
+                                                        path: 'YY1_ZRGP_NRGP_HEAD_CDS>/YY1_ZRGP_NRGP_HEAD',
+                                                        sorter: { path: 'Id' }
+                                                        }">
+                                                        <suggestionItems>
+                                                        <core:ListItem
+                                                            key="{YY1_ZRGP_NRGP_HEAD_CDS>Id}"
+                                                            text="{
+                                                            path : 'Id',
+                                                            formatter : '.whitespace2Char'
+                                                            }"/>
+                                                        </suggestionItems>
+                                                    </MultiInput> -->
+                                                   <!-- <MultiInput id="multiInput"
+                                                    valueHelpRequest=".handleValueHelp"
+                                                    showSuggestion="true"
+                                                    width="11rem"
+                                                    suggestionItems="{
+                                                        path: 'YY1_ZRGP_NRGP_HEAD_CDS>/YY1_ZRGP_NRGP_HEAD'
+                                                    }">
+                                                    <suggestionItems>
+                                                        <core:ListItem
+                                                            key="{YY1_ZRGP_NRGP_HEAD_CDS>Id}"
+                                                            text="{YY1_ZRGP_NRGP_HEAD_CDS>Id}"/>
+                                                    </suggestionItems>
+                                                </MultiInput>									 -->
+                                            </layout:VerticalLayout>
+											
+											<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												    <Label class="" text="Plant"/>
+                                                    <Input width="11.5rem" id="idplant" value="" showValueHelp="true" showSuggestion="true" suggestionItems="{path:'YY1_ZGE_PLANT_CDS>/YY1_ZGE_PLANT'}">
+														<suggestionItems>
+															<core:ListItem key="{YY1_ZGE_PLANT_CDS>Plant}" text="{YY1_ZGE_PLANT_CDS>Plant}" additionalText="{YY1_ZGE_PLANT_CDS>PlantName}"/>
+														</suggestionItems>
+													</Input>
+											</layout:VerticalLayout>
+											
+											<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label required="true" tooltip="You can enter date range or single date" class="" text="Date"/>
+                                                <DateRangeSelection id="iddaterange" width="15.5rem" value="" /> 
+											</layout:VerticalLayout>
+
+											
+											<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												    <Label class="" text="Status"/>
+                                                	<Select width="10rem" id="idstatus" selectedKey="all" selectedItemId="idall01" selectedItem="All" forceSelection="true">
+														<core:ListItem id="idall01" key="all" text="All" />
+														<core:ListItem key="created" text="created" />
+														<core:ListItem key="deleted" text="deleted" />
+														<core:ListItem key="approved" text="approved" />
+														<core:ListItem key="rejected" text="rejected" />
+														<core:ListItem key="completed" text="completed" />
+														<core:ListItem key="closed" text="closed" />
+													</Select>
+											</layout:VerticalLayout>
+
+											<Toolbar style="Clear">
+											<ToolbarSpacer/>
+											<Button text="Go" press="OnGoPress" type="Emphasized"/>
+											<ToolbarSpacer/>
+											</Toolbar>
+
+									</content>
+								</Panel>
+							</items>
+						</FlexBox>
+				</f:DynamicPageHeader>
+			</f:header>
+
+			<f:content>
+			<k:Table selectionMode="None" id="id_rgpnrgp_table" visible="true" sort="onSort" enableColumnReordering="false" rows="{path:'JModel>/data',sorter:[{path:'JModel&gt;id', descending:false}]}">
+            <k:extension>
+                <OverflowToolbar id="_IDGenOverflowToolbar2" style="Clear">
+                    <Title id="title" text="Items"/>
+                    <ToolbarSeparator id="_IDGenToolbarSeparator1"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer4"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer5"/>
+                    <Button id="_IDGenButton1" icon="sap-icon://excel-attachment" press="OnExportToExl"/>
+
+                </OverflowToolbar>
+            </k:extension>
+            <k:columns>
+
+                <k:Column tooltip="Document Delete Status" width="2rem">
+                    <Label text="Document Delete Status"/> 
+                    <k:template>
+                        <Button enabled="true" visible="{= ${JModel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Document has been Deleted"/> <!-- 0 -->
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Line item delete status" width="2rem">
+                    <Label text="Line Item Status"/> 
+                    <k:template>
+                        <Button enabled="true" visible="{= ${JModel>ItemsStatus} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Item has been Deleted"/> <!-- 0 -->
+                    </k:template>
+                </k:Column>
+				
+				<k:Column tooltip="Gate Pass Type" sortProperty="{JModel>GatePassType}" width="5rem">
+                    <Label text="Gate Pass Type"/> 
+                    <k:template>
+                        <Text text="{JModel>GatePassType}"/> <!-- 10 -->
+                    </k:template>
+                </k:Column>
+
+
+                <k:Column tooltip="Item No" sortProperty="{JModel>ItemNo}" width="4rem">
+                    <Label text="Item No"/> 
+                    <k:template>
+                        <Text text="{JModel>ItemNo}"/> <!-- 0 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Gate Entry No" sortProperty="{JModel>id}" width="7rem">
+                    <Label text="Gate Entry No"/> 
+                    <k:template>
+                        <Text text="{JModel>id}"/> <!-- 1 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Gate Entry Creation Date" sortProperty="{JModel>PostingDate}" width="7rem">
+                    <Label text="Gate Entry Creation Date"/> 
+                    <k:template>
+                        <Text displayFormat="dd-MM-yyyy"  text="{
+						'path':'JModel>PostingDate',
+						'type':'sap.ui.model.type.Date',
+						'formatOptions': {
+							'pattern': 'dd-MM-yyyy'
+						}
+					}"/> <!-- 1 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Product" sortProperty="{JModel>Product}" width="7rem">
+                    <Label text="Product"/> 
+                    <k:template>
+                        <Text text="{JModel>Product}"/> <!-- 2 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Product Name" sortProperty="{JModel>ProductName}" width="8rem">
+                    <Label text="Product Name"/> 
+                    <k:template>
+                        <Text text="{JModel>ProductName}"/> <!-- 3 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Actual Quantity" sortProperty="{JModel>Quantity}" width="5rem">
+                    <Label text="Quantity"/> 
+                    <k:template>
+                        <Text text="{JModel>Quantity}"/> <!-- 4 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Received Quantity" sortProperty="{JModel>ReceivedQuantity}" width="5rem">
+                    <Label text="Received Quantity"/> 
+                    <k:template>
+                        <Text text="{JModel>ReceivedQuantity}"/> <!-- 5 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="UOM" sortProperty="{JModel>UOM}" width="4rem">
+                    <Label text="UOM"/> 
+                    <k:template>
+                        <Text text="{JModel>UOM}"/> <!-- 6 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Value" sortProperty="{JModel>Value}" width="5rem">
+                    <Label text="Value"/> 
+                    <k:template>
+                        <Text text="{JModel>Value}"/> <!-- 7 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Total Amount" sortProperty="{JModel>TotalAmount}" width="5rem">
+                    <Label text="Total Amount"/> 
+                    <k:template>
+                        <Text text="{JModel>TotalAmount}"/> <!-- 8 -->
+                    </k:template>
+                </k:Column>
+
+
+				<k:Column tooltip="Due Date" sortProperty="{JModel>DueDate}" width="7rem">
+                    <Label text="Due Date"/> 
+                    <k:template>
+                        <Text text="{JModel>DueDate}"/> <!-- 8 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Dispatch Date" sortProperty="{JModel>DispatchDate}" width="7rem">
+                    <Label text="DispatchDate"/> 
+                    <k:template>
+                        <Text text="{JModel>DispatchDate}"/> <!-- 8 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Plant" sortProperty="{JModel>PlantCode}" width="5rem">
+                    <Label text="Plant"/> 
+                    <k:template>
+                        <Text text="{JModel>PlantCode}"/> <!-- 11 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Plant Name" sortProperty="{JModel>PlantName}" width="15rem">
+                    <Label text="Plant Name"/> 
+                    <k:template>
+                        <Text text="{JModel>PlantName}"/> <!-- 12 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Supplier" sortProperty="{JModel>SupplierCode}" width="5rem">
+                    <Label text="Supplier"/> 
+                    <k:template>
+                        <Text text="{JModel>SupplierCode}"/> <!-- 13 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Supplier Name" sortProperty="{JModel>SupplierName}" width="15rem">
+                    <Label text="Supplier Name"/> 
+                    <k:template>
+                        <Text text="{JModel>SupplierName}"/> <!-- 14 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Supplier Type" sortProperty="{JModel>SupplierType}" width="5rem">
+                    <Label text="Supplier Type"/> 
+                    <k:template>
+                        <Text text="{JModel>SupplierType}"/> <!-- 15 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Customer" sortProperty="{JModel>CustomerCode}" width="5rem">
+                    <Label text="Customer"/> 
+                    <k:template>
+                        <Text text="{JModel>CustomerCode}"/> <!-- 16 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Customer Name" sortProperty="{JModel>CustomerName}" width="15rem">
+                    <Label text="Customer Name"/> 
+                    <k:template>
+                        <Text text="{JModel>CustomerName}"/> <!-- 17 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Customer Type" sortProperty="{JModel>CustomerType}" width="5rem">
+                    <Label text="Customer Type"/> 
+                    <k:template>
+                        <Text text="{JModel>CustomerType}"/> <!-- 18 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Requestor" sortProperty="{JModel>Requestor}" width="15rem">
+                    <Label text="Requestor"/> 
+                    <k:template>
+                        <Text text="{JModel>Requestor}"/> <!-- 19 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="ValueInINR" sortProperty="{JModel>ValueInINR}" width="5rem">
+                    <Label text="ValueInINR"/> 
+                    <k:template>
+                        <Text text="{JModel>ValueInINR}"/> <!-- 20 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Vehicle Type" sortProperty="{JModel>VehicleType}" width="5rem">
+                    <Label text="Vehicle Type"/> 
+                    <k:template>
+                        <Text text="{JModel>VehicleType}"/> <!-- 21 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Vehicle No" sortProperty="{JModel>VehicleNo}" width="5rem">
+                    <Label text="Vehicle No"/> 
+                    <k:template>
+                        <Text text="{JModel>VehicleNo}"/> <!-- 22 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Transporter" sortProperty="{JModel>Transporter}" width="15rem">
+                    <Label text="Transporter"/> 
+                    <k:template>
+                        <Text text="{JModel>Transporter}"/> <!-- 23 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Transporter Mode" sortProperty="{JModel>TransporterMode}" width="5rem">
+                    <Label text="Transporter Mode"/> 
+                    <k:template>
+                        <Text text="{JModel>TransporterMode}"/> <!-- 24 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="PurchaseOrder" sortProperty="{JModel>PurchaseOrder}" width="5rem">
+                    <Label text="PurchaseOrder"/> 
+                    <k:template>
+                        <Text text="{JModel>PurchaseOrder}"/> <!-- 25 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Material Document" sortProperty="{JModel>MaterialDocument}" width="5rem">
+                    <Label text="Material Document"/> 
+                    <k:template>
+                        <Text text="{JModel>MaterialDocument}"/> <!-- 26 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Reference DocumentNo" sortProperty="{JModel>ReferenceDocumentNo}" width="5rem">
+                    <Label text="Reference DocumentNo"/> 
+                    <k:template>
+                        <Text text="{JModel>ReferenceDocumentNo}"/> <!-- 27 -->
+                    </k:template>
+                </k:Column>
+
+				<k:Column tooltip="Remark Head" sortProperty="{JModel>RemarkHead}" width="10rem">
+                    <Label text="Remark Head"/> 
+                    <k:template>
+                        <Text text="{JModel>RemarkHead}"/> <!-- 28 -->
+                    </k:template>
+                </k:Column>
+                
+				<k:Column tooltip="Item Remarks" sortProperty="{JModel>Remarks}" width="15rem">
+                    <Label text="Item Remarks"/> 
+                    <k:template>
+                        <Text text="{JModel>Remarks}"/> <!-- 9 -->
+                    </k:template>
+                </k:Column>
+
+
+				<k:Column tooltip="Gate Status" sortProperty="{JModel>GateStatus}" width="5rem">
+                    <Label text="Gate Status"/> 
+                    <k:template>
+                        <Text text="{JModel>GateStatus}"/> <!-- 29 -->
+                    </k:template>
+                </k:Column>
+
+            </k:columns>
+            
+        </k:Table>
+			</f:content>
+			<!-- <f:footer>
+				<OverflowToolbar>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer6"/>
+					<Button visible="false" type="Accept" press="OnUpdate" id="id_update_button" text="Update"/>
+					<Button visible="true" type="Ghost" press="OnClose" icon="sap-icon://decline" id="id_close_button" text="Close"/>
+					<Button tooltip="Under Processing" visible="true" type="Ghost" enabled="false" press="OnCancel" icon="sap-icon://cancel" id="id_cancel_button" text="Cancel"/>
+					<Button visible="true" type="Ghost" press="onPrint" id="print" text="Print"/>
+				</OverflowToolbar>
+			</f:footer> -->
+		</f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,304 @@
+<mvc:View
+    controllerName="gatepassapp.controller.outward.subcontracting.createsubcontracting"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		xmlns:u="sap.ui.unified"
+		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+		xmlns:t="sap.ui.table"
+		xmlns:f="sap.f"
+		xmlns:layout="sap.ui.layout"
+    height="100%" >
+
+   
+  <f:DynamicPage id="idpageiwsto" class="sapUiTinyMarginTop sapUiTinyMarginBegin" preserveHeaderStateOnScroll="true" showFooter="true" fitContent="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Create Subcontracting Vendor"/>
+					</f:heading>
+					<f:expandedContent>
+						<Label text="Subcontracting Vendor Outbound"/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label text="Subcontracting Vendor Outbound"/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="Subcontracting Vendor Outbound"/>
+					</f:snappedTitleOnMobile>
+				
+				</f:DynamicPageTitle>
+			</f:title>
+
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader id="iddynamicSalesReturn" pinnable="true">
+				<FlexBox alignItems="Start" justifyContent="SpaceBetween" id="idflexboxsto">
+				<items>
+					<Panel id="idstopanel" backgroundDesign="Transparent" class="sapUiNoContentPadding">
+				<content>
+				<layout:HorizontalLayout id="idstohorizontal" allowWrapping="true">
+
+					<!-- ____________________________________________________ -->
+
+				<layout:VerticalLayout visible="true"  class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+					<Label required="true" text="Material Document Year"/>
+					<DatePicker tooltip="Material Document Year" change="OnMatDocDateChange" width="11.5rem" id="id_sub_materialdocyear_h" valueFormat="yyyy" value="" displayFormat="yyyy"/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id="idstoddvl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+					<Label id ="idlblstodd" required="true" text="Material Document No:" design="Bold" ></Label>
+					<MultiInput editable="false" width="11.5rem" id="id_sub_material_document_h" tokenUpdate=".ontokenupdate" required="true" suggestionItemSelected="OnSuggestionRequest" valueHelpRequest=".onValueHelpRequested" suggestionRows="{
+                            path: 'oJSONModelSub>/Datas',
+                            length: 10
+                        }">
+                        <suggestionColumns>
+                            <Column> <Label text="Delivery No"/> </Column>
+                            <Column> <Label text="Customer Name"/> </Column>
+                            <Column> <Label text="Document Date"/> </Column>
+                        </suggestionColumns>
+                        <suggestionRows>
+                            <ColumnListItem>
+                                <Label text="{oJSONModelSub>MaterialDocument}" />
+                                <Label text="{oJSONModelSub>MaterialDocument}" />
+                                <Label text="{oJSONModelSub>DocumentDate}" />
+                            </ColumnListItem>
+                        </suggestionRows>
+                    </MultiInput>
+				</layout:VerticalLayout>
+	
+                <layout:VerticalLayout visible="false" id="idstoplant" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label text="Plant:"  id="idstolblplant" design="Bold"></Label>
+					<Input required="false" tooltip="Plant" id="id_sub_plant_h" width="11.5rem" enabled="false"    value=""/>
+					<Input required="false"  tooltip="Plant Name" visible="false" width="11.5rem"  editable="false"  id="id_sub_plant_name_h" value=""/>
+				</layout:VerticalLayout>										
+
+				<layout:VerticalLayout visible="false" id="idstocvl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label  id ="idlblsupplier"  text="Supplier :" design="Bold" ></Label>
+	                <Input required="false" tooltip="Supplier" id="id_sub_supplier_h"  width="11.5rem" enabled="false" value=""/>
+					<Input required="false" tooltip="Supplier Name"  visible="false" width="11.5rem" editable="false"  id="id_sub_cust_name_h" value=""/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id ="idstogatedatevl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label id="idstolblgatedate" text="Gate Entry Date :"  required="{= ${JSonModelMadDatas>/Datas/0/GateEntryDate} === 'true'}" design="Bold"></Label>
+					<DatePicker id="id_sub_gate_date" width="11.5rem" placeholder="DD-MM-YYYY" required="{= ${JSonModelMadDatas>/Datas/0/GateEntryDate} === 'true'}" valueFormat="dd-MM-yyyy" value="" displayFormat="dd-MM-yyyy"/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id ="idvehtypestovl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label  required="{= ${JSonModelMadDatas>/Datas/0/VehicleType} === 'true'}" id="idlblstovectype" text="Vehicle Type:" design="Bold" ></Label>
+					<ComboBox selectedItem="Truck" selectedKey="1" required="{= ${JSonModelMadDatas>/Datas/0/VehicleType} === 'true'}" items="{ path: 'JModel1>/Samples'}"  width="11.5rem" tooltip="Vehicle Type"  id="id_sub_vehicle_type_h" enabled="true" >
+						<core:Item key="{JModel1>VehicleID}" text="{JModel1>VehicleName}" />
+					</ComboBox>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id="idvehstovl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label  required="{= ${JSonModelMadDatas>/Datas/0/VehicleNo} === 'true'}" id ="idlblstovno" text="Vehicle No :" design="Bold" ></Label>
+	                <!-- <Input  required="{= ${JSonModelMadDatas>/Datas/0/VehicleNo} === 'true'}" tooltip="Vehicle No"  width="11.5rem" id="id_sub_vehno_h"   enabled="true"   value=""/> -->
+				
+				<Input tooltip="Vehicle No" required="{= ${JSonModelMadDatas>/Datas/0/VehicleNo} === 'true'}"   suggestionItemSelected="OnVehDocSuggestFrag" showSuggestion="true" suggestionItems="{path:'YY1_ZGE_EMPTY_VEHICLE_DETA_CDS>/YY1_ZGE_EMPTY_VEHICLE_DETA',filters : [ { path : 'Status', operator : 'EQ', value1 : 'gatein'} ]}" width="11.5rem" id="id_sub_vehno_h"  enabled="true"  showValueHelp="false"  valueHelpRequest="">
+						<suggestionItems>
+							<core:ListItem key="{YY1_ZGE_EMPTY_VEHICLE_DETA_CDS>TareWeight}" text="{YY1_ZGE_EMPTY_VEHICLE_DETA_CDS>VehicleNo}" additionalText="{YY1_ZGE_EMPTY_VEHICLE_DETA_CDS>SAP_CreatedDateTime}"/>
+						</suggestionItems>
+                    </Input>
+				
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id ="idvehtrmodestovl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label  required="{= ${JSonModelMadDatas>/Datas/0/TransporterMode} === 'true'}" id="idlblstotransportmode" text="Transporter Mode :"  design="Bold"></Label>
+					<Select required="{= ${JSonModelMadDatas>/Datas/0/TransporterMode} === 'true'}" id="id_sub_transporter_mode_h" width="11.5rem" forceSelection="true" selectedKey="ROAD"
+                         items="">
+                         <core:Item key="AIR" text="AIR" />
+                         <core:Item key="HAND" text="HAND" />
+                         <core:Item key="ROAD" text="ROAD" />
+                         <core:Item key="SEA" text="SEA" />
+                     </Select>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id="idtransportstovl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label required="{= ${JSonModelMadDatas>/Datas/0/Transporter} === 'true'}"  tooltip="Transporter" id ="idlblstotransport" text="Transporter :" design="Bold" ></Label>
+	                <Input required="{= ${JSonModelMadDatas>/Datas/0/Transporter} === 'true'}" tooltip="Transporter" width="11.5rem" id="id_sub_transporter_h"  enabled="true" value=""/>
+				</layout:VerticalLayout>
+                
+				<layout:VerticalLayout visible="false" id="idgrwtstodelwt" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label id ="idstoldelwt" text="Delivery Doc Gross Wt:" design="Bold" ></Label>
+	                <Input required="false" tooltip="Delivery Doc Gross Wt" width="11.5rem" id="id_sub_del_doc_wt_h"  enabled="true" value=""/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id="idgrwtstotar" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label required="{= ${JSonModelMadDatas>/Datas/0/TareWeight} === 'true'}" id ="idstoltarwt" text="Tare Weight :" design="Bold" ></Label>
+	                <Input required="{= ${JSonModelMadDatas>/Datas/0/TareWeight} === 'true'}" tooltip="Tare Weight" width="11.5rem" id="id_sub_tar_wt_h"  enabled="true" value=""/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id="idgrwtstonet" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label required="{= ${JSonModelMadDatas>/Datas/0/NetWeight} === 'true'}" id ="idstolntwt" text="Net Weight :" design="Bold" ></Label>
+	                <Input required="{= ${JSonModelMadDatas>/Datas/0/NetWeight} === 'true'}" tooltip="Net Weight" width="11.5rem" id="id_sub_net_wt_h"  enabled="true" value=""/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id="idgrwtstovl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label required="{= ${JSonModelMadDatas>/Datas/0/GrossWeight} === 'true'}" id ="idstolgrwt" text="Gross Weight :" design="Bold" ></Label>
+	                <Input required="{= ${JSonModelMadDatas>/Datas/0/GrossWeight} === 'true'}" tooltip="Gross Weight" width="11.5rem" id="id_sub_gross_wt_h"  enabled="true" value=""/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label required="{= ${JSonModelMadDatas>/Datas/0/ChallanNo} === 'true'}" text="Challan No :" design="Bold" ></Label>
+	                <Input required="{= ${JSonModelMadDatas>/Datas/0/ChallanNo} === 'true'}" tooltip="Challan No " width="11.5rem" id="id_sub_challan_no_h"  enabled="true" value=""/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label required="{= ${JSonModelMadDatas>/Datas/0/ChallanNo} === 'true'}" text="Challan Date :" design="Bold" ></Label>
+	                <!-- <Input required="{= ${JSonModelMadDatas>/Datas/0/ChallanNo} === 'true'}" tooltip="Challan Date" width="11.5rem" id="id_sub_challan_date_h"  enabled="true" value=""/> -->
+					<DatePicker id="id_sub_challan_date_h" width="11.5rem" placeholder="DD-MM-YYYY" required="{= ${JSonModelMadDatas>/Datas/0/ChallanNo} === 'true'}" valueFormat="dd-MM-yyyy" value="" displayFormat="dd-MM-yyyy"/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout visible="false" id="idgrdttimestovl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<Label id ="idlstowtdttime" text="Weight Time &amp; Date :" design="Bold"  ></Label>
+	                <DateTimePicker required="false" tooltip="Weight Time &amp; Date" width="11.5rem" id="id_sub_wt_dt_time_h"  enabled="true" value=""/>
+				</layout:VerticalLayout>
+
+				<layout:VerticalLayout id="idremarkstovl" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label required="{= ${JSonModelMadDatas>/Datas/0/Remarks} === 'true'}"	id="idlbstoremark" text="Remarks :" design="Bold" ></Label>
+	                <TextArea required="{= ${JSonModelMadDatas>/Datas/0/Remarks} === 'true'}" tooltip="Remarks" id="id_sub_remark_h" width="15rem" enabled="true" value=""/>
+				</layout:VerticalLayout>								
+
+					</layout:HorizontalLayout>
+					</content>
+				</Panel>
+				</items>
+				</FlexBox>
+				</f:DynamicPageHeader>
+			</f:header>
+
+			<f:content>
+				<t:Table rows="{/YY1_ZGE_INWARD_MD_ITEM}" id="TableId" selectionMode="None"
+				 enableSelectAll="false" rowMode="Auto">
+					<t:extension>
+						<OverflowToolbar id="idstoovrflow" style="Clear">
+							<Title id = "idstottabprod" text="Items"/>
+						</OverflowToolbar>
+					</t:extension>
+
+					<t:columns>
+<!--  -->
+					 	<t:Column width="4rem" id="idstocolitno"> <!-- 0 -->
+							<Label id="idstolblitno" text="Item No" />
+							<t:template>
+								<Input id="idstotab_itno_i"  editable="false" value="{MaterialDocumentItem}" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="8rem" id="idstocol"><!-- 1 -->
+							<Label id="idstolblpurdocno" text="Document No" />
+							<t:template>
+								<Input id="idstosrtabpurdocno_i" editable="false" value="{MaterialDocument}" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="8rem" id="idstocolmatcod"><!-- 2 -->
+							<Label id="idstolblmatcode" text="Product" />
+							<t:template>
+								<Input id="idstotabmatcode_i" editable="false"  value="{Material}"  />
+							</t:template>
+						</t:Column>
+                          
+						  <t:Column width="11rem" id="idstocolmatname"><!-- 3 -->
+							<Label id="idstolblmatname" text="Product Name" />
+							<t:template>
+								<Input id="idstotabmatname_i"  editable="false" value ="{ProductName}"/>
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="0rem" id="idstocolmattype"><!-- 4 -->
+							<Label id="idstolblmattype" text="Product Type" />
+							<t:template>
+								<Input id="idstotabmattype_i"  editable="false" value=""  />
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="6rem" id="idstocolpurordqty"><!-- 5 -->
+							<Label id="idstolblpurordqty" text="Order Quantity" />
+							<t:template>
+								<Input id="idstotabpurordqty_i" editable="false" value="{QuantityInBaseUnit}" />
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="5rem" id="idstocoluom"><!-- 6 -->
+							<Label id="idstolbluom" text="UOM" />
+							<t:template>
+								<Input id="idstotabuom_i" editable="false" value="{MaterialBaseUnit}" />
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="6rem" id="idstocolopenqty"><!-- 7 -->
+							<Label id="idstolbloprnqty" text="Open Quantity" />
+							<t:template>
+								<Input id="idstotabopenqty_i" editable="false" value="{parts:[{path:'MaterialDocumentItem'}, {path:'MaterialDocument'}, {path:'QuantityInBaseUnit'}], formatter:'.OnPendingQtyCal'}"/>
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="6rem" id="idstocolopenqtyge"><!-- 8 -->
+							<Label id="idstolbloprnqtyuomqtyge" text="Quantity in GE" />
+							<t:template>
+								<Input id="idstotabopqtyge_i" value="{parts:[{path:'MaterialDocumentItem'}, {path:'MaterialDocument'}, {path:'QuantityInBaseUnit'}], formatter:'.OnPendingQtyCal'}" change="Quantity_to_Post_InputyLine" editable="{parts:[{path:'MaterialDocumentItem'}, {path:'MaterialDocument'}, {path:'QuantityInBaseUnit'}], formatter:'.OnEnterQtyCal'}"/>
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="6rem"><!-- 9 -->
+							<Label text="Purchase Order Item" />
+							<t:template>
+								<Input value="{PurchaseOrderItem}" editable="false"/>
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="8rem"><!-- 10 -->
+							<Label text="Purchase Order" /> 
+							<t:template>
+								<Input value="{PurchaseOrder}" editable="false"/>
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="6rem"><!-- 11 -->
+							<Label text="Plant" /> 
+							<t:template>
+								<Input value="{Plant}" editable="false"/>
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="9rem"><!-- 12 -->
+							<Label text="Plant Name" /> 
+							<t:template>
+								<Input value="{PlantName}" editable="false"/>
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="6rem"><!-- 13 -->
+							<Label text="Supplier" /> 
+							<t:template>
+								<Input value="{Supplier}" editable="false"/>
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="9rem"><!-- 14 -->
+							<Label text="Supplier Name" /> 
+							<t:template>
+								<Input value="{SupplierName}" editable="false"/>
+							</t:template>
+						</t:Column>
+
+					</t:columns>
+				</t:Table>
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+				<OverflowToolbar>
+					<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Emphasized" press="onMessageButtonPress" visible="{= !!${/messagesLength}}"/>
+					<ToolbarSpacer/>
+					<Button type="Accept" press="OnSubmit" id="Final_Save_Button" text="Save" enabled="true"/>
+					<Button type="Reject" press="OnCancel" id="Final_Cancel_Button" text="Cancel"/>
+					<Button type="Attention" id="Final_Edit_Button" text="Change / Delete" press=".OnEditFragOpen"/>
+			
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+
+</mvc:View>

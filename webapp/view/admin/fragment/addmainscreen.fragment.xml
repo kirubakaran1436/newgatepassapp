@@ -1,0 +1,55 @@
+
+<core2:FragmentDefinition xmlns="sap.m" xmlns:core2="sap.ui.core" xmlns:f="sap.f" xmlns:layout1="sap.ui.layout" xmlns:t1="sap.ui.table">
+	<Dialog id="AddAssignMain_dialog" showHeader="true" title ="Add / Assign Main Screen" verticalScrolling="false" contentHeight="auto" contentWidth="50%" resizable="true" draggable="true" >
+	
+	<Table id="TableIDD" class="TableIDD" noDataText="No Data Found" items="{path:'ScreenModel>/Datas',sorter:[{path:'ID',descending:false}]}" >
+	
+		<ColumnListItem id="AddAssignMain_IDGenColumnListItem001" vAlign="Middle">
+			<cells>
+				<Text  class="TablePadding" text="{ScreenModel>ScreenName}"/>
+				<Text class="TablePadding" text="{ScreenModel>ScreenId}"/>
+				<Switch change="OnSwtichChangeModule" class="TablePadding" type="AcceptReject" state="{= ${ScreenModel>Status} === 'true' }" />
+				<Text class="TablePadding" text="{ScreenModel>ID}"/>
+				<Input class="TablePadding" value="{ScreenModel>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+	
+		<columns>
+			<Column  >
+				<header>
+					<Text text=""/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text=""/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text=""/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text=""/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text=""/>
+				</header>
+			</Column>
+		</columns>
+	</Table>
+
+	<footer>
+		<OverflowToolbar>
+			<ToolbarSpacer/>
+			<ToolbarSpacer/>
+			<Button  type="Reject" press="OnFRagClose" id="idFRagClose" text="Close"/>
+		</OverflowToolbar>
+	</footer>
+	
+	</Dialog>
+</core2:FragmentDefinition>

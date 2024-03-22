@@ -1,0 +1,43 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="Product_dialog" noDataText="No Product Found" title="Select Product" search=".OnProductSearch" confirm=".OnProductSelect"
+		contentWidth="50%" cancel=".OnProductSelect" items="{path:'YY1_ZGE_PRODUCT_CDS>/YY1_ZGE_PRODUCT',sorter:[{path:'Product',descending:false}]}">
+		<ColumnListItem id="Product_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text id="Product" text="{YY1_ZGE_PRODUCT_CDS>Product}"/>
+				<Text id="ProductName" text="{YY1_ZGE_PRODUCT_CDS>ProductName}"/>
+				<Text id="ProductType" text="{YY1_ZGE_PRODUCT_CDS>ProductType}"/>
+				<Text id="UOM" text="{YY1_ZGE_PRODUCT_CDS>BaseUnit}"/>
+				<Text id="Price" text="{YY1_ZGE_PRODUCT_CDS>StandardPrice}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column  >
+				<header>
+					<Text text="Product"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Product Name"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Product Type"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="UOM"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Price"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

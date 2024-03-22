@@ -1,0 +1,27 @@
+
+<core3:FragmentDefinition xmlns="sap.m" xmlns:core3="sap.ui.core">
+	<TableSelectDialog id="SubcontractEntryDocHead_dialog" noDataText="No Document Found" title="Select Subcontracting Document No" search=".OnGataPassNoSearch" confirm=".OnGataPassNoSelect"
+		contentWidth="50%" cancel=".OnSTOGateEntryDocSelect" items="{path:'YY1_ZGE_OUTWARD_GATEPASS_CDS>/YY1_ZGE_OUTWARD_GATEPASS',filters : [ { path : 'ScreenCode', operator : 'EQ', value1 : 'GE11'} ]}">
+		<ColumnListItem id="Subcontractidcolstochange" vAlign="Middle">
+			<cells>
+				<Text id="subcontractchangeid" text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>Id}"/>
+               <Text id="subcontracthangecreatedt" text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>SAP_CreatedDateTime}"/>
+				<Text id="subcontractchangeuuid" text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="subcontractchanepurdoc" >
+				<header>
+					<Text id="subcontractchangepurcdoc" text="Document No"/>
+				</header>
+			</Column>
+			<Column id="subcontractchangecreate" >
+				<header>
+					<Text id="subcontractchangecreatedt" text="Created Date "/>
+				</header>
+			</Column>
+	
+		</columns>
+	</TableSelectDialog>
+</core3:FragmentDefinition>
+

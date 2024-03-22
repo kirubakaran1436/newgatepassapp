@@ -1,0 +1,332 @@
+<mvc:View xmlns:smartmultiinput="sap.ui.comp.smartmultiinput"
+		xmlns:c="sap.ui.core"
+		controllerName="gatepassapp.controller.rgp_nrgp.changedeletergpnrgp"
+	    xmlns:html="http://www.w3.org/1999/xhtml"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:u="sap.ui.unified"
+		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+		xmlns:k="sap.ui.table"
+		xmlns:f="sap.f"
+		xmlns:layout="sap.ui.layout"
+		height="100%">
+		<f:DynamicPage id="dynamicPageId" stickySubheaderProvider="iconTabBar" class="sapUiTinyMarginTop sapUiTinyMarginBegin " preserveHeaderStateOnScroll="true" showFooter="true" fitContent="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="RGP NRGP"/>
+					</f:heading>
+					<f:expandedContent>
+						<Label text="Change / Delete / Display - RGP NRGP (Print)"/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label text="Change / Delete / Display - RGP NRGP (Print)"/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="Change / Delete / Display - RGP NRGP (Print)"/>
+					</f:snappedTitleOnMobile>
+
+                    <f:content>
+						<OverflowToolbar>
+							<GenericTag visible="false" id="id_gateentrystatus" text="Pending" status="None" press="onGenericTagPress" design="StatusIconHidden">
+							</GenericTag>
+						</OverflowToolbar>
+					</f:content>
+					<f:actions>
+						<ToolbarSpacer/>
+						<!-- <Button
+								text="Delete"
+								type="Transparent"/>
+						<Button
+								text="Copy"
+								type="Transparent"/>
+						<Button
+								icon="sap-icon://action"
+								type="Transparent"/> -->
+					</f:actions>
+				
+				</f:DynamicPageTitle>
+			</f:title>
+
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+						<FlexBox alignItems="Start">
+							<items>
+								<Panel backgroundDesign="Transparent" class="sapUiNoContentPadding">
+									<content>
+											
+											<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												    <Label required="true" class="" text="Gate Pass No" ></Label>
+                                                    <Input required="true" width="11.5rem" value="" id="id_gateentryno_h" suggestionItemSelected="OnRGPNRGPSuggest" showSuggestion="true" suggestionItems="{path:'YY1_ZRGP_NRGP_HEAD_CDS>/YY1_ZRGP_NRGP_HEAD'}" placeholder="" showValueHelp="true" valueHelpRequest="OnRGPNRGPFragOpen" >
+                                                <suggestionItems>
+													<core:ListItem key="{YY1_ZRGP_NRGP_HEAD_CDS>Id}" text="{YY1_ZRGP_NRGP_HEAD_CDS>Id}" additionalText="{YY1_ZRGP_NRGP_HEAD_CDS>SAP_CreatedDateTime}"/>
+												</suggestionItems>
+                                                </Input>
+											</layout:VerticalLayout>
+											
+											<layout:VerticalLayout visible="false" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label required="true" class="" text="SAP UUID" ></Label>
+                                                <Input required="true" width="11.5rem" value="" id="id_sapuuid_h"  /> 
+											</layout:VerticalLayout>
+
+                                            <layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label required="true" class="" text="Gate Pass Type" ></Label>
+	                                            <Select required="true" id="id_rgpnrgp_h" change="OnGatePassType" width="11.5rem" forceSelection="true" selectedKey=""
+                                                    items="">
+                                                    <core:Item id="0" key="RGP" text="RGP" />
+                                                    <core:Item id="1" key="NRGP" text="NRGP" />
+                                                </Select>
+											</layout:VerticalLayout>
+											
+											<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label required="true" class="" text="Plant" ></Label>
+                                                <Input required="true" width="11.5rem" value="" id="id_plantcode_h" suggestionItemSelected="OnPlantSuggest" showSuggestion="true" suggestionItems="{path:'YY1_ZGE_PLANT_CDS>/YY1_ZGE_PLANT'}" placeholder="" showValueHelp="true" valueHelpRequest="OnPlantFragOpen" >
+                                                <suggestionItems>
+														<core:ListItem key="{YY1_ZGE_PLANT_CDS>PlantName}" text="{YY1_ZGE_PLANT_CDS>Plant}" additionalText="{YY1_ZGE_PLANT_CDS>PlantName}"/>
+												</suggestionItems>
+                                                </Input>
+                                                <Input width="11.5rem" visible="false" id="id_plantname_h"></Input>
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label class="" text="Supplier" ></Label>
+                                                <Input width="11.5rem" value="" id="id_suppliercode_h" suggestionItemSelected="OnPlantSuggest" showSuggestion="true" suggestionItems="{path:'YY1_ZGE_SUPPLIER_CDS>/YY1_ZGE_SUPPLIER'}" placeholder="" showValueHelp="true" valueHelpRequest="OnSupplierFragOpen" >
+                                                <suggestionItems>
+														<core:ListItem key="{YY1_ZGE_SUPPLIER_CDS>SupplierName}" text="{YY1_ZGE_SUPPLIER_CDS>Supplier}" additionalText="{YY1_ZGE_SUPPLIER_CDS>SupplierName}"/>
+												</suggestionItems>
+                                                </Input>
+                                                <Input width="11.5rem" visible="false" id="id_suppliername_h"></Input>
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label class="" text="Customer" ></Label>
+                                                <Input width="11.5rem" value="" id="id_customercode_h" suggestionItemSelected="OnCustomerSuggest" showSuggestion="true" suggestionItems="{path:'YY1_ZGE_CUSTOMER_CDS>/YY1_ZGE_CUSTOMER'}" placeholder="" showValueHelp="true" valueHelpRequest="OnCustomerFragOpen" >
+                                                <suggestionItems>
+														<core:ListItem key="{YY1_ZGE_CUSTOMER_CDS>CustomerName}" text="{YY1_ZGE_CUSTOMER_CDS>Customer}" additionalText="{YY1_ZGE_CUSTOMER_CDS>CustomerName}"/>
+												</suggestionItems>
+                                                </Input>
+                                                <Input width="11.5rem" visible="false" id="id_customername_h"></Input>
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout
+													class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label required="true" class="" text="Requestor" ></Label>
+	                                            <Input required="true" id="id_requestor_h" width="11.5rem" class="" placeholder="" />
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout
+													class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label required="true" class="" text="Value in INR" ></Label>
+	                                            <Input required="true" id="id_valueininr_h" width="11.5rem" class="" placeholder="" />
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout
+													class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label class="" text="Purchase Material/Document" ></Label>
+	                                            <Input width="11.5rem" class="" id="id_purchasematerialdoc_h" placeholder="" />
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout
+													class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label required="true" class="" text="Transport Mode" ></Label>
+	                                            <Select required="true" id="id_transporttype_h" width="11.5rem" forceSelection="true" selectedKey="ROAD"
+                                                    items="">
+                                                    <core:Item key="AIR" text="AIR" />
+                                                    <core:Item key="HAND" text="HAND" />
+                                                    <core:Item key="ROAD" text="ROAD" />
+                                                    <core:Item key="SEA" text="SEA" />
+                                                </Select>
+											</layout:VerticalLayout>
+
+                                            <layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label required="true" class="" text="Vehicle Type" ></Label>
+	                                            <Select width="11.5rem" id="id_vehicletype_h" forceSelection="true" selectedKey="RGP"
+                                                    items="">
+                                                    <core:Item key="TEMPO" text="TEMPO" />
+                                                    <core:Item key="TRACTOR" text="TRACTOR" />
+                                                    <core:Item key="TRUCK" text="TRUCK" />
+                                                    <core:Item key="OTHERS" text="OTHERS" />
+                                                </Select>
+											</layout:VerticalLayout>
+                                            
+											<layout:VerticalLayout
+												class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label required="true" class="" text="Vehicle No" ></Label>
+	                                            <Input width="11.5rem" id="id_vehicleno_h" value="" class="" />
+											</layout:VerticalLayout>
+                                                                                        
+											<layout:VerticalLayout
+												class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label class="" text="Remark" ></Label>
+	                                            <TextArea width="20rem" id="id_remark_h" value="" maxLength="500" class="" ></TextArea>
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout visible="false"
+												class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label class="" text="Table STatus" ></Label>
+	                                            <Input width="20rem" id="id_tablestatus_h" value="With Code" maxLength="500" class="" ></Input>
+											</layout:VerticalLayout>
+
+											<layout:VerticalLayout visible="false"
+												class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom">
+												<Label class="" text="Table STatus" ></Label>
+	                                            <DatePicker id="id_gatepassdate_h" value="" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy"> </DatePicker>
+											</layout:VerticalLayout>
+
+									</content>
+								</Panel>
+							</items>
+						</FlexBox>
+				</f:DynamicPageHeader>
+			</f:header>
+
+			<f:content>
+			<k:Table selectionMode="Multi" id="id_rgpnrgp_table" visible="true" sort="onSort" enableColumnReordering="false" rows="{path:'JModel>/data',sorter:[{path:'JModel>ItemNo', descending:false}]}">
+            <k:extension>
+                <OverflowToolbar id="_IDGenOverflowToolbar2" style="Clear">
+                    <Title id="title" text="RGP / NRGP Item"/>
+					<ToolbarSeparator />
+					<RadioButtonGroup id="rbg3" columns="5" select="OnRadioSelect">
+					<RadioButton id="RB3-1" enabled="false" text="With Code" />
+					<RadioButton id="RB3-2" enabled="false" text="Without Code" />
+					</RadioButtonGroup>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer4"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer5"/>
+                    <Button id="_IDGenButton1" icon="sap-icon://action-settings" press="openPersoDialog"/>
+                    <Button id="Final_Delete_Button" enabled="true" icon="sap-icon://delete" type="Default" tooltip="Delete Row" press="OnTableRowRemove"/>
+
+                </OverflowToolbar>
+            </k:extension>
+            <k:columns>
+                
+                <k:Column sortProperty="DeletionIndicator" width="3.1rem"> <!-- 0 -->
+                    <Label text=""/>
+                    <k:template>
+                        <Button id="DeleteIndicator" enabled="false" visible="{= ${JModel>ItemsStatus} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                        <!-- <Button id="DeleteIndicato1r" enabled="false" visible="false" icon="sap-icon://refresh" type="Reject" tooltip="Deleted"></Button> -->
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Item No" sortProperty="ItemNo" width="5rem"><!-- 1 -->
+                    <Label text="Item No"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>ItemNo}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column  tooltip="Product"  id="id_product_i1" sortProperty="Product" width="11rem"><!-- 2 -->
+                    <Label text="Product"/>
+                    <k:template>
+                        <Input suggestionItemSelected="OnProductSuggest" showSuggestion="true" suggestionItems="{path:'YY1_ZGE_PRODUCT_CDS>/YY1_ZGE_PRODUCT'}" valueHelpRequest="OnProductFragOpen" showValueHelp="true" enabled="true" value="{JModel>Product}">
+                        <suggestionItems>
+						    <core:ListItem key="{YY1_ZGE_PRODUCT_CDS>Product}" text="{YY1_ZGE_PRODUCT_CDS>Product}" additionalText="{YY1_ZGE_PRODUCT_CDS>ProductName}" />
+						</suggestionItems>
+                        </Input>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Product Name" id="id_productname_i1" sortProperty="ProductName" width="11rem"><!-- 3 -->
+                    <Label text="Product Name"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>ProductName}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Product Name" id="id_productname_i2" sortProperty="ProductName" width="11rem"><!-- 4 -->
+                    <Label text="Product Name"/>
+                    <k:template>
+                        <Input editable="true" value="{JModel>ProductName}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Quantity" id="id_quantity_i1" sortProperty="Quantity" width="11rem"><!-- 5 -->
+                    <Label text="Quantity"/>
+                    <k:template>
+                        <Input type="Number" change="OnQuantityCheck" editable="true" value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Quantity" id="id_quantity_i2" sortProperty="Quantity" width="11rem"><!-- 6 -->
+                    <Label text="Quantity"/>
+                    <k:template>
+                        <Input type="Number" change="OnQuantityCheck"  value="{JModel>Quantity}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="UOM" id="id_uom_i1" sortProperty="UOM" width="11rem"><!-- 7 -->
+                    <Label text="UOM"/>
+                    <k:template>
+                        <Input editable="false" change="OnUOMChange" value="{JModel>UOM}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="UOM"  id="id_uom_i2" sortProperty="UOM" width="11rem"><!-- 8 -->
+                    <Label text="UOM"/>
+                    <k:template>
+                        <Input editable="true" maxLength="4" value="{JModel>UOM}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Value" sortProperty="Value" width="11rem"><!-- 9 -->
+                    <Label text="Value"/>
+                    <k:template>
+                        <Input type="Number" change="OnNetPriceCheck" value="{JModel>Value}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Total Amount"  sortProperty="TotalAmount" width="11rem"><!-- 10 -->
+                    <Label text="Total Amount"/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>TotalAmount}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column id="id_duedate_visible" visible="true" tooltip="Date" sortProperty="Date" width="11rem"><!-- 11 -->
+                    <Label text="Due Date"/>
+                <k:template>
+                        <DatePicker id="id_duedate_i" placeholder="DD-MM-YYYY" valueFormat="dd-MM-yyyy" value="{JModel>DueDate}" displayFormat="dd-MM-yyyy"/>
+                </k:template>
+                </k:Column>
+
+                <k:Column id="id_dispatchdate_visible" visible="true" class="DispatchClass" tooltip="Date" sortProperty="Date" width="11rem"><!-- 12 -->
+                    <Label  text="Dispatch Date"/>
+                    <k:template>
+                <DatePicker id="id_dispatchdate_i" editable="false" placeholder="DD-MM-YYYY" valueFormat="dd-MM-yyyy" value="{JModel>DispatchDate}" displayFormat="dd-MM-yyyy"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Remarks" sortProperty="Remarks" width="11rem"><!-- 13 -->
+                    <Label text="Remarks"/>
+                    <k:template>
+                        <TextArea  value="{JModel>Remarks}"/>
+                    </k:template>
+                </k:Column>
+
+                <k:Column tooltip="Internal" sortProperty="" width=".5rem"><!-- 14 -->
+                    <Label text=""/>
+                    <k:template>
+                        <Input editable="false" value="{JModel>SAP_UUID}" />
+                    </k:template>
+                </k:Column>
+
+                                           
+            </k:columns>
+            
+        </k:Table>
+			</f:content>
+			<f:footer >
+				<OverflowToolbar>
+                    <Button id="DeleteIndicId" visible="false" text="This Entire Document has been deleted" type="Reject" enabled="false" icon="sap-icon://message-error"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer6"/>
+					<Button type="Accept" press="OnUpdate" id="id_update_button" text="Update"/>
+					<Button type="Reject" press="ONCancel" id="id_reject_button" text="Cancel"/>
+                    <Button id="Final_DeleteEntireDocument_Button" enabled="false" tooltip="Delete Entire Document" type="Default" text="Delete Entire Document" press="OnDeleteEntireDocument"/>
+                    <Button id="UnFinal_DeleteEntireDocument_Button" visible="false" enabled="true" tooltip="UnDelete Entire Document" type="Default" text="Retrive" press="OnUnDeleteEntireDocument"/>
+					<Button type="Ghost" press="onPrint" id="print" text="Print"/>
+					<Button visible="false" type="Ghost" press="onSendMail" id="sendmail" text="Send Mail"/>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+</mvc:View>

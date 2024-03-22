@@ -1,122 +1,819 @@
 {
-  "_version": "1.59.0",
-  "sap.app": {
-    "id": "gatepassapp",
-    "type": "application",
-    "i18n": "i18n/i18n.properties",
-    "applicationVersion": {
-      "version": "0.0.1"
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "gatepassapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.11.5",
+            "toolsId": "c4fcbadb-c52d-4ef7-b3a0-87dec6a48985"
+        },
+        "dataSources": {
+            "YY1_CTPL_BUSINESS_USER_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_CTPL_BUSINESS_USER_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_CTPL_BUSINESS_USER_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_PLANT_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_PLANT_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_PLANT_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_SUPPLIER_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_SUPPLIER_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_SUPPLIER_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_CUSTOMER_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_CUSTOMER_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_CUSTOMER_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_PRODUCT_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_PRODUCT_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_PRODUCT_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZRGP_NRGP_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZRGP_NRGP_HEAD_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZRGP_NRGP_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_INWARD_SR_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_INWARD_SR_HEAD_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_INWARD_SR_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_INWARD_SR_ITEM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_INWARD_SR_ITEM_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_INWARD_SR_ITEM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZINWARD_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZINWARD_HEAD_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZINWARD_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_OUTWARD_OD_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_OUTWARD_OD_HEAD_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_OUTWARD_OD_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_OUTWARD_OD_ITEM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_OUTWARD_OD_ITEM_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_OUTWARD_OD_ITEM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_INWARD_PO_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_INWARD_PO_HEAD_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_INWARD_PO_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_INWARD_PO_ITEM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_INWARD_PO_ITEM_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_INWARD_PO_ITEM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_OUTWARD_BD_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_OUTWARD_BD_HEAD_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_OUTWARD_BD_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_OUTWARD_BD_ITEM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_OUTWARD_BD_ITEM_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_OUTWARD_BD_ITEM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_INWARD_MD_ITEM_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_INWARD_MD_ITEM_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_INWARD_MD_ITEM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_INWARD_MD_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_INWARD_MD_HEAD_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_INWARD_MD_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZOUTWARD_HEAD_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZOUTWARD_HEAD_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZOUTWARD_HEAD_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_SCREEN_ASSIGN_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_SCREEN_ASSIGN_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_SCREEN_ASSIGN_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_GATEPASS_USER_TABL_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_GATEPASS_USER_TABL_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_GATEPASS_USER_TABL_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_INWARD_GATEPASS_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_INWARD_GATEPASS_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_INWARD_GATEPASS_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_GATEPASS_ATU_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_GATEPASS_ATU_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_GATEPASS_ATU_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_OUTWARD_GATEPASS_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_OUTWARD_GATEPASS_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_OUTWARD_GATEPASS_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "YY1_ZGE_EMPTY_VEHICLE_DETA_CDS": {
+                "uri": "/sap/opu/odata/sap/YY1_ZGE_EMPTY_VEHICLE_DETA_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/YY1_ZGE_EMPTY_VEHICLE_DETA_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "gatepassapp01-display": {
+                    "semanticObject": "gatepassapp01",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                },
+                "zgatepass01-display": {
+                    "semanticObject": "zgatepass01",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        }
     },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:basic",
-      "version": "1.11.5",
-      "toolsId": "c4fcbadb-c52d-4ef7-b3a0-87dec6a48985"
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.120.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "gatepassapp.i18n.i18n"
+                }
+            },
+            "": {
+                "preload": true,
+                "dataSource": "YY1_CTPL_BUSINESS_USER_CDS",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_PLANT_CDS": {
+                "dataSource": "YY1_ZGE_PLANT_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_SUPPLIER_CDS": {
+                "dataSource": "YY1_ZGE_SUPPLIER_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_CUSTOMER_CDS": {
+                "dataSource": "YY1_ZGE_CUSTOMER_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_PRODUCT_CDS": {
+                "dataSource": "YY1_ZGE_PRODUCT_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZRGP_NRGP_HEAD_CDS": {
+                "dataSource": "YY1_ZRGP_NRGP_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_INWARD_SR_HEAD_CDS": {
+                "dataSource": "YY1_ZGE_INWARD_SR_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_INWARD_SR_ITEM_CDS": {
+                "dataSource": "YY1_ZGE_INWARD_SR_ITEM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZINWARD_HEAD_CDS": {
+                "dataSource": "YY1_ZINWARD_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_OUTWARD_OD_HEAD_CDS": {
+                "dataSource": "YY1_ZGE_OUTWARD_OD_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_OUTWARD_OD_ITEM_CDS": {
+                "dataSource": "YY1_ZGE_OUTWARD_OD_ITEM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_INWARD_PO_HEAD_CDS": {
+                "dataSource": "YY1_ZGE_INWARD_PO_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_INWARD_PO_ITEM_CDS": {
+                "dataSource": "YY1_ZGE_INWARD_PO_ITEM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_OUTWARD_BD_HEAD_CDS": {
+                "dataSource": "YY1_ZGE_OUTWARD_BD_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_OUTWARD_BD_ITEM_CDS": {
+                "dataSource": "YY1_ZGE_OUTWARD_BD_ITEM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_INWARD_MD_ITEM_CDS": {
+                "dataSource": "YY1_ZGE_INWARD_MD_ITEM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_INWARD_MD_HEAD_CDS": {
+                "dataSource": "YY1_ZGE_INWARD_MD_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZOUTWARD_HEAD_CDS": {
+                "dataSource": "YY1_ZOUTWARD_HEAD_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_SCREEN_ASSIGN_CDS": {
+                "dataSource": "YY1_ZGE_SCREEN_ASSIGN_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_GATEPASS_USER_TABL_CDS": {
+                "dataSource": "YY1_ZGE_GATEPASS_USER_TABL_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_INWARD_GATEPASS_CDS": {
+                "dataSource": "YY1_ZGE_INWARD_GATEPASS_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_GATEPASS_ATU_CDS": {
+                "dataSource": "YY1_ZGE_GATEPASS_ATU_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_OUTWARD_GATEPASS_CDS": {
+                "dataSource": "YY1_ZGE_OUTWARD_GATEPASS_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "YY1_ZGE_EMPTY_VEHICLE_DETA_CDS": {
+                "dataSource": "YY1_ZGE_EMPTY_VEHICLE_DETA_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "gatepassapp.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "App",
+                    "target": "App"
+                },
+                {
+                    "pattern": "",
+                    "name": "Error",
+                    "target": "Error"
+                },
+                {
+                    "pattern": "",
+                    "name": "Home",
+                    "target": "Home"
+                },
+                {
+                    "pattern": "creategeneralpurchase",
+                    "name": "creategeneralpurchase",
+                    "target": "creategeneralpurchase"
+                },
+                {
+                    "pattern": "adminauth",
+                    "name": "adminauth",
+                    "target": "adminauth"
+                },
+                {
+                    "pattern": "creatergpnrgp",
+                    "name": "creatergpnrgp",
+                    "target": "creatergpnrgp"
+                },
+                {
+                    "pattern": "changedeletergpnrgp",
+                    "name": "changedeletergpnrgp",
+                    "target": "changedeletergpnrgp"
+                },
+                {
+                    "pattern": "createsalesreturn",
+                    "name": "createsalesreturn",
+                    "target": "createsalesreturn"
+                },
+                {
+                    "pattern": "createstoreceipt",
+                    "name": "createstoreceipt",
+                    "target": "createstoreceipt"
+                },
+                {
+                    "pattern": "approvergpnrgp",
+                    "name": "approvergpnrgp",
+                    "target": "approvergpnrgp"
+                },
+                {
+                    "pattern": "gateinoutrgpnrgp",
+                    "name": "gateinoutrgpnrgp",
+                    "target": "gateinoutrgpnrgp"
+                },
+                {
+                    "pattern": "createvendorreturn",
+                    "name": "createvendorreturn",
+                    "target": "createvendorreturn"
+                },
+                {
+                    "pattern": "createsales",
+                    "name": "createsales",
+                    "target": "createsales"
+                },
+                {
+                    "pattern": "createstooutbound",
+                    "name": "createstooutbound",
+                    "target": "createstooutbound"
+                },
+                {
+                    "pattern": "closergpnrgp",
+                    "name": "closergpnrgp",
+                    "target": "closergpnrgp"
+                },
+                {
+                    "pattern": "createsubcontracting",
+                    "name": "createsubcontracting",
+                    "target": "createsubcontracting"
+                },
+                {
+                    "pattern": "createsubcontractinggr",
+                    "name": "createsubcontractinggr",
+                    "target": "createsubcontractinggr"
+                },
+                {
+                    "pattern": "subcontractinggoodsreceipt",
+                    "name": "subcontractinggoodsreceipt",
+                    "target": "subcontractinggoodsreceipt"
+                },
+                {
+                    "pattern": "gateentryclose",
+                    "name": "gateentryclose",
+                    "target": "gateentryclose"
+                },
+                {
+                    "pattern": "vehicledetails",
+                    "name": "vehicledetails",
+                    "target": "vehicledetails"
+                }
+            ],
+            "targets": {
+                "App": {
+                    "viewName": "App",
+                    "viewLevel": 0,
+                    "viewType": "XML"
+                },
+                "Error": {
+                    "viewName": "Error",
+                    "viewLevel": 9,
+                    "viewType": "XML"
+                },
+                "Home": {
+                    "viewName": "Home",
+                    "viewLevel": 1,
+                    "viewType": "XML"
+                },
+                "creategeneralpurchase": {
+                    "viewName": "inward/generalpurchase/creategeneralpurchase",
+                    "viewLevel": 2,
+                    "viewType": "XML"
+                },
+                "adminauth": {
+                    "viewName": "admin/adminauth",
+                    "viewLevel": 3,
+                    "viewType": "XML"
+                },
+                "creatergpnrgp": {
+                    "viewName": "rgp_nrgp/changedeletergpnrgp",
+                    "viewLevel": 5,
+                    "viewType": "XML"
+                },
+                "createsalesreturn": {
+                    "viewName": "inward/salesreturn/createsalesreturn",
+                    "viewLevel": 6,
+                    "viewType": "XML"
+                },
+                "createstoreceipt": {
+                    "viewName": "inward/salesreturn/createstoreceipt",
+                    "viewLevel": 7,
+                    "viewType": "XML"
+                },
+                "approvergpnrgp": {
+                    "viewName": "rgp_nrgp/approvergpnrgp",
+                    "viewLevel": 8,
+                    "viewType": "XML"
+                },
+                "gateinoutrgpnrgp": {
+                    "viewName": "rgp_nrgp/gateinoutrgpnrgp",
+                    "viewLevel": 9,
+                    "viewType": "XML"
+                },
+                "createvendorreturn": {
+                    "viewName": "outward/vendorreturn/createvendorreturn",
+                    "viewLevel": 10,
+                    "viewType": "XML"
+                },
+                "createsales": {
+                    "viewName": "outward/sales/createsales",
+                    "viewLevel": 11,
+                    "viewType": "XML"
+                },
+                "createstooutbound": {
+                    "viewName": "outward/stooutbound/createstooutbound",
+                    "viewLevel": 12,
+                    "viewType": "XML"
+                },
+                "closergpnrgp": {
+                    "viewName": "rgp_nrgp/closergpnrgp",
+                    "viewLevel": 12,
+                    "viewType": "XML"
+                },
+                "createsubcontracting": {
+                    "viewName": "outward/subcontracting/createsubcontracting",
+                    "viewLevel": 13,
+                    "viewType": "XML"
+                },
+                "createsubcontractinggr": {
+                    "viewName": "inward/subcontracting/createsubcontracting",
+                    "viewLevel": 14,
+                    "viewType": "XML"
+                },
+                "subcontractinggoodsreceipt": {
+                    "viewName": "inward/subcontractinggoodsreceipt/createsubcontractinggoodsreceipt",
+                    "viewLevel": 15,
+                    "viewType": "XML"
+                },
+                "gateentryclose": {
+                    "viewName": "gateentryclose/gateentryclose",
+                    "viewLevel": 16,
+                    "viewType": "XML"
+                },
+                "vehicledetails": {
+                    "viewName": "vehicledetails/vehicledetails",
+                    "viewLevel": 17,
+                    "viewType": "XML"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "gatepassapp.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "gatepassapp"
     }
-  },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
-  "sap.ui5": {
-    "flexEnabled": true,
-    "dependencies": {
-      "minUI5Version": "1.120.1",
-      "libs": {
-        "sap.m": {},
-        "sap.ui.core": {},
-        "sap.f": {},
-        "sap.suite.ui.generic.template": {},
-        "sap.ui.comp": {},
-        "sap.ui.generic.app": {},
-        "sap.ui.table": {},
-        "sap.ushell": {}
-      }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
-    },
-    "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "gatepassapp.i18n.i18n"
-        }
-      }
-    },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
-        }
-      ]
-    },
-    "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "viewType": "XML",
-        "async": true,
-        "viewPath": "gatepassapp.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
-      },
-      "routes": [
-        
-        {
-          "pattern": "",
-          "name": "App",
-          "target": "App"
-        },
-        {
-          "pattern": "",
-          "name": "Home",
-          "target": "Home"
-        },
-        {
-          "pattern": "creategeneralpurchase",
-          "name": "creategeneralpurchase",
-          "target": "creategeneralpurchase"
-        }
-      ],
-      "targets": {
-        "App": {
-          "viewName": "App",
-          "viewLevel": 0,
-          "viewType": "XML"
-        },
-        "Home": {
-          "viewName": "Home",
-          "viewLevel": 1,
-          "viewType": "XML"
-        },
-        "creategeneralpurchase": {
-          "viewName": "inward/generalpurchase/creategeneralpurchase",
-          "viewLevel": 2,
-          "viewType": "XML"
-        }
-      }
-    },
-    "rootView": {
-      "viewName": "gatepassapp.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "app"
-    }
-  }
 }

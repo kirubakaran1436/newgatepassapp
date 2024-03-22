@@ -1,0 +1,31 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="Supplier_dialog" noDataText="No Supplier Found" title="Select Supplier" search=".OnSupplierSearch" confirm=".OnSupplierSelect"
+		contentWidth="50%" cancel=".OnSupplierSelect" items="{path:'YY1_ZGE_SUPPLIER_CDS>/YY1_ZGE_SUPPLIER',sorter:[{path:'Supplier',descending:false}]}">
+		<ColumnListItem id="Supplier_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text id="Supplier" text="{YY1_ZGE_SUPPLIER_CDS>Supplier}"/>
+				<Text id="SupplierName" text="{YY1_ZGE_SUPPLIER_CDS>SupplierName}"/>
+				<Text id="SupplierType" text="{YY1_ZGE_SUPPLIER_CDS>SupplierAccountGroup}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column  >
+				<header>
+					<Text text="Supplier"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Supplier Name"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Supplier Type"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

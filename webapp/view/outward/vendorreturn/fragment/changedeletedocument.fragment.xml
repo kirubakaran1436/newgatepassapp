@@ -1,0 +1,288 @@
+
+<core1:FragmentDefinition xmlns="sap.m" xmlns:core1="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns:t="sap.ui.table" xmlns:m="sap.f" xmlns:layout1="sap.ui.layout">
+
+<Dialog id="Edit_Frag_Id" showHeader="true" verticalScrolling="false" contentHeight="100%" contentWidth="100%" resizable="true" draggable="true" title="Change / Delete Vendor Return">
+
+		<m:DynamicPage id="idegppage111">
+         	<m:header>
+			<!-- DynamicPage Header -->
+			
+		<m:DynamicPageHeader id="iddynamicChangeSalesReturn" pinnable="true">
+						<FlexBox alignItems="Start" justifyContent="SpaceBetween" id="idflexboxSRChange">
+							<items>
+								<Panel id="idSRChangepanel" backgroundDesign="Transparent" class="sapUiNoContentPadding">
+									<content>
+										<layout1:HorizontalLayout id="idSRChangehorizontal" allowWrapping="true">
+
+			<!-- _____________Sales Return Document No_______________ -->		
+
+				<layout1:VerticalLayout  visible="true" id="idsalretchangedoc" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth">
+					<Label id="ID02"  text="Gate Entry No"/>
+					<Input tooltip="Gate Entry No" id="id_edit_gateentry_h" suggestionItemSelected="OnGateEntryDocSuggest" showSuggestion="true" suggestionItems="{path:'YY1_ZGE_OUTWARD_GATEPASS_CDS>/YY1_ZGE_OUTWARD_GATEPASS', sorter: { path: 'YY1_ZGE_OUTWARD_GATEPASS_CDS>Id', descending: true },filters : [ { path : 'ScreenCode', operator : 'EQ', value1 : 'GE10'} ]}" width="11.5rem" enabled="true"  required = "true" showValueHelp="true"  valueHelpRequest=".OnGateEntryNoFragOpen">
+						<suggestionItems>
+							<core1:ListItem key="{YY1_ZGE_OUTWARD_GATEPASS_CDS>SAP_UUID}" text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>Id}"  additionalText="{YY1_ZGE_OUTWARD_GATEPASS_CDS>SAP_CreatedDateTime}"/>
+						</suggestionItems>
+                    </Input>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout  visible="false" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="SAP UUID"/>
+					<Input tooltip="SAPUUID" id="id_edit_sapuuid_h" />				
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Material Document Year"/>
+					<Input editable="false" tooltip="Material Document Year" id="id_edit_document_year_h" />				
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Material Document"  />
+					<MultiInput editable="false" showSuggestion="false" width="11.5rem" id="id_edit_document_no_h" tokenUpdate=".onedittokenupdate" required="true" suggestionItemSelected="OnEditCustomReturnSuggest" valueHelpRequest=".onEditValueHelpRequested" suggestionRows="{
+                            path: 'YY1_ZGE_OUTWARD_MD_HEAD_CDS>/YY1_ZGE_OUTWARD_MD_HEAD',
+                            length: 10
+                        }">
+                        <suggestionColumns>
+                            <Column> <Label text="Material Document"/> </Column>
+                            <Column> <Label text="Material Document Year"/> </Column>
+                        </suggestionColumns>
+                        <suggestionRows>
+                            <ColumnListItem>
+                                <Label text="{YY1_ZGE_OUTWARD_MD_HEAD_CDS>MaterialDocument}" />
+                                <Label text="{YY1_ZGE_OUTWARD_MD_HEAD_CDS>MaterialDocumentYear}" />
+                            </ColumnListItem>
+                        </suggestionRows>
+                    </MultiInput>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout visible="false" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Plant" />
+					<Input tooltip="Plant" id="id_edit_sto_plant_h" width="11.5rem" enabled="false" value=""/>
+					<Input tooltip="Plant Name" visible="false" width="11.5rem"  editable="false"  id="id_edit_sto_plant_name_h" value=""/>			
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout visible="false" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Supplier" />
+					<Input tooltip="Supplier " id="id_edit_sto_customer_h" width="11.5rem" enabled="false" value=""/>
+					<Input tooltip="Supplier Name" visible="false" width="11.5rem"  editable="false"  id="id_edit_sto_cust_name_h" value=""/>			
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Gate Entry Date" required="{= ${JSonModelMadDatas>/Datas/0/GateEntryDate} === 'true'}" />
+					<DatePicker id="id_edit_gate_date" width="11.5rem" placeholder="DD-MM-YYYY" required="{= ${JSonModelMadDatas>/Datas/0/GateEntryDate} === 'true'}" valueFormat="dd-MM-yyyy" value="" displayFormat="dd-MM-yyyy"/>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Vehicle Type:" required="{= ${JSonModelMadDatas>/Datas/0/VehicleType} === 'true'}"/>
+				<ComboBox width="11.5rem" items="{ path: 'JModel>/Samples'}" id="id_edit_vehicle_type_h" required="{= ${JSonModelMadDatas>/Datas/0/VehicleType} === 'true'}" enabled="true" > 
+					<core1:Item id="_IDGenItem111" key="{JModel>VehicleID}" text="{JModel>VehicleName}" />
+                </ComboBox>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Vehicle No:" required="{= ${JSonModelMadDatas>/Datas/0/VehicleNo} === 'true'}"/>
+					<Input tooltip="Vehicle No" id="id_edit_vehno_h" width="11.5rem" enabled="true" value=""  required="{= ${JSonModelMadDatas>/Datas/0/VehicleNo} === 'true'}"/>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Transporter Mode:" required="{= ${JSonModelMadDatas>/Datas/0/TransporterMode} === 'true'}"/>
+					<ComboBox items="{ path: 'TModel>/Samples'}" required="{= ${JSonModelMadDatas>/Datas/0/TransporterMode} === 'true'}" width="11.5rem" id="id_edit_transporter_mode_h" enabled="true" selectionChange="Onseletranspmode" > 
+						<core1:Item id="_IDGenItem51" key="{TModel>TransportID}" text="{TModel>TransportType}" />
+					</ComboBox>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Transporter:" required="{= ${JSonModelMadDatas>/Datas/0/Transporter} === 'true'}"/>
+					<Input tooltip="Transporter" required="{= ${JSonModelMadDatas>/Datas/0/Transporter} === 'true'}" id="id_edit_transporter_h" width="11.5rem" enabled="true" value=""/>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout visible="false" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Delivery Doc Gross Wt:"/>
+					<Input tooltip="Delivery Doc Gross Wt" id="id_edit_del_doc_wt_h" width="11.5rem" enabled="true" value=""/>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Tare Weight:" required="{= ${JSonModelMadDatas>/Datas/0/TareWeight} === 'true'}"/>
+					<Input tooltip="Tare Weight" required="{= ${JSonModelMadDatas>/Datas/0/TareWeight} === 'true'}" id="id_edit_tar_wt_h" width="11.5rem" enabled="true" value=""/>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Net Weight:" required="{= ${JSonModelMadDatas>/Datas/0/NetWeight} === 'true'}"/>
+					<Input tooltip="Net Weight" required="{= ${JSonModelMadDatas>/Datas/0/NetWeight} === 'true'}" id="id_edit_net_wt_h" width="11.5rem" enabled="true" value=""/>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Gross Weight:" required="{= ${JSonModelMadDatas>/Datas/0/GrossWeight} === 'true'}"/>
+					<Input tooltip="Gross Weight" required="{= ${JSonModelMadDatas>/Datas/0/GrossWeight} === 'true'}" id="id_edit_gross_wt_h" width="11.5rem" enabled="true" value=""/>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout visible="false" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Weight Time &amp; Date:"/>
+					<Input tooltip="Weight Time &amp; Date" id="id_edit_wt_dt_time_h" width="11.5rem" enabled="true" value=""/>
+				</layout1:VerticalLayout>
+
+				<layout1:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom ">
+					<Label text="Remarks:" required="{= ${JSonModelMadDatas>/Datas/0/Remarks} === 'true'}"/>
+					<TextArea tooltip="Remarks" required="{= ${JSonModelMadDatas>/Datas/0/Remarks} === 'true'}" id="id_edit_remark_h" width="11.5rem" enabled="true" value=""/>
+				</layout1:VerticalLayout>
+
+										</layout1:HorizontalLayout>
+									</content>
+								</Panel>
+							</items>
+						</FlexBox>
+				</m:DynamicPageHeader>
+				</m:header>
+				<m:content>
+
+				<t:Table id="TableId_Edit" visible="false" rows="{path:'JModeledit>/datasedit', sorter: { path: 'JModeledit>ReferenceDocument', descending: false}}" selectionMode="Multi" enableSelectAll="false" rowMode="Auto">
+					<t:extension>
+						<OverflowToolbar id="idsrchangeovrflow" style="Clear">
+							<Title id = "idsrchangettabprod" text="Sales Return Items"/>
+							 <Button id="Final_Delete_Button" enabled="true" icon="sap-icon://delete" type="Default" tooltip="Delete Row" press="OnTableRowRemove"/>
+						</OverflowToolbar>
+					</t:extension>
+					<t:columns>
+
+						 <t:Column  id="idcoldeleteind" sortProperty="DeletionIndicator" width="3.1rem">
+                    <Label id="idlbldeleteind" text=""/> <!-- 0 -->
+                    <t:template>
+                        <Button id="DeleteIndicator" enabled="false" visible="{= ${JModeledit>ItemsStatus} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Deleted"/>
+                    </t:template>
+                </t:Column>
+                     
+
+					 	<t:Column width="5rem" id="idsrchangecolitno">
+							<Label id="idsrchangelblitno" text="Item No" /><!-- 1 -->
+							<t:template>
+								<Input id="idsrchangetab_itno_i" editable="false"  value ="{JModeledit>ItemNo}" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="11rem" id="idsrchangecol"><!-- 2 -->
+							<Label id="idsrlblchangepurdocno" text="Document No" />
+							<t:template>
+								<Input id="idsrchangesrtabpurdocno_i"  editable="false" value="{JModeledit>ReferenceDocument}"  />
+							</t:template>
+						</t:Column>
+
+
+
+						<t:Column width="11rem" id="idsrchangecolmatcod"><!-- 3 -->
+							<Label id="idsrchangelblmatcode" text="Product" />
+							<t:template>
+								<Input id="idsrchangetabmatcode_i"  editable="false"  value="{JModeledit>ProductCode}" />
+							</t:template>
+						</t:Column>
+                          
+
+						  <t:Column width="11rem" id="idsrchangecolmatname"><!-- 4 -->
+							<Label id="idsrchangelblmatname" text="Product Name" />
+							<t:template>
+								<Input id="idsrchangetabmatname_i" editable="false"  value="{JModeledit>ProductName}"  />
+							</t:template>
+						</t:Column>
+
+
+						 <t:Column width="0rem" id="idsrchangecolmattype"><!-- 5 -->
+							<Label id="idsrchangelblmattype" text="Product Type" />
+							<t:template>
+								<Input id="idsrchangetabmattype_i" editable="false"  value="{JModeledit>ProductType}" />
+							</t:template>
+						</t:Column>
+
+
+						 <t:Column width="11rem" id="idsrchangecolpurordqty"><!-- 6 -->
+							<Label id="idsrchangelblpurordqty" text="Order Quantity" />
+							<t:template>
+								<Input id="idsrchangetabpurordqty_i"  editable="false" value="{JModeledit>OrderQuantity}"  />
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="11rem" id="idsrchangecoluom"><!-- 7 -->
+							<Label id="idsrchangelbluom" text="UOM" />
+							<t:template>
+								<Input id="idsrchangetabuom_i" editable="false"  value="{JModeledit>UOM}"/>
+							</t:template>
+						</t:Column>
+
+						 <t:Column width="11rem" id="idsrchangecolopenqty"><!-- 8 -->
+							<Label id="idsrchangelbloprnqty" text="Open Quantity" />
+							<t:template>
+								<Input id="idsrchangetabopenqty_i" editable="false" value="{parts:[{path:'JModeledit>ItemNo'}, {path:'JModeledit>ReferenceDocument'}, {path:'JModeledit>OrderQuantity'}], formatter:'.OnPendingQtyCalEdit'}"/>
+								
+							</t:template>
+						</t:Column>			
+ 
+						 <t:Column width="11rem" id="idsrchangecolopenqtyge"><!-- 9 -->
+							<Label id="idsrchangelbloprnqtyuomqtyge"   text="Quantity in GE"   />
+							<t:template>
+								<Input id="idsrchangetabopqtyge_i" editable="true" value="{JModeledit>QuantityInGE}" change="OnGateQtyToPostEnteredit" />
+							</t:template>
+						</t:Column>
+
+						<t:Column id="idcoluuid" tooltip="Internal" sortProperty="" width=".1rem">
+							<Label id="idlbluuid" text=""/><!-- 10 -->
+							<t:template>
+								<Input id="idsrchangeuuid" editable="false" value="{JModeledit>SAP_UUID}" />
+							</t:template>
+						</t:Column>
+
+						<t:Column tooltip="Internal" sortProperty="" width="7rem">
+							<Label text="Plant"/><!-- 11 -->
+							<t:template>
+								<Input editable="false" value="{JModeledit>PlantCode}" />
+							</t:template>
+						</t:Column>
+
+						<t:Column tooltip="Internal" sortProperty="" width="7rem">
+							<Label text="Plant Name"/><!-- 12 -->
+							<t:template>
+								<Input editable="false" value="{JModeledit>PlantName}" />
+							</t:template>
+						</t:Column>
+
+						<t:Column tooltip="Internal" sortProperty="" width="7rem">
+							<Label text="Supplier"/><!-- 13 -->
+							<t:template>
+								<Input editable="false" value="{JModeledit>SupplierCode}" />
+							</t:template>
+						</t:Column>
+
+						<t:Column tooltip="Internal" sortProperty="" width="7rem">
+							<Label text="Supplier Name"/><!-- 14 -->
+							<t:template>
+								<Input editable="false" value="{JModeledit>SupplierName}" />
+							</t:template>
+						</t:Column>
+
+						</t:columns>
+									
+				</t:Table>
+</m:content>
+</m:DynamicPage>
+
+
+		<footer>
+				<OverflowToolbar id="idoverflow">
+					<Button id="idbtn" icon="sap-icon://message-popup"
+							text="{/messagesLength}"
+							type="Emphasized"
+							press="onMessageButtonPress"
+							visible="{= !!${/messagesLength}}"/>
+					<ToolbarSpacer id="idtool"/>
+					<Button type="Accept" press="OnUpdateSTO" id="id_update_button" text="Update"/>
+					<Button type="Reject" press="OnClose" id="id_reject_button" text="Cancel"/>
+					<Button id="DeleteIndicId" visible="false" text="This Entire Document has been deleted" type="Reject" enabled="false" icon="sap-icon://message-error"/>
+
+                    <Button id="Final_DeleteEntireDocument_Button"   tooltip="Delete Entire Document" type="Default" text="Delete Entire Document" press="OnDeleteEntireDocument"/>
+                    <Button id="UnFinal_DeleteEntireDocument_Button" visible="false" enabled="true" tooltip="UnDelete Entire Document" type="Default" text="Retrive" press="OnUnDeleteEntireDocument"/>
+					<Button visible="false" type="Default" press="OnBack" id="back" text="Back"/>
+								
+				</OverflowToolbar>
+			</footer>
+
+
+</Dialog>
+
+
+</core1:FragmentDefinition>

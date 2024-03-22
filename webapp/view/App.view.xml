@@ -5,60 +5,68 @@
      <App id="app" initialPage="splitApp">
       <SplitApp id="splitApp">
         <masterPages>
-          <Page showHeader="true"
-            title="Master Page"
-            id="masterPage">
+          <Page showHeader="true" title="Master Page" id="masterPage">
 
-            <customHeader>
+    <customHeader>
 		<Bar>
 		<contentLeft>
-		<Image width="50px" id="SideBarHeaderLogo" src="https://www.castaliaz.co.in/wp-content/uploads/2021/02/castaliaz-transparent-2.png"></Image>
+		    <Image width="50px" id="SideBarHeaderLogo" src="https://www.castaliaz.co.in/wp-content/uploads/2021/02/castaliaz-transparent-2.png"></Image>
 		</contentLeft>
 		
 		<contentMiddle>
-		<Text class="ClassTextBolder" id="SideBarHeaderCName" text="Kiruba Technologies"></Text>
+		    <Text class="ClassTextBolder" id="SideBarHeaderCName" text="Castaliaz Technologies"></Text>
 		</contentMiddle>
 		
-		<contentRight>
-		<Button press="OnClick" tooltip="Expand/Collapse Side Bar" icon="sap-icon://menu2" ></Button>
+		<contentRight> 
+		    <Button press="OnClick" tooltip="Expand/Collapse Side Bar" icon="sap-icon://menu2" ></Button>
 		</contentRight>		
 		</Bar>
 		</customHeader>
 
             <content>
-                <tnt:SideNavigation width="330px" id="sideNavigation" >
+                <tnt:SideNavigation visible="false" width="330px" id="sideNavigation" >
                 <tnt:NavigationList  width="330px" id="navigationList" >
-                 <tnt:NavigationListItem text="Home" key="Home" select=".OnNavBtn" icon="sap-icon://employee" ></tnt:NavigationListItem>
-                    <tnt:NavigationListItem text="Inward" expanded="false" icon="sap-icon://employee">
-                        <tnt:NavigationListItem key="inward.generalpurchase.creategeneralpurchase" icon="sap-icon://BusinessSuiteInAppSymbols/icon-early-widthdrawal-for-time-deposits" select=".OnNavBtn" text="General Purchase" />
-                        <tnt:NavigationListItem text="Cash Purchase" />
-                        <tnt:NavigationListItem text="Sales STO" />
+                 <tnt:NavigationListItem text="Home" key="Home" select=".OnNavBtn" icon="sap-icon://home" ></tnt:NavigationListItem>
+                    <tnt:NavigationListItem id="GE2" visible="false" text="Inward" select=".OnExpandItems" expanded="false" icon="sap-icon://BusinessSuiteInAppSymbols/icon-truck-load">
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE3} === 'true' }" id="GE3" key="inward.generalpurchase.creategeneralpurchase" icon="sap-icon://BusinessSuiteInAppSymbols/icon-early-widthdrawal-for-time-deposits" select=".OnNavBtn" text="General Purchase" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE4} === 'true' }" id="GE4" key="inward.salesreturn.createsalesreturn"  select=".OnNavBtn"  text="Sales Return" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE5} === 'true' }" id="GE5" key="inward.storeceipt.createstoreceipt"  select=".OnNavBtn" text="STO Goods Receipt" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE21} === 'true' }" id="GE21" key="inward.subcontractinggoodsreceipt.createsubcontractinggoodsreceipt" select=".OnNavBtn" text="Subcontracting Goods Receipt" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE6} === 'true' }" id="GE6" key="inward.report.inwardreport"  select=".OnNavBtn" text="Report" />
                     </tnt:NavigationListItem>
-                    <tnt:NavigationListItem text="Outward" expanded="false" icon="sap-icon://building">
-                        <tnt:NavigationListItem text="Vendor Return" />
-                        <tnt:NavigationListItem text="Sales STO" />
-                        <tnt:NavigationListItem text="Subcontracting Challan" />
+                    <tnt:NavigationListItem id="GE7" visible="false" text="Outward" select=".OnExpandItems" expanded="false" icon="sap-icon://BusinessSuiteInAppSymbols/icon-truck-unload">
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE8} === 'true' }" id="GE8" select=".OnNavBtn" key="outward.sales.createsales" text="Sales" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE9} === 'true' }" id="GE9" select=".OnNavBtn" key="outward.stooutbound.createstooutbound" text="STO (Outbound)"/>
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE10} === 'true' }" id="GE10" select=".OnNavBtn" key="outward.vendorreturn.createvendorreturn" text="Vendor Return GE" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE11} === 'true' }" id="GE11" key="outward.subcontracting.createsubcontracting" text="Subcontracting GE" select=".OnNavBtn"/>
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE12} === 'true' }" id="GE12" text="Empty Vehicle" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE13} === 'true' }" id="GE13" key="outward.report.outwardreport" select=".OnNavBtn" text="Report" />
                     </tnt:NavigationListItem>
-                    <tnt:NavigationListItem text="Gate Entry Close" expanded="false" icon="sap-icon://building">
-                        <tnt:NavigationListItem text="Close Gate Pass" />
-                        <tnt:NavigationListItem text="Display" />
-                    </tnt:NavigationListItem>
-                    <tnt:NavigationListItem text="Gate Entry Cancel" expanded="false" icon="sap-icon://building">
-                        <tnt:NavigationListItem text="Cancel Gate Pass" />
-                        <tnt:NavigationListItem text="Display" />
-                    </tnt:NavigationListItem>
-                    <tnt:NavigationListItem text="Gate Entry Report" expanded="false" icon="sap-icon://building">
+                    <!-- <tnt:NavigationListItem id="GE22" visible="false" text="Gate Entry Close" expanded="false" icon="sap-icon://inspect-down">
+                        <tnt:NavigationListItem visible="false" text="Close Gate Pass" />
+                        <tnt:NavigationListItem visible="false" text="Display" />
+                    </tnt:NavigationListItem> -->
+                    <tnt:NavigationListItem id="GE22" text="Gate Entry Close" key="gateentryclose.gateentryclose" select=".OnNavBtn" icon="sap-icon://inspect-down" ></tnt:NavigationListItem>
+                    <tnt:NavigationListItem id="GE23" text="Vehicle Details" key="vehicledetails.vehicledetails" select=".OnNavBtn" icon="sap-icon://inspect-down" ></tnt:NavigationListItem>
+                    <!-- <tnt:NavigationListItem id="GE23" visible="false" text="Vehicle Details" expanded="false" icon="sap-icon://SAP-icons-TNT/clear-all-mapping">
+                        <tnt:NavigationListItem visible="false" text="Cancel Gate Pass" />
+                        <tnt:NavigationListItem visible="false" text="Display" />
+                    </tnt:NavigationListItem> -->
+                    <!-- <tnt:NavigationListItem text="Gate Entry Report" expanded="false" icon="sap-icon://manager-insight">
                         <tnt:NavigationListItem text="Inward Report" />
                         <tnt:NavigationListItem text="Outward Report" />
                         <tnt:NavigationListItem text="Overall" />
+                    </tnt:NavigationListItem> -->
+                    <tnt:NavigationListItem id="GE14" visible="false" text="RGP &amp; NRGP Gate Pass" select=".OnExpandItems" expanded="false" icon="sap-icon://machine">
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE15} === 'true' }" id="GE15" key="rgp_nrgp.creatergpnrgp" select=".OnNavBtn" text="Create" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE16} === 'true' }" id="GE16" key="rgp_nrgp.changedeletergpnrgp" select=".OnNavBtn" text="Change / Delete / Display / Print" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE17} === 'true' }" id="GE17" key="rgp_nrgp.approvergpnrgp" select=".OnNavBtn" text="Approve / Reject" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE19} === 'true' }" id="GE19" key="rgp_nrgp.closergpnrgp" select=".OnNavBtn" text="Close RGP / NRGP" />
+                        <tnt:NavigationListItem visible="false"                                                        key="rgp_nrgp.gateinoutrgpnrgp" select=".OnNavBtn" text="Gate In / Out" />
+                        <tnt:NavigationListItem visible="{= ${JSonModelTransApp>/Datas/0/GE18} === 'true' }" id="GE18" key="rgp_nrgp.reportrgpnrgp" select=".OnNavBtn" text="Report" />
                     </tnt:NavigationListItem>
-                    <tnt:NavigationListItem text="RGP &amp; NRGP Gate Pass" expanded="false" icon="sap-icon://building">
-                        <tnt:NavigationListItem text="Create" />
-                        <tnt:NavigationListItem text="Display" />
-                    </tnt:NavigationListItem>
-                    <tnt:NavigationListItem text="Admin Panel" expanded="false" icon="sap-icon://building">
-                        <tnt:NavigationListItem text="Create User" />
-                        <tnt:NavigationListItem text="Authorization" />
+                    <tnt:NavigationListItem text="Admin Panel" select=".OnExpandItems" expanded="false" icon="sap-icon://key-user-settings">
+                        <tnt:NavigationListItem key="admin.adminauth" text="User Assign / Auth"  select=".OnNavBtn"/>
                     </tnt:NavigationListItem>
                     
         </tnt:NavigationList>
@@ -75,7 +83,7 @@
           </Page>
         </masterPages>
         <detailPages >
-          <mvc:XMLView viewName="gatepassapp.view.Home" />
+          <mvc:XMLView viewName="gatepassapp.view.Error" />
         </detailPages>
       </SplitApp>
   </App>

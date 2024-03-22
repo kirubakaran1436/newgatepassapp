@@ -1,0 +1,62 @@
+
+<core:FragmentDefinition
+	xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:m="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:core="sap.ui.core">
+	<ValueHelpDialog
+		title="Select Delivery Document"
+		ok=".onValueHelpOkPress"
+		cancel=".onValueHelpCancelPress"
+		afterClose=".onValueHelpAfterClose"
+		supportRanges="true"
+		key="OutboundDelivery"
+		descriptionKey="CustomerName">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="OutboundDelivery"
+						label="Delivery Document"
+						visibleInFilterBar="true">
+						<fb:control>
+							<!-- <m:Input name="OutboundDelivery" /> -->
+
+								<m:Input name="OutboundDelivery"
+									 showSuggestion="true"
+									 showValueHelp="false"
+									 suggestionItems="{
+										path: 'YY1_ZGE_OUTWARD_OD_HEAD_CDS>/YY1_ZGE_OUTWARD_OD_HEAD',
+										sorter: { path: 'OutboundDelivery' }
+									}">
+								<core:Item key="{YY1_ZGE_OUTWARD_OD_HEAD_CDS>OutboundDelivery}" text="{YY1_ZGE_OUTWARD_OD_HEAD_CDS>OutboundDelivery}" />
+							</m:Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="CustomerName"
+						label="Customer Name"
+						visibleInFilterBar="true">
+						<fb:control>
+							<!-- <m:Input name="CustomerName" /> -->
+										<m:Input name="CustomerName"
+									 showSuggestion="true"
+									 showValueHelp="false"
+									 suggestionItems="{
+										path: 'YY1_ZGE_OUTWARD_OD_HEAD_CDS>/YY1_ZGE_OUTWARD_OD_HEAD',
+										sorter: { path: 'CustomerName' }
+									}">
+								<core:Item key="{YY1_ZGE_OUTWARD_OD_HEAD_CDS>CustomerName}" text="{YY1_ZGE_OUTWARD_OD_HEAD_CDS>CustomerName}" />
+							</m:Input>
+
+
+
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

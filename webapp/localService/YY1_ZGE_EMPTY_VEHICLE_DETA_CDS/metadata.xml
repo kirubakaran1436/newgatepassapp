@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="P_Scbo_UserType" sap:label="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="description" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+            </EntityType>
+            <EntityType Name="YY1_ZGE_EMPTY_VEHICLE_DETAType" sap:label="ZGE_EMPTY_VEHICLE_DETAIL" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="Id" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Id"/>
+                <Property Name="VehicleNo" Type="Edm.String" MaxLength="20" sap:label="Vehicle No"/>
+                <Property Name="VehicleType" Type="Edm.String" MaxLength="20" sap:label="Vehicle Type"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="20" sap:label="Plant"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="40" sap:label="Plant Name"/>
+                <Property Name="Transporter" Type="Edm.String" MaxLength="40" sap:label="Transporter"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <Property Name="VehicleInTime" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Vehicle In Time"/>
+                <Property Name="VehicleOutTime" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Vehicle Out Time"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_CreatedByUser_Text" sap:label="Created By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_LastChangedByUser_Text" sap:label="Last Changed By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TransporterMode" Type="Edm.String" MaxLength="20" sap:label="Transporter Mode"/>
+                <Property Name="TareWeight" Type="Edm.String" MaxLength="20" sap:label="Tare Weight"/>
+                <Property Name="NetWeight" Type="Edm.String" MaxLength="20" sap:label="Net Weight"/>
+                <Property Name="GrossWeight" Type="Edm.String" MaxLength="20" sap:label="Gross Weight"/>
+                <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.assoc_633CDC18ABD76840E64F74951E053951" FromRole="FromRole_assoc_633CDC18ABD76840E64F74951E053951" ToRole="ToRole_assoc_633CDC18ABD76840E64F74951E053951"/>
+                <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.assoc_BE9EE143F39E56324ADB3946B5B423C1" FromRole="FromRole_assoc_BE9EE143F39E56324ADB3946B5B423C1" ToRole="ToRole_assoc_BE9EE143F39E56324ADB3946B5B423C1"/>
+            </EntityType>
+            <Association Name="assoc_BE9EE143F39E56324ADB3946B5B423C1" sap:content-version="1">
+                <End Type="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.YY1_ZGE_EMPTY_VEHICLE_DETAType" Multiplicity="1" Role="FromRole_assoc_BE9EE143F39E56324ADB3946B5B423C1"/>
+                <End Type="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_BE9EE143F39E56324ADB3946B5B423C1"/>
+            </Association>
+            <Association Name="assoc_633CDC18ABD76840E64F74951E053951" sap:content-version="1">
+                <End Type="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.YY1_ZGE_EMPTY_VEHICLE_DETAType" Multiplicity="1" Role="FromRole_assoc_633CDC18ABD76840E64F74951E053951"/>
+                <End Type="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_633CDC18ABD76840E64F74951E053951"/>
+            </Association>
+            <EntityContainer Name="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="P_Scbo_User" EntityType="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.P_Scbo_UserType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="YY1_ZGE_EMPTY_VEHICLE_DETA" EntityType="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.YY1_ZGE_EMPTY_VEHICLE_DETAType" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_633CDC18ABD76840E64F74951E053951" Association="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.assoc_633CDC18ABD76840E64F74951E053951" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_EMPTY_VEHICLE_DETA" Role="FromRole_assoc_633CDC18ABD76840E64F74951E053951"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_633CDC18ABD76840E64F74951E053951"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BE9EE143F39E56324ADB3946B5B423C1" Association="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.assoc_BE9EE143F39E56324ADB3946B5B423C1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_EMPTY_VEHICLE_DETA" Role="FromRole_assoc_BE9EE143F39E56324ADB3946B5B423C1"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_BE9EE143F39E56324ADB3946B5B423C1"/>
+                </AssociationSet>
+                <FunctionImport Name="YY1_ZGE_EMPTY_VEHICLE_DETASap_upsert" ReturnType="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.YY1_ZGE_EMPTY_VEHICLE_DETAType" EntitySet="YY1_ZGE_EMPTY_VEHICLE_DETA" m:HttpMethod="POST">
+                    <Parameter Name="Id" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Numeric length 10"/>
+                    <Parameter Name="VehicleNo" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="VehicleType" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="PlantName" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="Transporter" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="PostingDate" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Posting Date" sap:display-format="Date"/>
+                    <Parameter Name="VehicleInTime" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Vehicle In Time" sap:display-format="Date"/>
+                    <Parameter Name="VehicleOutTime" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Vehicle Out Time" sap:display-format="Date"/>
+                    <Parameter Name="Status" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="TransporterMode" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="TareWeight" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="NetWeight" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="GrossWeight" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.YY1_ZGE_EMPTY_VEHICLE_DETA_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.YY1_ZGE_EMPTY_VEHICLE_DETAType/Id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.YY1_ZGE_EMPTY_VEHICLE_DETA_CDS_Entities/YY1_ZGE_EMPTY_VEHICLE_DETA" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataChangeUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataCreateUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_EMPTY_VEHICLE_DETA_CDS.YY1_ZGE_EMPTY_VEHICLE_DETAType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>Id</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/sap/YY1_ZGE_EMPTY_VEHICLE_DETA_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/sap/YY1_ZGE_EMPTY_VEHICLE_DETA_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

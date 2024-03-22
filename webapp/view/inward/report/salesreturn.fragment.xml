@@ -1,0 +1,27 @@
+
+<core1:FragmentDefinition xmlns="sap.m" xmlns:core1="sap.ui.core">
+	<TableSelectDialog id="Soreport_dialog" noDataText="No Sales Return Document Found" title="Select Sale Return Document No" search=".OnGataPassNoSearch" confirm=".OnGataPassNoSelect"
+		contentWidth="50%" cancel=".OnGataPassNoSelect" items="{path:'YY1_ZGE_INWARD_GATEPASS_CDS>/YY1_ZGE_INWARD_GATEPASS',filters : [ { path : 'ScreenCode', operator : 'EQ', value1 : 'GE4'} ]}">
+		<ColumnListItem id="_IDGenColumnsoreport" vAlign="Middle">
+			<cells>
+				<Text id="Soid" text="{YY1_ZGE_INWARD_GATEPASS_CDS>Id}"/>
+               <Text id="sochangecreate" text="{YY1_ZGE_INWARD_GATEPASS_CDS>SAP_CreatedDateTime}"/>
+				<Text id="sochangeuuid" text="{YY1_ZGE_INWARD_GATEPASS_CDS>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="socustchange" >
+				<header>
+					<Text id="idsocustdoc" text="Sales Return Document No"/>
+				</header>
+			</Column>
+			<Column id="Socolchange" >
+				<header>
+					<Text id="idsocreatdt" text="Created Date "/>
+				</header>
+			</Column>
+	
+		</columns>
+	</TableSelectDialog>
+</core1:FragmentDefinition>
+

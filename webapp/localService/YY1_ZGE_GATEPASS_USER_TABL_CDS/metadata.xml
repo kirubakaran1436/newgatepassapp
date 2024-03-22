@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="YY1_ZGE_GATEPASS_USER_TABL_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="P_Scbo_UserType" sap:label="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="description" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+            </EntityType>
+            <EntityType Name="YY1_MANDATORY_FIELD_ASSIGN_ZGEType" sap:label="MANDATORY_FIELD_ASSIGN" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="ReferenceDocument" Type="Edm.String" MaxLength="20" sap:label="ReferenceDocument"/>
+                <Property Name="ReferenceDocumentType" Type="Edm.String" MaxLength="20" sap:label="ReferenceDocumentType"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="20" sap:label="Plant"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="20" sap:label="Supplier"/>
+                <Property Name="SupplierType" Type="Edm.String" MaxLength="20" sap:label="SupplierType"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="20" sap:label="Customer"/>
+                <Property Name="CustomerType" Type="Edm.String" MaxLength="20" sap:label="CustomerType"/>
+                <Property Name="EWayBill" Type="Edm.String" MaxLength="20" sap:label="EWayBill"/>
+                <Property Name="GateEntryDate" Type="Edm.String" MaxLength="20" sap:label="GateEntryDate"/>
+                <Property Name="VehicleType" Type="Edm.String" MaxLength="20" sap:label="VehicleType"/>
+                <Property Name="VehicleNo" Type="Edm.String" MaxLength="20" sap:label="VehicleNo"/>
+                <Property Name="InvoiceNo" Type="Edm.String" MaxLength="20" sap:label="InvoiceNo"/>
+                <Property Name="InvoiceDate" Type="Edm.String" MaxLength="20" sap:label="InvoiceDate"/>
+                <Property Name="Transporter" Type="Edm.String" MaxLength="20" sap:label="Transporter"/>
+                <Property Name="TransporterMode" Type="Edm.String" MaxLength="20" sap:label="TransporterMode"/>
+                <Property Name="LRNo" Type="Edm.String" MaxLength="20" sap:label="LRNo"/>
+                <Property Name="LRDate" Type="Edm.String" MaxLength="20" sap:label="LRDate"/>
+                <Property Name="GrossWeight" Type="Edm.String" MaxLength="20" sap:label="GrossWeight"/>
+                <Property Name="TareWeight" Type="Edm.String" MaxLength="20" sap:label="TareWeight"/>
+                <Property Name="NetWeight" Type="Edm.String" MaxLength="20" sap:label="NetWeight"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="20" sap:label="Remarks"/>
+                <Property Name="PurchaseOrderNo" Type="Edm.String" MaxLength="20" sap:label="PurchaseOrderNo"/>
+                <Property Name="DeliveryDocumentNo" Type="Edm.String" MaxLength="20" sap:label="DeliveryDocumentNo"/>
+                <Property Name="SalesReturnNo" Type="Edm.String" MaxLength="20" sap:label="SalesReturnNo"/>
+                <Property Name="CustomerReturnNo" Type="Edm.String" MaxLength="20" sap:label="CustomerReturnNo"/>
+                <Property Name="UserId" Type="Edm.String" MaxLength="20" sap:label="User Id"/>
+                <Property Name="UserName" Type="Edm.String" MaxLength="80" sap:label="User Name"/>
+                <Property Name="UserStatus" Type="Edm.String" MaxLength="20" sap:label="User Status"/>
+                <Property Name="ModuleId" Type="Edm.String" MaxLength="20" sap:label="Module Id"/>
+                <Property Name="ModuleName" Type="Edm.String" MaxLength="80" sap:label="Module Name"/>
+                <Property Name="ModuleStatus" Type="Edm.String" MaxLength="20" sap:label="Module Status"/>
+                <Property Name="AppId" Type="Edm.String" MaxLength="20" sap:label="App Id"/>
+                <Property Name="AppName" Type="Edm.String" MaxLength="80" sap:label="App Name"/>
+                <Property Name="AppStatus" Type="Edm.String" MaxLength="20" sap:label="App Status"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="20" sap:label="ID"/>
+                <Property Name="NoOfPackages" Type="Edm.String" MaxLength="20" sap:label="NoOfPackages"/>
+                <Property Name="Requestor" Type="Edm.String" MaxLength="20" sap:label="Requestor"/>
+                <Property Name="defaultapprove" Type="Edm.String" MaxLength="20" sap:label="defaultapprove"/>
+                <Property Name="ChallanNo" Type="Edm.String" MaxLength="20" sap:label="Challan No"/>
+                <Property Name="ChallanDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Challan Date"/>
+                <NavigationProperty Name="to_ZGE_GATEPASS_USER_TABL" Relationship="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_E5672936C84CC8E14C54D613373956EA" FromRole="ToRole_assoc_E5672936C84CC8E14C54D613373956EA" ToRole="FromRole_assoc_E5672936C84CC8E14C54D613373956EA"/>
+            </EntityType>
+            <EntityType Name="YY1_MODULE_NAV_TAB_ZGE_GATEPASType" sap:label="MODULE_NAV_TAB_ASSIGN" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="UserId" Type="Edm.String" MaxLength="20" sap:label="User Id"/>
+                <Property Name="UserName" Type="Edm.String" MaxLength="80" sap:label="User Name"/>
+                <Property Name="UserStatus" Type="Edm.String" MaxLength="20" sap:label="User Status"/>
+                <Property Name="ScreenId" Type="Edm.String" MaxLength="20" sap:label="Screen Id"/>
+                <Property Name="ScreenName" Type="Edm.String" MaxLength="80" sap:label="Screen Name"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="20" sap:label="ID"/>
+                <NavigationProperty Name="to_ZGE_GATEPASS_USER_TABL" Relationship="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_9C9857A09105D85EC44CADBBF03430CE" FromRole="ToRole_assoc_9C9857A09105D85EC44CADBBF03430CE" ToRole="FromRole_assoc_9C9857A09105D85EC44CADBBF03430CE"/>
+            </EntityType>
+            <EntityType Name="YY1_TRANSACTIONAL_APP_ASSIGN_ZType" sap:label="TRANSACTIONAL_APP_ASSIGN" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="GE1" Type="Edm.String" MaxLength="20" sap:label="GE1"/>
+                <Property Name="GE2" Type="Edm.String" MaxLength="20" sap:label="GE2"/>
+                <Property Name="GE3" Type="Edm.String" MaxLength="20" sap:label="GE3"/>
+                <Property Name="GE4" Type="Edm.String" MaxLength="20" sap:label="GE4"/>
+                <Property Name="GE5" Type="Edm.String" MaxLength="20" sap:label="GE5"/>
+                <Property Name="GE6" Type="Edm.String" MaxLength="20" sap:label="GE6"/>
+                <Property Name="GE7" Type="Edm.String" MaxLength="20" sap:label="GE7"/>
+                <Property Name="GE8" Type="Edm.String" MaxLength="20" sap:label="GE8"/>
+                <Property Name="GE81" Type="Edm.String" MaxLength="20" sap:label="GE8"/>
+                <Property Name="GE9" Type="Edm.String" MaxLength="20" sap:label="GE9"/>
+                <Property Name="GE10" Type="Edm.String" MaxLength="20" sap:label="GE10"/>
+                <Property Name="GE11" Type="Edm.String" MaxLength="20" sap:label="GE11"/>
+                <Property Name="GE12" Type="Edm.String" MaxLength="20" sap:label="GE12"/>
+                <Property Name="GE13" Type="Edm.String" MaxLength="20" sap:label="GE13"/>
+                <Property Name="GE14" Type="Edm.String" MaxLength="20" sap:label="GE14"/>
+                <Property Name="GE15" Type="Edm.String" MaxLength="20" sap:label="GE15"/>
+                <Property Name="GE16" Type="Edm.String" MaxLength="20" sap:label="GE16"/>
+                <Property Name="GE17" Type="Edm.String" MaxLength="20" sap:label="GE17"/>
+                <Property Name="GE18" Type="Edm.String" MaxLength="20" sap:label="GE18"/>
+                <Property Name="GE19" Type="Edm.String" MaxLength="20" sap:label="GE19"/>
+                <Property Name="GE20" Type="Edm.String" MaxLength="20" sap:label="GE20"/>
+                <Property Name="GE21" Type="Edm.String" MaxLength="20" sap:label="GE21"/>
+                <Property Name="GE22" Type="Edm.String" MaxLength="20" sap:label="GE22"/>
+                <Property Name="GE23" Type="Edm.String" MaxLength="20" sap:label="GE23"/>
+                <Property Name="GE24" Type="Edm.String" MaxLength="20" sap:label="GE24"/>
+                <Property Name="GE25" Type="Edm.String" MaxLength="20" sap:label="GE25"/>
+                <Property Name="UserId" Type="Edm.String" MaxLength="20" sap:label="User Id"/>
+                <Property Name="UserName" Type="Edm.String" MaxLength="80" sap:label="User Name"/>
+                <Property Name="UserStatus" Type="Edm.String" MaxLength="20" sap:label="User Status"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <Property Name="ModuleCode" Type="Edm.String" MaxLength="20" sap:label="Module Code"/>
+                <Property Name="ModuleName" Type="Edm.String" MaxLength="80" sap:label="Module Name"/>
+                <Property Name="ModuleStatus" Type="Edm.String" MaxLength="20" sap:label="Module Status"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="20" sap:label="ID"/>
+                <NavigationProperty Name="to_ZGE_GATEPASS_USER_TABL" Relationship="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_E5F3347AD21C95CA9197D74037E37019" FromRole="ToRole_assoc_E5F3347AD21C95CA9197D74037E37019" ToRole="FromRole_assoc_E5F3347AD21C95CA9197D74037E37019"/>
+            </EntityType>
+            <EntityType Name="YY1_ZGE_GATEPASS_USER_TABLType" sap:label="ZGE_GATEPASS_USER_TABLE" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_CreatedByUser_Text" sap:label="Created By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_LastChangedByUser_Text" sap:label="Last Changed By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="UserId" Type="Edm.String" MaxLength="20" sap:label="User Id"/>
+                <Property Name="UserName" Type="Edm.String" MaxLength="80" sap:label="User Name"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <NavigationProperty Name="to_MANDATORY_FIELD_ASSIGN" Relationship="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_E5672936C84CC8E14C54D613373956EA" FromRole="FromRole_assoc_E5672936C84CC8E14C54D613373956EA" ToRole="ToRole_assoc_E5672936C84CC8E14C54D613373956EA"/>
+                <NavigationProperty Name="to_MODULE_NAV_TAB" Relationship="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_9C9857A09105D85EC44CADBBF03430CE" FromRole="FromRole_assoc_9C9857A09105D85EC44CADBBF03430CE" ToRole="ToRole_assoc_9C9857A09105D85EC44CADBBF03430CE"/>
+                <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_BA4D27AA8FAAC6CCEC0EC8A593756687" FromRole="FromRole_assoc_BA4D27AA8FAAC6CCEC0EC8A593756687" ToRole="ToRole_assoc_BA4D27AA8FAAC6CCEC0EC8A593756687"/>
+                <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_0205B71A123B01C0F4211DF4941F8442" FromRole="FromRole_assoc_0205B71A123B01C0F4211DF4941F8442" ToRole="ToRole_assoc_0205B71A123B01C0F4211DF4941F8442"/>
+                <NavigationProperty Name="to_TRANSACTIONAL_APP_ASSIGN" Relationship="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_E5F3347AD21C95CA9197D74037E37019" FromRole="FromRole_assoc_E5F3347AD21C95CA9197D74037E37019" ToRole="ToRole_assoc_E5F3347AD21C95CA9197D74037E37019"/>
+            </EntityType>
+            <Association Name="assoc_9C9857A09105D85EC44CADBBF03430CE" sap:content-version="1">
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType" Multiplicity="1" Role="FromRole_assoc_9C9857A09105D85EC44CADBBF03430CE">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_MODULE_NAV_TAB_ZGE_GATEPASType" Multiplicity="*" Role="ToRole_assoc_9C9857A09105D85EC44CADBBF03430CE"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_9C9857A09105D85EC44CADBBF03430CE">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_9C9857A09105D85EC44CADBBF03430CE">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_BA4D27AA8FAAC6CCEC0EC8A593756687" sap:content-version="1">
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType" Multiplicity="1" Role="FromRole_assoc_BA4D27AA8FAAC6CCEC0EC8A593756687"/>
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_BA4D27AA8FAAC6CCEC0EC8A593756687"/>
+            </Association>
+            <Association Name="assoc_0205B71A123B01C0F4211DF4941F8442" sap:content-version="1">
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType" Multiplicity="1" Role="FromRole_assoc_0205B71A123B01C0F4211DF4941F8442"/>
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_0205B71A123B01C0F4211DF4941F8442"/>
+            </Association>
+            <Association Name="assoc_E5F3347AD21C95CA9197D74037E37019" sap:content-version="1">
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType" Multiplicity="1" Role="FromRole_assoc_E5F3347AD21C95CA9197D74037E37019">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_TRANSACTIONAL_APP_ASSIGN_ZType" Multiplicity="*" Role="ToRole_assoc_E5F3347AD21C95CA9197D74037E37019"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_E5F3347AD21C95CA9197D74037E37019">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_E5F3347AD21C95CA9197D74037E37019">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_E5672936C84CC8E14C54D613373956EA" sap:content-version="1">
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType" Multiplicity="1" Role="FromRole_assoc_E5672936C84CC8E14C54D613373956EA">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_MANDATORY_FIELD_ASSIGN_ZGEType" Multiplicity="*" Role="ToRole_assoc_E5672936C84CC8E14C54D613373956EA"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_E5672936C84CC8E14C54D613373956EA">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_E5672936C84CC8E14C54D613373956EA">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="YY1_ZGE_GATEPASS_USER_TABL_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="P_Scbo_User" EntityType="YY1_ZGE_GATEPASS_USER_TABL_CDS.P_Scbo_UserType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="YY1_MANDATORY_FIELD_ASSIGN_ZGE" EntityType="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_MANDATORY_FIELD_ASSIGN_ZGEType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_MODULE_NAV_TAB_ZGE_GATEPAS" EntityType="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_MODULE_NAV_TAB_ZGE_GATEPASType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_TRANSACTIONAL_APP_ASSIGN_Z" EntityType="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_TRANSACTIONAL_APP_ASSIGN_ZType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_ZGE_GATEPASS_USER_TABL" EntityType="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_BA4D27AA8FAAC6CCEC0EC8A593756687" Association="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_BA4D27AA8FAAC6CCEC0EC8A593756687" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_GATEPASS_USER_TABL" Role="FromRole_assoc_BA4D27AA8FAAC6CCEC0EC8A593756687"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_BA4D27AA8FAAC6CCEC0EC8A593756687"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E5F3347AD21C95CA9197D74037E37019" Association="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_E5F3347AD21C95CA9197D74037E37019" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_GATEPASS_USER_TABL" Role="FromRole_assoc_E5F3347AD21C95CA9197D74037E37019"/>
+                    <End EntitySet="YY1_TRANSACTIONAL_APP_ASSIGN_Z" Role="ToRole_assoc_E5F3347AD21C95CA9197D74037E37019"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E5672936C84CC8E14C54D613373956EA" Association="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_E5672936C84CC8E14C54D613373956EA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_GATEPASS_USER_TABL" Role="FromRole_assoc_E5672936C84CC8E14C54D613373956EA"/>
+                    <End EntitySet="YY1_MANDATORY_FIELD_ASSIGN_ZGE" Role="ToRole_assoc_E5672936C84CC8E14C54D613373956EA"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0205B71A123B01C0F4211DF4941F8442" Association="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_0205B71A123B01C0F4211DF4941F8442" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_GATEPASS_USER_TABL" Role="FromRole_assoc_0205B71A123B01C0F4211DF4941F8442"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_0205B71A123B01C0F4211DF4941F8442"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_9C9857A09105D85EC44CADBBF03430CE" Association="YY1_ZGE_GATEPASS_USER_TABL_CDS.assoc_9C9857A09105D85EC44CADBBF03430CE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_GATEPASS_USER_TABL" Role="FromRole_assoc_9C9857A09105D85EC44CADBBF03430CE"/>
+                    <End EntitySet="YY1_MODULE_NAV_TAB_ZGE_GATEPAS" Role="ToRole_assoc_9C9857A09105D85EC44CADBBF03430CE"/>
+                </AssociationSet>
+                <FunctionImport Name="YY1_ZGE_GATEPASS_USER_TABLSap_upsert" ReturnType="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType" EntitySet="YY1_ZGE_GATEPASS_USER_TABL" m:HttpMethod="POST">
+                    <Parameter Name="UserId" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="UserName" Type="Edm.String" Mode="In" MaxLength="80" sap:label="Text of length 80"/>
+                    <Parameter Name="Status" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABL_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType/to_MANDATORY_FIELD_ASSIGN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType/to_MODULE_NAV_TAB" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType/to_TRANSACTIONAL_APP_ASSIGN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType/UserId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABL_CDS_Entities/YY1_MANDATORY_FIELD_ASSIGN_ZGE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ZGE_GATEPASS_USER_TABL"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABL_CDS_Entities/YY1_MODULE_NAV_TAB_ZGE_GATEPAS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ZGE_GATEPASS_USER_TABL"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABL_CDS_Entities/YY1_TRANSACTIONAL_APP_ASSIGN_Z" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ZGE_GATEPASS_USER_TABL"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABL_CDS_Entities/YY1_ZGE_GATEPASS_USER_TABL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_MANDATORY_FIELD_ASSIGN"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_MODULE_NAV_TAB"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataChangeUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataCreateUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_TRANSACTIONAL_APP_ASSIGN"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_GATEPASS_USER_TABL_CDS.YY1_ZGE_GATEPASS_USER_TABLType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>UserId</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/sap/YY1_ZGE_GATEPASS_USER_TABL_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/sap/YY1_ZGE_GATEPASS_USER_TABL_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
