@@ -1,0 +1,37 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="RGPNRGP_dialog" noDataText="No Gate Entry Found" title="Select RGPNRGP" search=".OnRGPNRGPSearch" confirm=".OnRGPNRGPSelect"
+		contentWidth="50%" cancel=".OnRGPNRGPSelect" items="{path:'YY1_ZRGP_NRGP_HEAD_CDS>/YY1_ZRGP_NRGP_HEAD',sorter:[{path:'Id', descending:true}],filters : [ { path : 'ApproveStatus', operator : 'EQ', value1 : 'pending'} ]}">
+		<ColumnListItem id="RGPNRGP_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text id="Id" text="{YY1_ZRGP_NRGP_HEAD_CDS>Id}"/>
+				<ObjectStatus class="sapUiSmallMarginBottom" text="{YY1_ZRGP_NRGP_HEAD_CDS>Status}" state="Indication05" />
+				<Text id="SAP_CreatedDateTime" text="{YY1_ZRGP_NRGP_HEAD_CDS>SAP_CreatedDateTime}"/>
+				<Text visible="false" id="SAP_UUID" text="{YY1_ZRGP_NRGP_HEAD_CDS>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column  >
+				<header>
+					<Text text="Gate Entry No"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Status"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Document Date"/>
+				</header>
+			</Column>
+			<Column visible="false">
+				<header>
+					<Text text="SAP_UUID"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

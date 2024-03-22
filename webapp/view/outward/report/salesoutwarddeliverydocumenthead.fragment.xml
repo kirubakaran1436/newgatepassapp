@@ -1,0 +1,27 @@
+
+<core2:FragmentDefinition xmlns="sap.m" xmlns:core2="sap.ui.core">
+<TableSelectDialog id="SalesGateEntryDocHead_dialog" noDataText="No Document No Found" title="Select Sales Document No" search=".OnGataPassNoSearch" confirm=".OnGataPassNoSelect"
+		contentWidth="50%" cancel=".OnSTOGateEntryDocSelect" items="{path:'YY1_ZGE_OUTWARD_GATEPASS_CDS>/YY1_ZGE_OUTWARD_GATEPASS',filters : [ { path : 'ScreenCode', operator : 'EQ', value1 : 'GE8'} ]}">
+		<ColumnListItem id="idsaleschange" vAlign="Middle">
+			<cells>
+				<Text id="saleschangeid" text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>Id}"/>
+               <Text id="saleschangecreatedt" text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>SAP_CreatedDateTime}"/>
+				<Text id="saleschangeuuid" text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="saleschanepurdoc" >
+				<header>
+					<Text id="saleshangepurcdoc" text="Document No"/>
+				</header>
+			</Column>
+			<Column id="saleshangecreate" >
+				<header>
+					<Text id="saleshangecreatedt" text="Created Date "/>
+				</header>
+			</Column>
+	
+		</columns>
+	</TableSelectDialog>
+</core2:FragmentDefinition>
+

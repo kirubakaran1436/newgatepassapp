@@ -4,111 +4,88 @@ xmlns:chart="sap.suite.ui.microchart" xmlns:f="sap.f"
 	xmlns:layout="sap.ui.layout" controllerName="gatepassapp.controller.Home"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<!-- <App> -->
-			<Page class="sapUiTinyMarginTop sapUiTinyMarginBegin " title="Home Screen" titleAlignment="Center">
-				<headerContent>
+			<Page class="sapUiTinyMarginTop sapUiTinyMarginBegin" id="idpagetitle" title="Home Screen" titleAlignment="Center">
+				<!-- <headerContent>
 					<Button icon="sap-icon://action-settings" tooltip="Settings"/>
-				</headerContent>
-				<f:Card class="sapUiMediumMargin" width="300px">
-		<f:header>
-		<HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBottom" justifyContent="SpaceBetween">
-			<VBox class="sapUiSmallMarginBegin sapUiSmallTopBottom" >
-				<Title  class="IdGateEntryTotalText sapUiSmallMarginTop " text="Total Gate Entry: " />
-							<!-- <Text text="Total Inward Data" /> -->
-			</VBox>
-			<ObjectStatus  class="sapUiTinyMargin sapUiSmallMarginTop sapUiSmallMarginEnd IdGateEntryTotalNo" text="100" state="Success" />
-		</HBox>
-			
+				</headerContent> -->
+
+	<f:Card class="sapUiMediumMargin" width="280px">
+        <f:header>
+        <HBox alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBottom" justifyContent="SpaceBetween">
+            <VBox class="sapUiSmallMarginBegin sapUiSmallTopBottom" >
+                <Title  class="IdGateEntryTotalText sapUiSmallMarginTop " text="Total Gate Entry: " />
+            </VBox>
+            <ObjectStatus id="idTotalGateCount" class="sapUiTinyMargin sapUiSmallMarginTop sapUiSmallMarginEnd IdGateEntryTotalNo" text="0" state="Success" />
+        </HBox>
+           
+        </f:header>
+        <f:content>
+            <List
+                class="sapUiSmallMarginBottom" showSeparators="None" items="">
+                <CustomListItem>
+                    <HBox alignItems="Center" justifyContent="SpaceBetween">
+                        <VBox class="sapUiSmallMarginBegin sapUiSmallTopBottom" >
+                            <Title level="H3" text="Inward" />
+                        </VBox>
+                        <ObjectStatus id="idinwardcount" class="sapUiTinyMargin sapUiSmallMarginEnd" text="0" state="Success" />
+                    </HBox>
+                    <HBox alignItems="Center" justifyContent="SpaceBetween">
+                        <VBox class="sapUiSmallMarginBegin sapUiSmallTopBottom" >
+                            <Title level="H3" text="Onward" />
+                            <!-- <Text text="Total Inward Data" /> -->
+                        </VBox>
+                        <ObjectStatus id="idoutwardcount" class="sapUiTinyMargin sapUiSmallMarginEnd" text="0" state="Success" />
+                    </HBox>
+                    <HBox alignItems="Center" justifyContent="SpaceBetween">
+                        <VBox class="sapUiSmallMarginBegin sapUiSmallTopBottom" >
+                            <Title level="H3" text="Onward" />
+                            <!-- <Text text="Total Inward Data" /> -->
+                        </VBox>
+                        <ObjectStatus id="idrgpnrgpcount" class="sapUiTinyMargin sapUiSmallMarginEnd" text="0" state="Success" />
+                    </HBox>
+                   
+                </CustomListItem>
+            </List>
+        </f:content>
+    </f:Card>
+
+	<!-- INWARD DONUT CARD for Current entry analitical -->
+	<f:Card class="sapUiMediumMargin" width="280px">
+		<f:header alignItems="Center">
+			<Title class="IdGateEntryTotalText1" text="INWARD: " />
 		</f:header>
 		<f:content>
-			<List
-				class="sapUiSmallMarginBottom" showSeparators="None" items="">
-				<CustomListItem>
-					<HBox alignItems="Center" justifyContent="SpaceBetween">
-						<VBox class="sapUiSmallMarginBegin sapUiSmallTopBottom" >
-							<Title level="H3" text="Inward" />
-							<!-- <Text text="Total Inward Data" /> -->
-						</VBox>
-						<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="100" state="Success" />
-					</HBox>
-					<HBox alignItems="Center" justifyContent="SpaceBetween">
-						<VBox class="sapUiSmallMarginBegin sapUiSmallTopBottom" >
-							<Title level="H3" text="Onward" />
-							<!-- <Text text="Total Inward Data" /> -->
-						</VBox>
-						<ObjectStatus class="sapUiTinyMargin sapUiSmallMarginEnd" text="100" state="Success" />
-					</HBox>
-					
-				</CustomListItem>
-			</List>
+			<FlexBox width="22rem" height="10rem" alignItems="Start" justifyContent="SpaceBetween">
+			<items>
+				<chart:InteractiveDonutChart id="donutChartinward" selectionChanged="onSelectionChanged" displayedSegments="4" press="press">
+					<chart:segments>
+						<!-- Js Code  -->
+					</chart:segments>
+				</chart:InteractiveDonutChart>
+			</items>
+		</FlexBox>
 		</f:content>
 	</f:Card>
 
-				<f:Card class="sapUiMediumMargin" width="300px">
-		
+		<f:Card class="sapUiMediumMargin" width="280px">
+		<f:header>
+			<Title  class="IdGateEntryTotalText1" text="OUTWARD: " />
+		</f:header>
 		<f:content>
-			<Text text="Three segments" class="sapUiSmallMargin">
-		<layoutData>
-			<layout:GridData span="XL12 L12 M12 S12"/>
-		</layoutData>
-	</Text>
-	<FlexBox width="20rem" height="10rem" alignItems="Start" justifyContent="SpaceBetween">
-		<items>
-			<chart:InteractiveDonutChart selectionChanged="onSelectionChanged">
-				<chart:segments>
-					<chart:InteractiveDonutChartSegment label="Implementation Phase" value="40.0" displayedValue="40.0%"/>
-					<chart:InteractiveDonutChartSegment label="Design Phase" value="21.5" displayedValue="21.5%"/>
-					<chart:InteractiveDonutChartSegment label="Test Phase" value="38.5" displayedValue="38.5%"/>
-				</chart:segments>
-			</chart:InteractiveDonutChart>
-
-				<chart:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15"
-									  succeedingPoint="89">
-					<chart:points>
-						<chart:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
-						<chart:InteractiveLineChartPoint value="12" label="June"/>
-						<chart:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
-						<chart:InteractiveLineChartPoint value="52" label="Aug"/>
-						<chart:InteractiveLineChartPoint value="69.9" label="Sep"/>
-						<chart:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
-					</chart:points>
-				</chart:InteractiveLineChart>
-		</items>
-
-		
-	</FlexBox>
+			<FlexBox width="22rem" height="10rem" alignItems="Start" justifyContent="SpaceBetween">
+			<items>
+				<chart:InteractiveDonutChart id="donutChartoutward" selectionChanged="onSelectionChanged" displayedSegments="4" press="press">
+					<chart:segments>
+						<!-- Js Code  -->
+					</chart:segments>
+				</chart:InteractiveDonutChart>
+			</items>
+		</FlexBox>
 		</f:content>
 	</f:Card>
 
-					<f:Card class="sapUiMediumMargin" width="300px">
-		
-		<f:content>
-			<Text text="Three segments" class="sapUiSmallMargin">
-		<layoutData>
-			<layout:GridData span="XL12 L12 M12 S12"/>
-		</layoutData>
-	</Text>
-	<FlexBox width="20rem" height="10rem" alignItems="Start" justifyContent="SpaceBetween">
-		<items>
-			<chart:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15"
-									  succeedingPoint="89">
-					<chart:points>
-						<chart:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
-						<chart:InteractiveLineChartPoint value="12" label="June"/>
-						<chart:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
-						<chart:InteractiveLineChartPoint value="52" label="Aug"/>
-						<chart:InteractiveLineChartPoint value="69.9" label="Sep"/>
-						<chart:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
-					</chart:points>
-				</chart:InteractiveLineChart>
-		</items>
+	<!-- <Button press="OnClick" text="Click"></Button> -->
 
-		
-	</FlexBox>
-		</f:content>
-	</f:Card>
-
-
-				
-			</Page>
+	</Page>
 	<!-- </App> -->
 </mvc:View>

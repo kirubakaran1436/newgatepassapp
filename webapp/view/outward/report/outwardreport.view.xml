@@ -1,0 +1,457 @@
+<mvc:View
+		xmlns:c="sap.ui.core"
+		controllerName="gatepassapp.controller.outward.report.outwardreport"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:u="sap.ui.unified"
+		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+		xmlns:t="sap.ui.table"
+		xmlns:f="sap.f"
+		xmlns:layout="sap.ui.layout"
+		height="100%">
+		<f:DynamicPage id="dynamicgeneralpurchase" class="sapUiTinyMarginTop sapUiTinyMarginBegin" preserveHeaderStateOnScroll="true" showFooter="true" fitContent="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle id="iddynamictit">
+					<f:heading>
+						<Title id ="idtitle" text="Outward Report"/>
+					</f:heading>
+					
+				
+				</f:DynamicPageTitle>
+			</f:title>
+
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader id="iddynamic" pinnable="true">
+						<FlexBox alignItems="Start" justifyContent="SpaceBetween" id="idflexbox">
+							<items>
+								<Panel id="idpanel" backgroundDesign="Transparent" class="sapUiNoContentPadding">
+									<content>
+										<layout:HorizontalLayout id="horizontal" allowWrapping="true">
+
+								<layout:VerticalLayout id="idselinward" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom sapUiTinyMarginTop customWidth" >
+								<Label tooltip="Outward Type" id ="idlblinty"  text="Select Outward Type" design="Bold" ></Label>
+								
+								<ComboBox  width="11rem" selectedItem="all"  selectedItemId="all01"   selectedKey="all"  items="{ path: 'OModel>/Samples'}" tooltip="Vehicle Type"  id="id_outward_combobox" enabled="true" >
+							  		<core:Item id="all01" key="{OModel>OutwardId}" text="{OModel>OutwardType}" />
+								</ComboBox>
+                        </layout:VerticalLayout>
+
+						<layout:VerticalLayout id="idpurdoc" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom sapUiTinyMarginTop customWidth">
+							<Label tooltip="Gate pass no" id ="idlblinrep"  text="Gate Pass No :" design="Bold" ></Label>
+							<Input  id="id_gate_pass_outward" placeholder="Select Gate Pass No"  width="12rem"  valueHelpRequest="OnGataPassNoFragment" showValueHelp="true" maxLength="10" value=""  class="sapUiSmallMarginBottom"/>
+						</layout:VerticalLayout>
+						
+						<layout:VerticalLayout visible="true" id="idplant" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom sapUiTinyMarginTop customWidth">
+							<Label tooltip="Plant" text="Plant :"  id="idlblplant" design="Bold" ></Label>
+							<Input required="true" width="11.5rem" value="" id="id_outward_plant_h" suggestionItemSelected="OnPlantSuggest" showSuggestion="true" placeholder="" showValueHelp="true" valueHelpRequest=".OnPlantFragOpen" />
+							<Input visible="false" required="true" width="11.5rem" value="" id="id_outward_plantname_h" suggestionItemSelected="OnPlantSuggest" showSuggestion="true" placeholder="" showValueHelp="true" />
+						</layout:VerticalLayout>
+
+						<layout:VerticalLayout visible="true" id="idenddt" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom sapUiTinyMarginTop customWidth">
+							<Label tooltip="DatePicker" text="Date :"  id="idlblenddt" design="Bold" required = "true"></Label>
+							<DateRangeSelection tooltip="DatePicker" id="id_outward_date_h"   width="11.5rem"    value=""/>
+						</layout:VerticalLayout>
+
+							<layout:VerticalLayout visible="true" id="idcrtst" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom sapUiTinyMarginTop customWidth">
+							<Label tooltip="Plant" text="Status :"  id="idlblst" design="Bold" ></Label>
+							<ComboBox selectedItem="all"  selectedItemId="all02"   selectedKey="all"    items="{ path: 'AModel>/Samples'}" tooltip="Status"  id="id_outward_rep_st_h" enabled="true" >
+									<core:Item  id="all02" key="{AModel>Status}" text="{AModel>Status}" />
+							</ComboBox>
+						</layout:VerticalLayout>
+
+
+
+				<Toolbar id="otbFooter" style="Clear">
+					<ToolbarSpacer/>
+						<Button press="OnGoItemPage" type="Emphasized" enabled="true" id="Go_Button" text="Go" tooltip="Execute" />
+					<ToolbarSpacer/>
+            	</Toolbar>
+					</layout:HorizontalLayout>
+					</content>
+					</Panel>
+					</items>
+					</FlexBox>
+				</f:DynamicPageHeader>
+			</f:header>
+
+			<f:content>
+				<t:Table
+						rows="{path:'GPEoutmodel>/datas', sorter: {path: 'GPEoutmodel>id'}}"  id="outwardreport_table_id"  selectionMode="None"
+						 enableSelectAll="false"
+						rowMode="Auto">
+					<t:extension>
+						<OverflowToolbar id="idovrflow" style="Clear">
+							<Title id = "ittabprod" text="Items"/>
+							<ToolbarSpacer/>
+							<ToolbarSpacer/>
+                   			 <Button id="_IDGenButton1" icon="sap-icon://excel-attachment" press="OnExportExl"/>
+						</OverflowToolbar>
+					</t:extension>
+					<t:columns>
+                     
+				<t:Column id="idcol1" tooltip="Document Delete Status" width="2rem">
+                    <Label id="idlb1" text="Document Delete Status"/>
+                    <t:template>
+                        <Button id="idbt1" enabled="true" visible="{= ${GPEoutmodel>Status} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Document has been Deleted"/> <!-- 0 -->
+                    </t:template>
+                </t:Column>
+ 
+                <t:Column id="idcol2"  tooltip="Line item delete status" width="2rem">
+                    <Label id="idlb2" text="Line Item Status"/>
+                    <t:template>
+                        <Button id="idbt2" enabled="true" visible="{= ${GPEoutmodel>ItemsStatus} === 'deleted' }" icon="sap-icon://delete" type="Reject" tooltip="Item has been Deleted"/> <!-- 0 -->
+                    </t:template>
+                </t:Column>
+
+					 	<t:Column width="8rem" id="idscolitno">
+							<Label id="idlblitno" text="Gate Entry No" />
+							<t:template>
+								<Text id="idtab_report_itno_i" text="{GPEoutmodel>Id}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="5rem" id="idcolgate_ent">
+							<Label id="idlblpurdocno" text="ItemNo" />
+							<t:template>
+								<Text id="idtab_report_gate_entry_i" text="{GPEoutmodel>ItemNo}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="4rem" >
+							<Label  text="Document Year" />
+							<t:template>
+								<Text  text="{GPEoutmodel>ReferenceDocumentYear}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="8rem" >
+							<Label  text="Document No" />
+							<t:template>
+								<Text  text="{GPEoutmodel>ReferenceDocument}" wrapping="false" />
+							</t:template>
+						</t:Column>
+                          
+
+						  <t:Column width="3rem" id="idcoldeldoc">
+							<Label id="idlbl_del_doc" text="Document Type" />
+							<t:template>
+								<Text id="idtab_report_del_i" text="{GPEoutmodel>ReferenceDocumentType}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						 <t:Column width="10rem" id="idcolplant">
+							<Label id="idlbl_plant" text="Product Code" />
+							<t:template>
+								<Text id="idtab_report_plant_i" text="{GPEoutmodel>ProductCode}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						 <t:Column width="8rem" id="idcolplname">
+							<Label id="idlblplname" text="Product Name" />
+							<t:template>
+								<Text id="idtab_report_plt_name_i" text="{GPEoutmodel>ProductName}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						 <t:Column width="3rem" id="idcolmat">
+							<Label id="idlblmat" text="ProductType" />
+							<t:template>
+								<Text id="idtab_report_mat_i" text="{GPEoutmodel>ProductType}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						 <t:Column width="4rem" id="idcolmatdoc">
+							<Label id="idlblmat_doc" text="UOM" />
+							<t:template>
+								<Text id="idtab_report_mat_doc_i" text="{GPEoutmodel>UOM}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						
+						 <t:Column width="5rem" id="idcolsupp_typ">
+							<Label id="idlblsup_typ" text="Open Quantity" />
+							<t:template>
+								<Text id="idtab_report_supp_typ_i" text="{GPEoutmodel>OpenQuantity}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						 <t:Column width="5rem" id="idcolsupp_code">
+							<Label id="idlblsup_code" text="Open Quantity UOM" />
+							<t:template>
+								<Text id="idtab_report_supp_cod_i" text="{GPEoutmodel>OpenQuantityUOM}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="5rem" id="idcolsupp_nam">
+							<Label id="idlblsup_nam" text="Quantity In GE" />
+							<t:template>
+								<Text id="idtab_report_supp_nam_i" text="{GPEoutmodel>QuantityInGE}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						
+						<t:Column width="6rem" id="idcoltran">
+							<Label id="idlbltran" text="Quantity In GE UOM"/>
+							<t:template>
+								<Text id="idtab_report_tran_i" text="{GPEoutmodel>QuantityInGEUOM}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="8rem" id="idcoltranname">
+							<Label id="idlbltranname" text="Plant Code"/>
+							<t:template>
+								<Text id="idtab_report_tran__name_i" text="{GPEoutmodel>PlantCode}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="8rem" id="idcoltranmod">
+							<Label id="idlbltranmod" text="Plant Name"/>
+							<t:template>
+								<Text id="idtab_report_tran__mod_i" text="{GPEoutmodel>PlantName}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="8rem" id="idcolcusttyp">
+							<Label id="idlblcusttyp" text="Supplier Code"/>
+							<t:template>
+								<Text id="idtab_report_cust_typ_i" text="{GPEoutmodel>SupplierCode}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="8rem" id="idcolcust">
+							<Label id="idlblcust" text="Supplier Name"/>
+							<t:template>
+								<Text id="idtab_report_cust_i" text="{GPEoutmodel>SupplierName}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="3rem" id="idcolcustname">
+							<Label id="idlblcustname" text="Supplier Type"/>
+							<t:template>
+								<Text id="idtab_report_cust_name_i" text="{GPEoutmodel>SupplierType}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+							<t:Column width="8rem" id="idcolvehtype">
+							<Label id="idlblvehtyp" text="Customer Code"/>
+							<t:template>
+								<Text id="idtab_report_veh_type" text="{GPEoutmodel>CustomerCode}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						
+							<t:Column width="10rem" id="idcolvehnum">
+							<Label id="idlblvehnum" text="Customer Name"/>
+							<t:template>
+								<Text id="idtab_report_veh_nam" text="{GPEoutmodel>CustomerName}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+							<t:Column width="3rem" id="idcolgtent">
+							<Label id="idlblgtentdt" text="Customer Type"/>
+							<t:template>
+								<Text id="idtab_report_gt_ent_dt" text="{GPEoutmodel>CustomerType}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+							<t:Column width="6rem" id="idcolgtentcreat">
+							<Label id="idlblggttim" text="EWay Bill"/>
+							<t:template>
+								<Text id="idtab_report_gt_ent_cret" text="{GPEoutmodel>EWayBill}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+
+						<t:Column width="8rem" id="idcolgtentdt">
+							<Label id="idlblggdt" text="Gate Entry Date"/>
+							<t:template>
+								<Text id="idtab_report_gt_ent_clos" text="{GPEoutmodel>GateEntryDate}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="6rem" id="idcolgtentdttim">
+							<Label id="idlblggdttim" text="Vehicle Type"/>
+							<t:template>
+								<Text id="idtab_report_gt_ent_clos_tim" text="{GPEoutmodel>VehicleType}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="6rem" id="idcolcrtby">
+							<Label id="idlblgcrtby" text="Vehicle No"/>
+							<t:template>
+								<Text id="idtab_report_crt_by_tim" text="{GPEoutmodel>VehicleNo}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						
+						<t:Column width="6rem" id="idcolgrwt">
+							<Label id="idlblgrwt" text="Invoice No"/>
+							<t:template>
+								<Text id="idtab_report_gr_wt" text="{GPEoutmodel>InvoiceNo}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="8rem" id="idcoltrwt">
+							<Label id="idlbltrwt" text="Invoice Date"/>
+							<t:template>
+								<Text id="idtab_report_tr_wt" text="{GPEoutmodel>InvoiceDate}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="8rem" id="idcolntwt">
+							<Label id="idlblntwt" text="Transporter"/>
+							<t:template>
+								<Text id="idtab_report_nt_wt" text="{GPEoutmodel>Transporter}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="8rem" id="idcolwtdt">
+							<Label id="idlblntwtdt" text="Transporter Mode"/>
+							<t:template>
+								<Text id="idtab_report_wt_dt" text="{GPEoutmodel>TransporterMode}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="8rem" id="idcolwttm">
+							<Label id="idlblntwttm" text="LRNo"/>
+							<t:template>
+								<Text id="idtab_report_wt_tm" text="{GPEoutmodel>LRNo}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="8rem" id="idcolnoofpack">
+							<Label id="idlblntnoofpack" text="LR Date"/>
+							<t:template>
+								<Text id="idtab_report_no_of_pack" text="{GPEoutmodel>LRDate}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="8rem" id="idcolrm">
+							<Label id="idlblnrm" text="Gross Weight"/>
+							<t:template>
+								<Text id="idtab_report_remark" text="{GPEoutmodel>GrossWeight}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						
+						<t:Column width="8rem" id="idcolgtentst">
+							<Label id="idlblgtst" text="Weight Time"/>
+							<t:template>
+								<Text id="idtab_report_gt_ent_stat" text="{GPEoutmodel>WeightTime}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+							<t:Column width="8rem" id="idcolvemcit">
+							<Label id="idlblvenct" text="Weight Date"/>
+							<t:template>
+								<Text id="idtab_report_ven_cit" text="{GPEoutmodel>WeightDate}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+							<t:Column width="8rem" id="idcolcustcit">
+							<Label id="idlblcustcit" text="No Of Packages"/>
+							<t:template>
+								<Text id="idtab_report_cust_cit" text="{GPEoutmodel>NoOfPackages" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						
+							<t:Column width="8rem" id="idcoltrcit">
+							<Label id="idlbltrct" text="Remarks"/>
+							<t:template>
+								<Text id="idtab_report_tr_cit" text="{GPEoutmodel>Remarks}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+
+
+						<t:Column width="8rem" id="idcolmat_doc_qty">
+							<Label id="idlblmtdocqty" text="Approve Status"/>
+							<t:template>
+								<Text id="idtab_report_mat_doc_qty" text="{GPEoutmodel>ApproveStatus}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						<t:Column width="8rem" id="idcolmat_qty">
+							<Label id="idlblmtopenqty" text="Billing Document"/>
+							<t:template>
+								<Text id="idtab_report_mat_doc_qty_open" text="{GPEoutmodel>BillingDocument}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+						
+						<t:Column width="8rem" id="idcolmat_qty_ge">
+							<Label id="idlblmtopenqtyge" text="Delivery Document No"/>
+							<t:template>
+								<Text id="idtab_report_mat_doc_qty_ge" text="{GPEoutmodel>DeliveryDocumentNo}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="8rem" id="idcolmat_doc_year">
+							<Label id="idlblmtopendoc" text="Sales Return No"/>
+							<t:template>
+								<Text id="idtab_report_mat_doc_year" text="{GPEoutmodel>SalesReturnNo}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+
+
+						<t:Column width="3rem" id="idcolmat_rec">
+							<Label id="idlblmtrec" text="Screen Code"/>
+							<t:template>
+								<Text id="idtab_report_qty" text="{GPEoutmodel>ScreenCode}" wrapping="false" />
+							</t:template>
+						</t:Column>
+
+						<t:Column width="5rem" id="idcolmatst">
+							<Label id="idlblmtst" text="Status"/>
+							<t:template>
+								<Text id="idtab_report_st" text="{GPEoutmodel>Status}" wrapping="false" />
+							</t:template>
+						</t:Column>
+												
+					
+									
+						
+					</t:columns>
+				</t:Table>
+			</f:content>
+
+		</f:DynamicPage>
+
+
+</mvc:View>

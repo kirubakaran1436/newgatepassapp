@@ -1,0 +1,16 @@
+{
+    "contacts":[
+       {
+          "name":"Barbara",
+          "phone":"873"
+       },
+       {
+          "name":"Gerry",
+          "phone":"734"
+       },
+       {
+          "name":"Susan",
+          "phone":"275"
+       }
+    ]
+ }

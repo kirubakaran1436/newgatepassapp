@@ -1,0 +1,771 @@
+<mvc:View
+    xmlns:c="sap.ui.core"
+    controllerName="gatepassapp.controller.inward.salesreturn.createsalesreturn"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    height="100%"
+>
+    <f:DynamicPage
+        id="dynamicPageIdsr"
+        class="sapUiTinyMarginTop sapUiTinyMarginBegin"
+        preserveHeaderStateOnScroll="true"
+        showFooter="true"
+        fitContent="true"
+    >
+        <!-- DynamicPage Title -->
+        <f:title>
+            <f:DynamicPageTitle id="iddynamicpage">
+                <f:heading>
+                    <Title
+                        id="iddynaicpagetitle"
+                        text="Sales Return"
+                    />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- DynamicPage Header -->
+
+        <f:header>
+            <f:DynamicPageHeader
+                id="iddynamicSalesReturn"
+                pinnable="true"
+            >
+                <FlexBox
+                    alignItems="Start"
+                    justifyContent="SpaceBetween"
+                    id="idflexboxSR"
+                >
+                    <items>
+                        <Panel
+                            id="idSRpanel"
+                            backgroundDesign="Transparent"
+                            class="sapUiNoContentPadding"
+                        >
+                            <content>
+                                <layout:HorizontalLayout
+                                    id="idSRhorizontal"
+                                    allowWrapping="true"
+                                >
+                                    <!-- ____________________________________________________ -->
+
+                                    <layout:VerticalLayout
+                                        visible="false"
+                                        id="idsalretdoc"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            id="ID01"
+                                            text="Sales Return Doc No"
+                                        />
+                                        <Input
+                                            enabled="false"
+                                            id="id_gateentry_h"
+                                            placeholder="ID"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <!-- ____________________________________________________ -->
+
+                                    <layout:VerticalLayout
+                                        id="idsrddvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            id="idlblsrdd"
+                                            required="true"
+                                            text="Customer Return :"
+                                            design="Bold"
+                                        />
+                                        <!-- <Input
+                                            tooltip="Customer Return"
+                                            required="true"
+                                            id="id_ret_sale_document_h"
+                                            suggestionItemSelected="OnCustomReturnSuggest"
+                                            showSuggestion="true"
+                                            suggestionItems="{path:'YY1_ZGE_INWARD_SR_HEAD_CDS>/YY1_ZGE_INWARD_SR_HEAD',sorter:[{path:'YY1_ZGE_INWARD_SR_HEAD_CDS>CustomerReturn',descending:true}]}"
+                                            enabled="true"
+                                            showValueHelp="true"
+                                            valueHelpRequest=".OnPoDocFragOpen"
+                                        >
+                                            <suggestionItems>
+                                                <core:ListItem
+                                                    key="{YY1_ZGE_INWARD_SR_HEAD_CDS>CustomerReturn}"
+                                                    text="{YY1_ZGE_INWARD_SR_HEAD_CDS>CustomerReturn}"
+                                                    additionalText="{YY1_ZGE_INWARD_SR_HEAD_CDS>CustomerReturnType}"
+                                                />
+                                            </suggestionItems>
+                                        </Input> -->
+
+
+                                          <MultiInput id="id_ret_sale_document_h" tokenUpdate=".ontokenupdate" suggestionItemSelected="OnCustomReturnSuggest"  width="15rem" valueHelpRequest=".onValueHelpRequested" suggestionRows="{
+                                                            path: 'YY1_ZGE_INWARD_SR_HEAD_CDS>/YY1_ZGE_INWARD_SR_HEAD',
+                                                            length: 10
+                                                        }">
+                                                        <suggestionColumns>
+                                                            <Column>
+                                                                <Label text="Customer Return"/>
+                                                            </Column>
+                                                            <Column>
+                                                                <Label text="Customer Name"/>
+                                                            </Column>
+                                                        </suggestionColumns>
+                                                        <suggestionRows>
+                                                            <ColumnListItem>
+                                                                <Label text="{YY1_ZGE_INWARD_SR_HEAD_CDS>CustomerReturn}" />
+                                                                <Label text="{YY1_ZGE_INWARD_SR_HEAD_CDS>CustomerName}" />
+                                                            </ColumnListItem>
+                                                        </suggestionRows>
+                                                    </MultiInput>
+
+
+                                        <!-- <MultiInput
+                                        id="multiInputWithSuggestions"
+                                        valueHelpRequest=".onValueHelpRequested"
+                                        width="60%"
+                                        suggestionRows="{
+                                            path: 'YY1_ZGE_INWARD_SR_HEAD_CDS>/YY1_ZGE_INWARD_SR_HEAD',
+                                            length: 10
+                                        }">
+                                        <suggestionColumns>
+                                            <Column>
+                                                <Label text="Customer Return"/>
+                                            </Column>
+                                            <Column>
+                                                <Label text="Customer Name"/>
+                                            </Column>
+                                        </suggestionColumns>
+                                        <suggestionRows>
+                                            <ColumnListItem>
+                                                <Label text="{CustomerReturn}" />
+                                                <Label text="{CustomerName}" />
+                                            </ColumnListItem>
+                                        </suggestionRows>
+                                    </MultiInput> -->
+
+                                    </layout:VerticalLayout>
+
+                                    <!-- ____________________________________________________ -->
+
+                                    <!-- ____________________________________________________ -->
+
+                                    <layout:VerticalLayout visible="false"
+                                        id="idcustrettyp"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            text="Customer Return Type :"
+                                            id="idcustret"
+                                            design="Bold"
+                                        />
+                                        <Input
+                                            tooltip="Customer Return Type"
+                                            editable="false"
+                                            id="id_del_ret_type_h"
+                                            enabled="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        visible="false"
+                                        id="idSRplant"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            text="Plant Code:"
+                                            id="idSRlblplant"
+                                            design="Bold"
+                                        />
+                                        <Input
+                                            tooltip="Plant Code"
+                                            id="id_sr_plant_h"
+                                            editable="false"
+                                            enabled="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                    visible="false"
+                                        id="idSRplantname"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            text="Plant Name :"
+                                            id="idSRlblplantname"
+                                            design="Bold"
+                                        />
+                                        <Input
+                                            tooltip="Plant Name"
+                                            id="id_sr_plant_name_h"
+                                            editable="false"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                    visible="false"
+                                        id="idsrcnvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            id="idlblCustcode"
+                                            text="Customer Code :"
+                                            design="Bold"
+                                        />
+                                        <Input
+                                            tooltip="Customer Code"
+                                            editable="false"
+                                            id="id_sr_cust_code_h"
+                                            enabled="true"
+                                            required="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                    visible="false"
+                                        id="idsrcvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            id="idlblcustomername"
+                                            text="Customer Name :"
+                                            design="Bold"
+                                        />
+                                        <Input
+                                            tooltip="Customer Name"
+                                            editable="false"
+                                            id="id_sr_cust_name_h"
+                                            enabled="true"
+                                            required="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        id="idsrgatedatevl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            id="idsrlblgatedate"
+                                            text="Gate Entry Date :"
+                                            design="Bold"
+                                        />
+                                        <!-- <DatePicker  tooltip="Gate Entry Date"  id="id_sr_gate_date" placeholder="DD-MM-YYYY" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" change="DatePress" /> -->
+                                        <DatePicker
+                                            id="id_sr_gate_date"
+                                            placeholder="DD-MM-YYYY"
+                                            valueFormat="dd-MM-yyyy"
+                                            value=""
+                                            displayFormat="dd-MM-yyyy"
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        id="idvehsrvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            required="true"
+                                            id="idlblsrvno"
+                                            text="Vehicle No :"
+                                            design="Bold"
+                                        />
+                                        <Input
+                                            required="true"
+                                            tooltip="Vehicle No"
+                                            id="id_sr_vehno_h"
+                                            enabled="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        id="idvehtypesrvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            id="idlblsrvectype"
+                                            text="Vehicle Type :"
+                                            design="Bold"
+                                        />
+                                        <!-- <ComboBox tooltip="Vehicle Type"  id="id_sr_vehicle_type_h" enabled="true"  /> -->
+
+                                        <ComboBox
+                                            items="{ path: 'JModel>/Samples'}"
+                                            tooltip="Vehicle Type"
+                                            id="id_sr_vehicle_type_h"
+                                            enabled="true"
+                                        >
+                                            <core:Item
+                                                key="{JModel>VehicleID}"
+                                                text="{JModel>VehicleName}"
+                                            />
+                                            <core:Item
+                                                key="{JModel>VehicleID}"
+                                                text="{JModel>VehicleName}"
+                                            />
+                                            <core:Item
+                                                key="{JModel>VehicleID}"
+                                                text="{JModel>VehicleName}"
+                                            />
+                                        </ComboBox>
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        id="idinvoicedatesrvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            required="true"
+                                            id="idlblsrnoofpack"
+                                            text="No Of Packages :"
+                                            design="Bold"
+                                        />
+                                        <Input
+                                            required="true"
+                                            id="id_sr_no_of_package_h"
+                                            enabled="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        id="idtransportsrvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            required="true"
+                                            tooltip="Transporter"
+                                            id="idlblsrtransport"
+                                            text="Transporter :"
+                                            design="Bold"
+                                        />
+                                        <Input
+                                            required="true"
+                                            tooltip="Transporter"
+                                            id="id_sr_transporter_h"
+                                            enabled="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        id="idvehtrmodesrvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            id="idlblsrtransportmode"
+                                            text="Transporter Mode :"
+                                            design="Bold"
+                                        />
+                                        <ComboBox
+                                            items="{ path: 'TModel>/Samples'}"
+                                            tooltip="Transporter Mode"
+                                            id="id_sr_transporter_mode_h"
+                                            enabled="true"
+                                        >
+                                            <core:Item
+                                                key="{TModel>TransportID}"
+                                                text="{TModel>TransportType}"
+                                            />
+                                            <core:Item
+                                                key="{TModel>TransportID}"
+                                                text="{TModel>TransportType}"
+                                            />
+                                            <core:Item
+                                                key="{TModel>TransportID}"
+                                                text="{TModel>TransportType}"
+                                            />
+                                        </ComboBox>
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        id="idgrwtsrvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            required="true"
+                                            id="idsrlgrwt"
+                                            text="Gross Weight :"
+                                            design="Bold"
+                                        />
+                                        <Input
+                                            required="true"
+                                            tooltip="Gross Weight"
+                                            id="id_sr_gross_wt_h"
+                                            enabled="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        id="idgrdttimesrvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom customWidth"
+                                    >
+                                        <Label
+                                            id="idlsrwtdttime"
+                                            text="Weight Time &amp; Date :"
+                                            design="Bold"
+                                        />
+                                        <DateTimePicker
+                                            tooltip="Weight Time &amp; Date"
+                                            id="id_sr_wt_dt_time_h"
+                                            enabled="true"
+                                            required="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+
+                                    <layout:VerticalLayout
+                                        id="idremarksrvl"
+                                        class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginBottom "
+                                    >
+                                        <Label
+                                            id="idlbsrremark"
+                                            text="Remarks :"
+                                            design="Bold"
+                                        />
+                                        <TextArea
+                                            tooltip="Remarks"
+                                            id="id_sr_remark_h"
+                                            enabled="true"
+                                            required="true"
+                                            value=""
+                                        />
+                                    </layout:VerticalLayout>
+                                </layout:HorizontalLayout>
+                            </content>
+                        </Panel>
+                    </items>
+                </FlexBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <t:Table
+                rows="{/YY1_ZGE_INWARD_SR_ITEM}"
+                id="salesreturn_table_id"
+                selectionMode="Multi"
+                enableSelectAll="false"
+                rowMode="Auto"
+            >
+                <t:extension>
+                    <OverflowToolbar
+                        id="idsrovrflow"
+                        style="Clear"
+                    >
+                        <Title
+                            id="idsrttabprod"
+                            text="Sales Return Items"
+                        />
+                    </OverflowToolbar>
+                </t:extension>
+                <t:columns>
+                    <!-- <t:Column width="11rem" id="idcolchk">
+							<Label id="idlblchk" text="Check Box" />
+							<t:template>
+								<Text id="idchk_i" text="{}" wrapping="false" />
+							</t:template>
+						</t:Column> -->
+
+                    <t:Column
+                        width="11rem"
+                        id="idsrcolitno"
+                    >
+                        <Label
+                            id="idsrlblitno"
+                            text="Item No"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtab_itno_i"
+                                editable="false"
+                                value="{CustomerReturnItem}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column
+                        width="11rem"
+                        id="idsrcol"
+                    >
+                        <Label
+                            id="idsrlblpurdocno"
+                            text="Document No"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrsrtabpurdocno_i"
+                                editable="false"
+                                value="{CustomerReturn}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column
+                        width="11rem"
+                        id="idsrcolmatcod"
+                    >
+                        <Label
+                            id="idsrlblmatcode"
+                            text="Product"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabmatcode_i"
+                                editable="false"
+                                value="{Product}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column
+                        width="11rem"
+                        id="idsrcolmatname"
+                    >
+                        <Label
+                            id="idsrlblmatname"
+                            text="Product Name"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabmatname_i"
+                                editable="false"
+                                value="{ProductName}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column
+                        width=".1rem"
+                        id="idsrcolmattype"
+                    >
+                        <Label
+                            id="idsrlblmattype"
+                            text="Product Type"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabmattype_i"
+                                editable="false"
+                                value="{ProductGroup}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column
+                        width="11rem"
+                        id="idsrcolpurordqty"
+                    >
+                        <Label
+                            id="idsrlblpurordqty"
+                            text="Order Quantity"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabpurordqty_i"
+                                editable="false"
+                                value="{OrderQuantity}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <t:Column
+                        width="11rem"
+                        id="idsrcoluom"
+                    >
+                        <Label
+                            id="idsrlbluom"
+                            text="UOM"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabuom_i"
+                                editable="false"
+                                value="{BaseUnit}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <!-- pending quantity -->
+
+                    <t:Column
+                        width="11rem"
+                        id="idsrcolopenqty"
+                    >
+                        <Label
+                            id="idsrlbloprnqty"
+                            text="Open Quantity"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabopenqty_i"
+                                editable="false"
+                                value="{parts:[{path:'OrderQuantity'},{path:'CustomerReturnItem'},{path:'CustomerReturn'}  ], formatter:'.OnPendingQtyCal'}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+                    <!-- // Quantity to post  -->
+                    <t:Column
+                        width="11rem"
+                        id="idsrcolopenqtyge"
+                    >
+                        <Label
+                            id="idsrlbloprnqtyuomqtyge"
+                            text="Quantity in GE"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabopqtyge_i"
+                                change="Quantity_to_Post_InputyLine"
+                                editable="{parts:[{path:'OrderQuantity'},{path:'CustomerReturnItem'},{path:'CustomerReturn'}  ], formatter:'.OnQuantityinGECal'}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+
+                      <t:Column
+                        width="11rem"
+                        id="idsrcolplant"
+                    >
+                        <Label
+                            id="idsrlblplant"
+                            text="Plant"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabplant_i"
+                                editable="false"
+                                value="{Plant}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+
+
+                         <t:Column
+                        width="11rem"
+                        id="idsrcolplantname"
+                    >
+                        <Label
+                            id="idsrlblplantname"
+                            text="Plant Name"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabplantname_i"
+                                editable="false"
+                                value="{PlantName}"
+                            />
+                        </t:template>
+                    </t:Column>
+                        
+
+
+                         <t:Column
+                        width="11rem"
+                        id="idsrcolcustomercode"
+                    >
+                        <Label
+                            id="idsrlblcustomercode"
+                            text="Customer Code"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabcustomercode_i"
+                                editable="false"
+                                 value="{parts:[{path:'CustomerReturn'}], formatter:'.OnCustomerCodeFetch'}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+
+                         <t:Column
+                        width="11rem"
+                        id="idsrcolcustomername"
+                    >
+                        <Label
+                            id="idsrlblcustomername"
+                            text="Customer Name"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabcustomername_i"
+                                editable="false"
+                                value="{parts:[{path:'CustomerReturn'}], formatter:'.OnCustomerNameFetch'}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+
+
+                    
+
+                         <t:Column
+                        width="11rem"
+                        id="idsrcolcustomerreturntype"
+                    >
+                        <Label
+                            id="idsrlblcustomereturntype"
+                            text="Customer Return Type"
+                        />
+                        <t:template>
+                            <Input
+                                id="idsrtabcustomerreturntype_i"
+                                editable="false"
+                                value="{parts:[{path:'CustomerReturn'}], formatter:'.OnCustomerReturnTypeFetch'}"
+                            />
+                        </t:template>
+                    </t:Column>
+
+
+
+
+                </t:columns>
+            </t:Table>
+        </f:content>
+        <!-- DynamicPage Footer -->
+        <f:footer>
+            <OverflowToolbar>
+                <Button
+                    icon="sap-icon://message-popup"
+                    text="{/messagesLength}"
+                    type="Emphasized"
+                    press="onMessageButtonPress"
+                    visible="{= !!${/messagesLength}}"
+                />
+                <ToolbarSpacer />
+                <Button enabled="false"
+                    type="Accept"
+                    press="OnSubmit"
+                    id="Final_Save_Button"
+                    text="Save"
+                />
+                <Button
+                    type="Reject"
+                    press="OnCreateCancel"
+                    id="Final_Cancel_Button"
+                    text="Cancel"
+                />
+                <Button
+                    type="Accept"
+                    press="OnSoChangeDocNoFragOpen"
+                    id="Final_Edit_Button"
+                    text="Change / Delete"
+                />
+                <!-- <Button type="Reject" press="OnReject" id="Final_Display_Button" text="OnDisplayPage"/>
+					<Button id="Final_Back_Button" enabled="true" type="Default" text="Back" press="OnBack"/> -->
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

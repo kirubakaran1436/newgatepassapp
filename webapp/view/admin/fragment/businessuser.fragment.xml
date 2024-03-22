@@ -1,0 +1,25 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="BusinessUser_dialog" noDataText="No User Found" title="Select Business User" search=".OnBusinessUserSearch" confirm=".OnBusinessUserSelect"
+		contentWidth="50%" cancel=".OnBusinessUserSelect" items="{path:'/YY1_CTPL_Business_User',sorter:[{path:'UserID',descending:false}]}">
+		<ColumnListItem id="BusinessUser_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text id="PersonFullName" text="{PersonFullName}"/>
+				<Text id="UserID" text="{UserID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column  >
+				<header>
+					<Text text="Business User"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="User Id"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

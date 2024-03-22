@@ -29,6 +29,76 @@ server:
       afterMiddleware: compression
       configuration:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        backend:
+          - path: /sap
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_SUPPLIER_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_CUSTOMER_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_PRODUCT_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZRGP_NRGP_HEAD_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_INWARD_SR_HEAD_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_INWARD_SR_ITEM_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZINWARD_HEAD_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_OUTWARD_OD_HEAD_CDS
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_OUTWARD_OD_ITEM_CDS
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_INWARD_PO_HEAD_CDS
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_INWARD_PO_ITEM_CDS
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_OUTWARD_BD_HEAD_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_OUTWARD_BD_ITEM_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_INWARD_MD_ITEM_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_INWARD_MD_HEAD_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZOUTWARD_HEAD_CDS/
+            url: https://my401677-api.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_SCREEN_ASSIGN_CDS/
+            url: https://my401677.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_GATEPASS_USER_TABL_CDS/
+            url: https://my401677.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_INWARD_GATEPASS_CDS/
+            url: https://my401677.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_GATEPASS_ATU_CDS/
+            url: https://my401677.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
+          - path: /sap/opu/odata/sap/YY1_ZGE_OUTWARD_GATEPASS_CDS
+            url: https://my401677.s4hana.cloud.sap
+            destination: my401677_CTPL_Basic_Auth
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:

@@ -1,0 +1,33 @@
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="DelDocHead_dialog" noDataText="No Delivery Document Found" title="Delivery Document" search=".OnStoPoDocHeadSearch" confirm=".OnStoPoDoHeadSelect"
+		contentWidth="50%" cancel=".OnStoPoDoHeadSelect" items="{YY1_ZGE_OUTWARD_OD_HEAD_CDS>/YY1_ZGE_OUTWARD_OD_HEAD}">
+		<ColumnListItem id="DelDoc_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text id="PoOrder1" text="{YY1_ZGE_OUTWARD_OD_HEAD_CDS>OutboundDelivery}"/>
+               <Text id="PoOrder2" text="{YY1_ZGE_OUTWARD_OD_HEAD_CDS>ShipToParty}"/>
+				<Text id="PoOrder5" text="{YY1_ZGE_OUTWARD_OD_HEAD_CDS>CustomerName}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column id="SalesOrder2" >
+				<header>
+					<Text id="SalesOrder3" text="Outbound Delivery"/>
+				</header>
+			</Column>
+			<Column id="SoldToParty2" >
+				<header>
+					<Text id="SoldToParty3" text="Ship To Party"/>
+				</header>
+			</Column>
+
+			<Column id="CustomerName5" >
+				<header>
+					<Text id="CustomerName4" text="Customer Name"/>
+				</header>
+			</Column>
+
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>
+

@@ -1,0 +1,27 @@
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="STOGateEntryDocHead01_dialog" noDataText="No Data Found" title="Select Document No" search=".OnSTOGateEntryDocSearch" confirm=".OnSTOGateEntryDocSelect"
+		contentWidth="50%" cancel=".OnSTOGateEntryDocSelect" items="{path:'YY1_ZGE_OUTWARD_GATEPASS_CDS>/YY1_ZGE_OUTWARD_GATEPASS', sorter: { path: 'YY1_ZGE_OUTWARD_GATEPASS_CDS>Id', descending: true },filters : [ { path : 'ScreenCode', operator : 'EQ', value1 : 'GE8'} ]}">
+		<ColumnListItem id="DOCSTOidcolstochange11" vAlign="Middle">
+			<cells>
+				<Text text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>Id}"/>
+               <Text text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>SAP_CreatedDateTime}"/>
+				<Text text="{YY1_ZGE_OUTWARD_GATEPASS_CDS>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column>
+				<header>
+					<Text text="Document No"/>
+				</header>
+			</Column>
+			<Column > 
+				<header>
+					<Text text="Created Date "/>
+				</header>
+			</Column>
+	
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>
+

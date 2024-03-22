@@ -13,6 +13,11 @@
     font-size: 1rem;
 }
 
+.IdGateEntryTotalText1{
+    font-size: 1rem;
+    margin-left: 7.4rem;
+}
+
 .IdGateEntryTotalNo{
     font-size: 1.5rem;
 }
@@ -30,3 +35,54 @@
 .masterStyleAfter{
     width: 20.8rem;
 }
+
+.sapUiGlobalBackgroundColor .sapUiGlobalBackgroundColor:not(.sapUiGlobalBackgroundColorForce), .sapMGlobalBackgroundColor .sapUiGlobalBackgroundColor:not(.sapUiGlobalBackgroundColorForce) {
+    background-color: rgb(220, 220, 220);
+    background-image: none;
+}
+
+.IconTabDatas{
+    font-size: 1rem;
+}
+
+/* .sapMTB.sapMTBStandard {
+    border-bottom: none;
+} */
+
+[data-iconcolor="green"] {
+    color: green;
+}
+
+[data-iconcolor="yellow"] {
+    color: yellow;
+}
+
+.LabelTextAlign{
+    margin-top: 7px;
+}
+
+.sapUiForm .sapUiFormTitle {
+    border-width: 0px;
+    border-color: #a8b3bd;
+    font-family: "72-Bold", "72-Boldfull", "72", "72full", Arial, Helvetica, sans-serif;
+    height: 2.75rem;
+    line-height: 2.75rem;
+}
+
+.TableIDD.sapMLIBShowSeparator>td {
+    border-top: 0px solid #e5e5e5;
+}
+
+ .TableIDD.sapMListShowSeparatorsAll .sapMLIBShowSeparator:last-child>td:not(.sapMListTblDummyCell), .sapMListShowSeparatorsAll .sapMListTblSubRow:last-child>td:not(.sapMListTblDummyCell) {
+    border-bottom: 0px solid #a8b3bd;
+}
+
+.TableIDD.sapMTable {
+    border: none; /* Remove the border */
+}
+
+.TablePadding{
+    padding-left: 2rem;
+}
+
+

@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="idreportinwardgenpur" noDataText="No Items Found" title="Select Items" search=".OnGataPassNoSearch" confirm=".OnGataPassNoSelect" draggable="true" 
+		contentWidth="50%" cancel=".OnGataPassNoSelect" items="{path:'YY1_ZGE_INWARD_GATEPASS_CDS>/YY1_ZGE_INWARD_GATEPASS',sorter:[{path:'Id',descending:true}],filters : [ { path : 'ScreenCode', operator : 'EQ', value1 : 'GE21'} ]}">
+		<ColumnListItem id="_IDGenColumnListItem1_subcontracting" vAlign="Middle">
+			<cells>
+				<Text text="{YY1_ZGE_INWARD_GATEPASS_CDS>Id}"/>
+				<Text text="{YY1_ZGE_INWARD_GATEPASS_CDS>SAP_CreatedDateTime}"/>
+				<Text visible="true" text="{YY1_ZGE_INWARD_GATEPASS_CDS>SAP_UUID}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column >
+				<header>
+					<Text text="Gate Entry Number"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Created Date"/>
+				</header>
+			</Column>
+			<Column visible="true" >
+				<header>
+					<Text text="SAP UUID"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

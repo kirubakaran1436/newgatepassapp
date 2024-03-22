@@ -1,0 +1,33 @@
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="MatDocHead_dialog" noDataText="No Material Document Found" title="Material Document" search=".OnSubMatDoccHeadSearch" confirm=".OnSubMatDocHeadSelect"
+		contentWidth="50%" cancel=".OnSubMatDocHeadSelect" items="{JModel>/data}">
+		<ColumnListItem id="DelDoc_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text text="{JModel>MaterialDocument}"/>
+               	<Text text="{JModel>MaterialDocumentYear}"/>
+				<Text text="{JModel>GoodsMovementType}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column>
+				<header>
+					<Text text="Material Document No"/>
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Year"/>
+				</header>
+			</Column>
+
+			<Column>
+				<header>
+					<Text text="Moment Type"/>
+				</header>
+			</Column>
+
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>
+

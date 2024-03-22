@@ -1,0 +1,67 @@
+<mvc:View
+		xmlns:c="sap.ui.core"
+		controllerName="gatepassapp.controller.vehicledetails.vehicledetails"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:u="sap.ui.unified"
+		xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+		xmlns:t="sap.ui.table"
+		xmlns:f="sap.f"
+		xmlns:layout="sap.ui.layout"
+		height="100%">
+		<f:DynamicPage id="dynamicgeneralpurchase" class="sapUiTinyMarginTop sapUiTinyMarginBegin" preserveHeaderStateOnScroll="true" showFooter="true" fitContent="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle id="iddynamictit">
+					<f:heading>
+						<Title id ="idtitle" text="Vehicle Detail's"/>
+					</f:heading>
+					
+					<f:content>
+						<OverflowToolbar>
+							<GenericTag visible="false" id="id_gateentrystatus" text="" status="Information" design="StatusIconHidden">
+							</GenericTag>
+						</OverflowToolbar>
+					</f:content>
+				</f:DynamicPageTitle>
+			</f:title>
+
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader id="iddynamic" pinnable="true">
+				<FlexBox alignItems="Start" justifyContent="SpaceBetween" id="idflexbox">
+				<items>
+				<Panel id="idpanel" backgroundDesign="Transparent" class="sapUiNoContentPadding">
+				<content>
+					<layout:HorizontalLayout id="horizontal" allowWrapping="true">
+
+						<layout:VerticalLayout id="idpurdoc" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom sapUiTinyMarginTop customWidth">
+							<Label tooltip="Gate pass no" id ="idlblinrep"  text="Gate Pass No :" design="Bold" ></Label>
+							<Input  id="id_gate_pass_no" placeholder="Select Gate Pass No"  width="11.5rem" change="OnChangeDatas" valueHelpRequest=".OnGataPassNoFragment" showValueHelp="true" maxLength="10" value=""  class="sapUiSmallMarginBottom"/>
+						</layout:VerticalLayout>
+
+						<layout:VerticalLayout visible="false" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginBottom sapUiTinyMarginTop customWidth">
+							<Label tooltip="SAP_UUID"  text="SAP_UUID:" design="Bold" ></Label>
+							<Input id="id_sap_uuid" placeholder="Select SAP_UUID"  width="11.5rem" />
+						</layout:VerticalLayout>
+					
+					</layout:HorizontalLayout>
+				</content>
+								</Panel>
+							</items>
+						</FlexBox>
+				</f:DynamicPageHeader>
+			</f:header>
+			
+
+			<f:footer>
+				<OverflowToolbar>
+					<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Emphasized" press="onMessageButtonPress" visible="{= !!${/messagesLength}}"/>
+					<ToolbarSpacer/>
+					<Button type="Accept" press="OnClose" id="id_close" text="Create"/>
+					<Button type="Reject" press="OnCancel" id="id_cancel" text="Cancel"/>
+				</OverflowToolbar>
+			</f:footer>
+
+		</f:DynamicPage>
+</mvc:View>

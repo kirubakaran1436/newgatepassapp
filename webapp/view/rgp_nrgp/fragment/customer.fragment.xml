@@ -1,0 +1,31 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="Customer_dialog" noDataText="No Customer Found" title="Select Customer" search=".OnCustomerSearch" confirm=".OnCustomerSelect"
+		contentWidth="50%" cancel=".OnCustomerSelect" items="{path:'YY1_ZGE_CUSTOMER_CDS>/YY1_ZGE_CUSTOMER',sorter:[{path:'Customer',descending:false}]}">
+		<ColumnListItem id="Customer_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text id="Customer" text="{YY1_ZGE_CUSTOMER_CDS>Customer}"/>
+				<Text id="CustomerName" text="{YY1_ZGE_CUSTOMER_CDS>CustomerName}"/>
+				<Text id="CustomerType" text="{YY1_ZGE_CUSTOMER_CDS>CustomerAccountGroup}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column  >
+				<header>
+					<Text text="Customer"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Customer Name"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Customer Type"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

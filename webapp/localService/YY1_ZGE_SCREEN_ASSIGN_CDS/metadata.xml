@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="YY1_ZGE_SCREEN_ASSIGN_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="P_Scbo_UserType" sap:label="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="description" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+            </EntityType>
+            <EntityType Name="YY1_CHILD_SCREEN_ASSIGN_ZGE_SCType" sap:label="CHILD_SCREEN_ASSIGN" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="UserId" Type="Edm.String" MaxLength="20" sap:label="User Id"/>
+                <Property Name="UserName" Type="Edm.String" MaxLength="80" sap:label="User Name"/>
+                <Property Name="ParentScreenCode" Type="Edm.String" MaxLength="20" sap:label="Parent Screen Code"/>
+                <Property Name="ParentScreenName" Type="Edm.String" MaxLength="80" sap:label="Parent Screen Name"/>
+                <Property Name="ChildScreenCode" Type="Edm.String" MaxLength="20" sap:label="Child Screen Code"/>
+                <Property Name="ChildScreenName" Type="Edm.String" MaxLength="80" sap:label="Child Screen Name"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <NavigationProperty Name="to_ZGE_SCREEN_ASSIGN" Relationship="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_C19706E8A17C4FB4C215BD5F033B2053" FromRole="ToRole_assoc_C19706E8A17C4FB4C215BD5F033B2053" ToRole="FromRole_assoc_C19706E8A17C4FB4C215BD5F033B2053"/>
+            </EntityType>
+            <EntityType Name="YY1_MANDATORY_FIELDS_ZGE_SCREEType" sap:label="MANDATORY_FIELDS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="UserId" Type="Edm.String" MaxLength="20" sap:label="User Id"/>
+                <Property Name="UserName" Type="Edm.String" MaxLength="80" sap:label="User Name"/>
+                <Property Name="ParentScreenCode" Type="Edm.String" MaxLength="20" sap:label="Parent Screen Code"/>
+                <Property Name="ParentScreenName" Type="Edm.String" MaxLength="80" sap:label="Parent Screen Name"/>
+                <Property Name="ChildScreenCode" Type="Edm.String" MaxLength="20" sap:label="Child Screen Code"/>
+                <Property Name="ChildScreenName" Type="Edm.String" MaxLength="80" sap:label="Child Screen Name"/>
+                <Property Name="MandatoryFields" Type="Edm.String" MaxLength="20" sap:label="Mandatory Fields"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <NavigationProperty Name="to_ZGE_SCREEN_ASSIGN" Relationship="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_1D5B2F4129E848F57BE24C9824B06B1A" FromRole="ToRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A" ToRole="FromRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A"/>
+            </EntityType>
+            <EntityType Name="YY1_PARENT_SCREEN_ASSIGN_ZGE_SType" sap:label="PARENT_SCREEN_ASSIGN" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="UserId" Type="Edm.String" MaxLength="20" sap:label="User Id"/>
+                <Property Name="UserName" Type="Edm.String" MaxLength="80" sap:label="User Name"/>
+                <Property Name="ScreenCode" Type="Edm.String" MaxLength="20" sap:label="Screen Code"/>
+                <Property Name="ScreenName" Type="Edm.String" MaxLength="80" sap:label="Screen Name"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <NavigationProperty Name="to_ZGE_SCREEN_ASSIGN" Relationship="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_AE1FC0FDF0950D8A20317B389A87E93E" FromRole="ToRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E" ToRole="FromRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E"/>
+            </EntityType>
+            <EntityType Name="YY1_ZGE_SCREEN_ASSIGNType" sap:label="ZGE_NAV_SCREEN_ASSIGN" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="UserId" Type="Edm.String" MaxLength="20" sap:label="User Id"/>
+                <Property Name="UserName" Type="Edm.String" MaxLength="80" sap:label="User Name"/>
+                <Property Name="ScreenCode" Type="Edm.String" MaxLength="20" sap:label="Screen Code"/>
+                <Property Name="ScreenName" Type="Edm.String" MaxLength="80" sap:label="Screen Name"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_CreatedByUser_Text" sap:label="Created By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_LastChangedByUser_Text" sap:label="Last Changed By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ID" Type="Edm.String" MaxLength="20" sap:label="ID"/>
+                <NavigationProperty Name="to_CHILD_SCREEN_ASSIGN" Relationship="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_C19706E8A17C4FB4C215BD5F033B2053" FromRole="FromRole_assoc_C19706E8A17C4FB4C215BD5F033B2053" ToRole="ToRole_assoc_C19706E8A17C4FB4C215BD5F033B2053"/>
+                <NavigationProperty Name="to_MANDATORY_FIELDS" Relationship="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_1D5B2F4129E848F57BE24C9824B06B1A" FromRole="FromRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A" ToRole="ToRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A"/>
+                <NavigationProperty Name="to_PARENT_SCREEN_ASSIGN" Relationship="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_AE1FC0FDF0950D8A20317B389A87E93E" FromRole="FromRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E" ToRole="ToRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E"/>
+                <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_401308EBE7B4BE90BBA5F2AE6003BF93" FromRole="FromRole_assoc_401308EBE7B4BE90BBA5F2AE6003BF93" ToRole="ToRole_assoc_401308EBE7B4BE90BBA5F2AE6003BF93"/>
+                <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_803E4A93416C6355A3D2FC37EB8881B0" FromRole="FromRole_assoc_803E4A93416C6355A3D2FC37EB8881B0" ToRole="ToRole_assoc_803E4A93416C6355A3D2FC37EB8881B0"/>
+            </EntityType>
+            <Association Name="assoc_1D5B2F4129E848F57BE24C9824B06B1A" sap:content-version="1">
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGNType" Multiplicity="1" Role="FromRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_MANDATORY_FIELDS_ZGE_SCREEType" Multiplicity="*" Role="ToRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_AE1FC0FDF0950D8A20317B389A87E93E" sap:content-version="1">
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGNType" Multiplicity="1" Role="FromRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_PARENT_SCREEN_ASSIGN_ZGE_SType" Multiplicity="*" Role="ToRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_401308EBE7B4BE90BBA5F2AE6003BF93" sap:content-version="1">
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGNType" Multiplicity="1" Role="FromRole_assoc_401308EBE7B4BE90BBA5F2AE6003BF93"/>
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_401308EBE7B4BE90BBA5F2AE6003BF93"/>
+            </Association>
+            <Association Name="assoc_803E4A93416C6355A3D2FC37EB8881B0" sap:content-version="1">
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGNType" Multiplicity="1" Role="FromRole_assoc_803E4A93416C6355A3D2FC37EB8881B0"/>
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_803E4A93416C6355A3D2FC37EB8881B0"/>
+            </Association>
+            <Association Name="assoc_C19706E8A17C4FB4C215BD5F033B2053" sap:content-version="1">
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGNType" Multiplicity="1" Role="FromRole_assoc_C19706E8A17C4FB4C215BD5F033B2053">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_CHILD_SCREEN_ASSIGN_ZGE_SCType" Multiplicity="*" Role="ToRole_assoc_C19706E8A17C4FB4C215BD5F033B2053"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_C19706E8A17C4FB4C215BD5F033B2053">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_C19706E8A17C4FB4C215BD5F033B2053">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="YY1_ZGE_SCREEN_ASSIGN_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="P_Scbo_User" EntityType="YY1_ZGE_SCREEN_ASSIGN_CDS.P_Scbo_UserType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="YY1_CHILD_SCREEN_ASSIGN_ZGE_SC" EntityType="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_CHILD_SCREEN_ASSIGN_ZGE_SCType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_MANDATORY_FIELDS_ZGE_SCREE" EntityType="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_MANDATORY_FIELDS_ZGE_SCREEType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_PARENT_SCREEN_ASSIGN_ZGE_S" EntityType="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_PARENT_SCREEN_ASSIGN_ZGE_SType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_ZGE_SCREEN_ASSIGN" EntityType="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGNType" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_1D5B2F4129E848F57BE24C9824B06B1A" Association="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_1D5B2F4129E848F57BE24C9824B06B1A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_SCREEN_ASSIGN" Role="FromRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A"/>
+                    <End EntitySet="YY1_MANDATORY_FIELDS_ZGE_SCREE" Role="ToRole_assoc_1D5B2F4129E848F57BE24C9824B06B1A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_803E4A93416C6355A3D2FC37EB8881B0" Association="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_803E4A93416C6355A3D2FC37EB8881B0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_SCREEN_ASSIGN" Role="FromRole_assoc_803E4A93416C6355A3D2FC37EB8881B0"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_803E4A93416C6355A3D2FC37EB8881B0"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_401308EBE7B4BE90BBA5F2AE6003BF93" Association="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_401308EBE7B4BE90BBA5F2AE6003BF93" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_SCREEN_ASSIGN" Role="FromRole_assoc_401308EBE7B4BE90BBA5F2AE6003BF93"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_401308EBE7B4BE90BBA5F2AE6003BF93"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C19706E8A17C4FB4C215BD5F033B2053" Association="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_C19706E8A17C4FB4C215BD5F033B2053" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_SCREEN_ASSIGN" Role="FromRole_assoc_C19706E8A17C4FB4C215BD5F033B2053"/>
+                    <End EntitySet="YY1_CHILD_SCREEN_ASSIGN_ZGE_SC" Role="ToRole_assoc_C19706E8A17C4FB4C215BD5F033B2053"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_AE1FC0FDF0950D8A20317B389A87E93E" Association="YY1_ZGE_SCREEN_ASSIGN_CDS.assoc_AE1FC0FDF0950D8A20317B389A87E93E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZGE_SCREEN_ASSIGN" Role="FromRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E"/>
+                    <End EntitySet="YY1_PARENT_SCREEN_ASSIGN_ZGE_S" Role="ToRole_assoc_AE1FC0FDF0950D8A20317B389A87E93E"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGN_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGNType/to_CHILD_SCREEN_ASSIGN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGNType/to_MANDATORY_FIELDS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGNType/to_PARENT_SCREEN_ASSIGN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGN_CDS_Entities/YY1_CHILD_SCREEN_ASSIGN_ZGE_SC" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ZGE_SCREEN_ASSIGN"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGN_CDS_Entities/YY1_MANDATORY_FIELDS_ZGE_SCREE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ZGE_SCREEN_ASSIGN"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGN_CDS_Entities/YY1_PARENT_SCREEN_ASSIGN_ZGE_S" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ZGE_SCREEN_ASSIGN"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZGE_SCREEN_ASSIGN_CDS.YY1_ZGE_SCREEN_ASSIGN_CDS_Entities/YY1_ZGE_SCREEN_ASSIGN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CHILD_SCREEN_ASSIGN"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_MANDATORY_FIELDS"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PARENT_SCREEN_ASSIGN"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataChangeUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataCreateUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/sap/YY1_ZGE_SCREEN_ASSIGN_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my401677.s4hana.cloud.sap:443/sap/opu/odata/sap/YY1_ZGE_SCREEN_ASSIGN_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

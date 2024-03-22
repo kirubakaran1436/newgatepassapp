@@ -1,0 +1,25 @@
+
+<core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog" xmlns:m="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+	<ValueHelpDialog title="Select Purchase Document" ok=".onValueHelpOkPress" cancel=".onValueHelpCancelPress" afterClose=".onValueHelpAfterClose" supportRanges="true" key="PurchaseOrder" descriptionKey="SupplierName">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="PurchaseOrder" label="Purchase Document" visibleInFilterBar="true">
+						<fb:control>
+								<m:Input name="PurchaseOrder" showSuggestion="true" showValueHelp="false" suggestionItems="{ path: 'YY1_ZGE_INWARD_PO_HEAD_CDS>/YY1_ZGE_INWARD_PO_HEAD', sorter: { path: 'PurchaseOrder' }}">
+								<core:Item key="{YY1_ZGE_INWARD_PO_HEAD_CDS>PurchaseOrder}" text="{YY1_ZGE_INWARD_PO_HEAD_CDS>PurchaseOrder}" />
+							</m:Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="SupplierName" label="Supplier Name" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="SupplierName" showSuggestion="true" showValueHelp="false" suggestionItems="{ path: 'YY1_ZGE_INWARD_PO_HEAD_CDS>/YY1_ZGE_INWARD_MD_HEAD',sorter: { path: 'SupplierName' }}">
+								<core:Item key="{YY1_ZGE_INWARD_PO_HEAD_CDS>SupplierName}" text="{YY1_ZGE_INWARD_PO_HEAD_CDS>SupplierName}" />
+							</m:Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition> 

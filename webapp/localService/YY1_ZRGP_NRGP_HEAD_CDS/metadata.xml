@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="YY1_ZRGP_NRGP_HEAD_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="P_Scbo_UserType" sap:label="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="description" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+            </EntityType>
+            <EntityType Name="YY1_ITEMS_ZRGP_NRGP_HEADType" sap:label="ITEMS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="id" Type="Edm.String" MaxLength="20" sap:label="id"/>
+                <Property Name="ItemNo" Type="Edm.String" MaxLength="20" sap:label="Item No"/>
+                <Property Name="Product" Type="Edm.String" MaxLength="20" sap:label="Product"/>
+                <Property Name="ProductName" Type="Edm.String" MaxLength="80" sap:label="Product Name"/>
+                <Property Name="Quantity" Type="Edm.String" MaxLength="20" sap:label="Quantity"/>
+                <Property Name="ReceivedQuantity" Type="Edm.String" MaxLength="20" sap:label="Received Quantity"/>
+                <Property Name="UOM" Type="Edm.String" MaxLength="20" sap:label="UOM"/>
+                <Property Name="DueDate" Type="Edm.String" MaxLength="20" sap:label="Due Date"/>
+                <Property Name="DispatchDate" Type="Edm.String" MaxLength="20" sap:label="Dispatch Date"/>
+                <Property Name="Value" Type="Edm.String" MaxLength="20" sap:label="Value"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="500" sap:label="Remarks"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="ItemsStatus" Type="Edm.String" MaxLength="20" sap:label="Items Status"/>
+                <Property Name="ApproveStatus" Type="Edm.String" MaxLength="20" sap:label="Approve Status"/>
+                <Property Name="TotalAmount" Type="Edm.String" MaxLength="20" sap:label="Total Amount"/>
+                <Property Name="GatePassType" Type="Edm.String" MaxLength="20" sap:label="Gate Pass Type"/>
+                <Property Name="Requestor" Type="Edm.String" MaxLength="20" sap:label="Requestor"/>
+                <Property Name="PlantCode" Type="Edm.String" MaxLength="20" sap:label="Plant Code"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="80" sap:label="Plant Name"/>
+                <Property Name="SupplierCode" Type="Edm.String" MaxLength="20" sap:label="Supplier Code"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="80" sap:label="Supplier Name"/>
+                <Property Name="SupplierType" Type="Edm.String" MaxLength="20" sap:label="Supplier Type"/>
+                <Property Name="CustomerCode" Type="Edm.String" MaxLength="20" sap:label="Customer Code"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Customer Name"/>
+                <Property Name="CustomerType" Type="Edm.String" MaxLength="20" sap:label="Customer Type"/>
+                <Property Name="ValueInINR" Type="Edm.String" MaxLength="20" sap:label="Value In INR"/>
+                <Property Name="VehicleType" Type="Edm.String" MaxLength="20" sap:label="Vehicle Type"/>
+                <Property Name="VehicleNo" Type="Edm.String" MaxLength="20" sap:label="Vehicle No"/>
+                <Property Name="Transporter" Type="Edm.String" MaxLength="20" sap:label="Transporter"/>
+                <Property Name="TransporterMode" Type="Edm.String" MaxLength="20" sap:label="Transporter Mode"/>
+                <Property Name="PurchaseOrder" Type="Edm.String" MaxLength="20" sap:label="Purchase Order"/>
+                <Property Name="MaterialDocument" Type="Edm.String" MaxLength="20" sap:label="Material Document"/>
+                <Property Name="ReferenceDocumentNo" Type="Edm.String" MaxLength="20" sap:label="Reference Document No"/>
+                <Property Name="RemarkHead" Type="Edm.String" MaxLength="500" sap:label="RemarkHead"/>
+                <Property Name="GateStatus" Type="Edm.String" MaxLength="20" sap:label="Gate Status"/>
+                <Property Name="GateType" Type="Edm.String" MaxLength="20" sap:label="Gate Type"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <NavigationProperty Name="to_ZRGP_NRGP_HEAD" Relationship="YY1_ZRGP_NRGP_HEAD_CDS.assoc_551B84157DB571136BBC26E8E918933E" FromRole="ToRole_assoc_551B84157DB571136BBC26E8E918933E" ToRole="FromRole_assoc_551B84157DB571136BBC26E8E918933E"/>
+            </EntityType>
+            <EntityType Name="YY1_ZRGP_NRGP_HEADType" sap:label="ZRGP_NRGP_HEAD" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="Id" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Id"/>
+                <Property Name="GatePassType" Type="Edm.String" MaxLength="20" sap:label="Gate Pass Type"/>
+                <Property Name="Requestor" Type="Edm.String" MaxLength="20" sap:label="Requestor"/>
+                <Property Name="PlantCode" Type="Edm.String" MaxLength="20" sap:label="Plant Code"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="40" sap:label="Plant Name"/>
+                <Property Name="SupplierCode" Type="Edm.String" MaxLength="20" sap:label="Supplier Code"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="80" sap:label="Supplier Name"/>
+                <Property Name="SupplierType" Type="Edm.String" MaxLength="20" sap:label="Supplier Type"/>
+                <Property Name="CustomerCode" Type="Edm.String" MaxLength="20" sap:label="Customer Code"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Customer Name"/>
+                <Property Name="CustomerType" Type="Edm.String" MaxLength="20" sap:label="Customer Type"/>
+                <Property Name="ValueInINR" Type="Edm.String" MaxLength="20" sap:label="Value In INR"/>
+                <Property Name="VehicleType" Type="Edm.String" MaxLength="20" sap:label="Vehicle Type"/>
+                <Property Name="VehicleNo" Type="Edm.String" MaxLength="20" sap:label="Vehicle No"/>
+                <Property Name="Transporter" Type="Edm.String" MaxLength="20" sap:label="Transporter"/>
+                <Property Name="TransporterMode" Type="Edm.String" MaxLength="20" sap:label="Transporter Mode"/>
+                <Property Name="PurchaseOrder" Type="Edm.String" MaxLength="20" sap:label="Purchase Order"/>
+                <Property Name="MaterialDocument" Type="Edm.String" MaxLength="20" sap:label="Material Document"/>
+                <Property Name="ReferenceDocumentNo" Type="Edm.String" MaxLength="20" sap:label="Reference Document No"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="500" sap:label="Remarks"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="20" sap:label="Status"/>
+                <Property Name="ApproveStatus" Type="Edm.String" MaxLength="20" sap:label="ApproveStatus"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_CreatedByUser_Text" sap:label="Created By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_LastChangedByUser_Text" sap:label="Last Changed By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GateStatus" Type="Edm.String" MaxLength="20" sap:label="Gate Status"/>
+                <Property Name="TotalAmount" Type="Edm.String" MaxLength="20" sap:label="Total Amount"/>
+                <Property Name="GateType" Type="Edm.String" MaxLength="20" sap:label="Gate Type"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <Property Name="NRStatus" Type="Edm.String" MaxLength="20" sap:label="NR Status"/>
+                <NavigationProperty Name="to_ITEMS" Relationship="YY1_ZRGP_NRGP_HEAD_CDS.assoc_551B84157DB571136BBC26E8E918933E" FromRole="FromRole_assoc_551B84157DB571136BBC26E8E918933E" ToRole="ToRole_assoc_551B84157DB571136BBC26E8E918933E"/>
+                <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="YY1_ZRGP_NRGP_HEAD_CDS.assoc_5C571A342D93991CB67721F48C96EE6A" FromRole="FromRole_assoc_5C571A342D93991CB67721F48C96EE6A" ToRole="ToRole_assoc_5C571A342D93991CB67721F48C96EE6A"/>
+                <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="YY1_ZRGP_NRGP_HEAD_CDS.assoc_996AE735A9579DFEEC87CA111655C92B" FromRole="FromRole_assoc_996AE735A9579DFEEC87CA111655C92B" ToRole="ToRole_assoc_996AE735A9579DFEEC87CA111655C92B"/>
+            </EntityType>
+            <Association Name="assoc_5C571A342D93991CB67721F48C96EE6A" sap:content-version="1">
+                <End Type="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEADType" Multiplicity="1" Role="FromRole_assoc_5C571A342D93991CB67721F48C96EE6A"/>
+                <End Type="YY1_ZRGP_NRGP_HEAD_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_5C571A342D93991CB67721F48C96EE6A"/>
+            </Association>
+            <Association Name="assoc_996AE735A9579DFEEC87CA111655C92B" sap:content-version="1">
+                <End Type="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEADType" Multiplicity="1" Role="FromRole_assoc_996AE735A9579DFEEC87CA111655C92B"/>
+                <End Type="YY1_ZRGP_NRGP_HEAD_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_996AE735A9579DFEEC87CA111655C92B"/>
+            </Association>
+            <Association Name="assoc_551B84157DB571136BBC26E8E918933E" sap:content-version="1">
+                <End Type="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEADType" Multiplicity="1" Role="FromRole_assoc_551B84157DB571136BBC26E8E918933E">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ITEMS_ZRGP_NRGP_HEADType" Multiplicity="*" Role="ToRole_assoc_551B84157DB571136BBC26E8E918933E"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_551B84157DB571136BBC26E8E918933E">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_551B84157DB571136BBC26E8E918933E">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="YY1_ZRGP_NRGP_HEAD_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="P_Scbo_User" EntityType="YY1_ZRGP_NRGP_HEAD_CDS.P_Scbo_UserType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="YY1_ITEMS_ZRGP_NRGP_HEAD" EntityType="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ITEMS_ZRGP_NRGP_HEADType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_ZRGP_NRGP_HEAD" EntityType="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEADType" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_551B84157DB571136BBC26E8E918933E" Association="YY1_ZRGP_NRGP_HEAD_CDS.assoc_551B84157DB571136BBC26E8E918933E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZRGP_NRGP_HEAD" Role="FromRole_assoc_551B84157DB571136BBC26E8E918933E"/>
+                    <End EntitySet="YY1_ITEMS_ZRGP_NRGP_HEAD" Role="ToRole_assoc_551B84157DB571136BBC26E8E918933E"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5C571A342D93991CB67721F48C96EE6A" Association="YY1_ZRGP_NRGP_HEAD_CDS.assoc_5C571A342D93991CB67721F48C96EE6A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZRGP_NRGP_HEAD" Role="FromRole_assoc_5C571A342D93991CB67721F48C96EE6A"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_5C571A342D93991CB67721F48C96EE6A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_996AE735A9579DFEEC87CA111655C92B" Association="YY1_ZRGP_NRGP_HEAD_CDS.assoc_996AE735A9579DFEEC87CA111655C92B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_ZRGP_NRGP_HEAD" Role="FromRole_assoc_996AE735A9579DFEEC87CA111655C92B"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_996AE735A9579DFEEC87CA111655C92B"/>
+                </AssociationSet>
+                <FunctionImport Name="YY1_ZRGP_NRGP_HEADSap_upsert" ReturnType="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEADType" EntitySet="YY1_ZRGP_NRGP_HEAD" m:HttpMethod="POST">
+                    <Parameter Name="Id" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Numeric length 10"/>
+                    <Parameter Name="GatePassType" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Requestor" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="PlantCode" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="PlantName" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="SupplierCode" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="SupplierName" Type="Edm.String" Mode="In" MaxLength="80" sap:label="Text of length 80"/>
+                    <Parameter Name="SupplierType" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="CustomerCode" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="CustomerName" Type="Edm.String" Mode="In" MaxLength="80" sap:label="Text of length 80"/>
+                    <Parameter Name="CustomerType" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="ValueInINR" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="VehicleType" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="VehicleNo" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Transporter" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="TransporterMode" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="PurchaseOrder" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="MaterialDocument" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="ReferenceDocumentNo" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="Remarks" Type="Edm.String" Mode="In" MaxLength="500" sap:label="Text of length 500"/>
+                    <Parameter Name="Status" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="ApproveStatus" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="GateStatus" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="TotalAmount" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="GateType" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                    <Parameter Name="PostingDate" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Posting Date" sap:display-format="Date"/>
+                    <Parameter Name="NRStatus" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Text of length 20"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEAD_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEADType/to_ITEMS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEADType/Id" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEAD_CDS_Entities/YY1_ITEMS_ZRGP_NRGP_HEAD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ZRGP_NRGP_HEAD"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEAD_CDS_Entities/YY1_ZRGP_NRGP_HEAD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ITEMS"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataChangeUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataCreateUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_ZRGP_NRGP_HEAD_CDS.YY1_ZRGP_NRGP_HEADType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>Id</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_ZRGP_NRGP_HEAD_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my401677-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_ZRGP_NRGP_HEAD_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

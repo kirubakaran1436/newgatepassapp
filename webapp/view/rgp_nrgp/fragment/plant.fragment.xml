@@ -1,0 +1,25 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog id="Plant_dialog" noDataText="No Plant Found" title="Select Plant" search=".OnPlantSearch" confirm=".OnPlantSelect"
+		contentWidth="50%" cancel=".OnPlantSelect" items="{path:'YY1_ZGE_PLANT_CDS>/YY1_ZGE_PLANT',sorter:[{path:'Plant',descending:false}]}">
+		<ColumnListItem id="Plant_IDGenColumnListItem1" vAlign="Middle">
+			<cells>
+				<Text id="Plant" text="{YY1_ZGE_PLANT_CDS>Plant}"/>
+				<Text id="PlantName" text="{YY1_ZGE_PLANT_CDS>PlantName}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column  >
+				<header>
+					<Text text="Plant"/>
+				</header>
+			</Column>
+			<Column >
+				<header>
+					<Text text="Plant Name"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>
